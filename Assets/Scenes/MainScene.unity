@@ -4522,6 +4522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf84cc0e6b9ba2644ab187fad622547a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechBubble: {fileID: 1875570668}
 --- !u!70 &1398176784
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

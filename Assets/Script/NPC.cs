@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    PlayerInteract playerInRange;
+    [SerializeField] GameObject speechBubble;
+
+    void Awake()
+    {
+        if (speechBubble != null)
+            speechBubble.SetActive(false);
+    }
 
     public void Interact()
     {
@@ -15,6 +21,9 @@ public class NPC : MonoBehaviour, IInteractable
         {
             PlayerInteract playerInteract = other.GetComponent<PlayerInteract>();
             playerInteract?.SetCurrentInteractable(this);
+
+            if (speechBubble != null)
+                speechBubble.SetActive(true);
         }
     }
 
@@ -24,6 +33,9 @@ public class NPC : MonoBehaviour, IInteractable
         {
             PlayerInteract playerInteract = other.GetComponent<PlayerInteract>();
             playerInteract?.ClearCurrentInteractable(this);
+
+            if (speechBubble != null)
+                speechBubble.SetActive(false);
         }
     }
 }
