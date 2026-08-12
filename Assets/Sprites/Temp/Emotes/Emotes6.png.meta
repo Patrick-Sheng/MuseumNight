@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 2fd13fb161938444ab38548f493c5586
+guid: e4522c2c563c9be46a2a2983690da8c9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4863044421884674722
-    second: GDG_character_2_0
-  - first:
-      213: -1730216697223211830
-    second: GDG_character_2_1
-  - first:
-      213: -5036589582532036055
-    second: GDG_character_2_2
-  - first:
-      213: 924246185371768444
-    second: GDG_character_2_3
+      213: 6601927413075510437
+    second: Emotes6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GDG_character_2_0
+      name: Emotes6_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 8
-        width: 53
-        height: 91
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a2816dd2210d7340800000000000000
-      internalID: 4863044421884674722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDG_character_2_1
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 74
-        width: 15
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac49f89b4190df7e0800000000000000
-      internalID: -1730216697223211830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDG_character_2_2
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 40
-        width: 33
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 92abebda5707a1ab0800000000000000
-      internalID: -5036589582532036055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GDG_character_2_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 8
-        width: 21
-        height: 24
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c76181c320593dc00800000000000000
-      internalID: 924246185371768444
+      spriteID: 5a48741f002ce9b50800000000000000
+      internalID: 6601927413075510437
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a6a767676f098674cbc0ae61c0501142
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GDG_character_2_0: 4863044421884674722
-      GDG_character_2_1: -1730216697223211830
-      GDG_character_2_2: -5036589582532036055
-      GDG_character_2_3: 924246185371768444
+      Emotes6_0: 6601927413075510437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
