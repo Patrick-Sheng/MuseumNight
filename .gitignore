@@ -29,6 +29,7 @@ ExportedObj/
 
 # Visual Studio
 .vs/
+.vsconfig
 
 # OS
 .DS_Store
@@ -45,3 +46,6 @@ Thumbs.db
 
 # Crash reports
 sysinfo.txt
+
+# Agent
+AGENTS.md

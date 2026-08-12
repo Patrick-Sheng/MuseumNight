@@ -1,0 +1,61 @@
+using UnityEngine;
+
+[DisallowMultipleComponent]
+public sealed class SanitySystem : MonoBehaviour
+{
+    [Header("Sanity")]
+    [SerializeField, Min(1f)] private float maxSanity = 100f;
+    [SerializeField, Min(0f)] private float startingSanity = 100f;
+
+    [Header("Level Thresholds (percentage of maximum)")]
+    [SerializeField, Range(0f, 1f)] private float stableMinimum = 0.75f;
+    [SerializeField, Range(0f, 1f)] private float uneasyMinimum = 0.50f;
+    [SerializeField, Range(0f, 1f)] private float disturbedMinimum = 0.25f;
+
+    private float currentSanity;
+    private SanityLevel currentLevel;
+
+    public float CurrentSanity => currentSanity;
+    public float MaxSanity => maxSanity;
+    public float NormalizedSanity => maxSanity > 0f ? currentSanity / maxSanity : 0f;
+    public SanityLevel CurrentLevel => currentLevel;
+
+    private void Awake()
+    {
+        currentSanity = Mathf.Clamp(startingSanity, 0f, maxSanity);
+        currentLevel = CalculateLevel();
+        Debug.Log($"Starting sanity: {currentSanity}/{maxSanity}, level: {currentLevel}", this);
+    }
+
+    public void ChangeSanity(float amount)
+    {
+        currentSanity = Mathf.Clamp(currentSanity + amount, 0f, maxSanity);
+        currentLevel = CalculateLevel();
+    }
+
+    private SanityLevel CalculateLevel()
+    {
+        float normalized = NormalizedSanity;
+
+        if (normalized >= stableMinimum)
+            return SanityLevel.Stable;
+
+        if (normalized >= uneasyMinimum)
+            return SanityLevel.Uneasy;
+
+        if (normalized >= disturbedMinimum)
+            return SanityLevel.Disturbed;
+
+        return SanityLevel.Critical;
+    }
+
+    private void OnValidate()
+    {
+        maxSanity = Mathf.Max(1f, maxSanity);
+        startingSanity = Mathf.Clamp(startingSanity, 0f, maxSanity);
+
+        stableMinimum = Mathf.Clamp01(stableMinimum);
+        uneasyMinimum = Mathf.Clamp(uneasyMinimum, 0f, stableMinimum);
+        disturbedMinimum = Mathf.Clamp(disturbedMinimum, 0f, uneasyMinimum);
+    }
+}
