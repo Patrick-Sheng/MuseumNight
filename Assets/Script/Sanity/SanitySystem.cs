@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEngine;
 
 [DisallowMultipleComponent]
 public sealed class SanitySystem : MonoBehaviour
@@ -26,6 +25,9 @@ public sealed class SanitySystem : MonoBehaviour
     public float NormalizedSanity => maxSanity > 0f ? currentSanity / maxSanity : 0f;
     public SanityLevel CurrentLevel => currentLevel;
 
+    public event Action<float, float> SanityChanged;
+    public event Action<SanityLevel> SanityLevelChanged;
+
     private void Awake()
     {
         currentSanity = Mathf.Clamp(startingSanity, 0f, maxSanity);
@@ -43,10 +45,38 @@ public sealed class SanitySystem : MonoBehaviour
             Debug.Log("Sanity reached zero.", this);
     }
 
+    public void SetDrainEnabled(bool enabled)
+    {
+        drainEnabled = enabled;
+    }
+
     public void ChangeSanity(float amount)
     {
-        currentSanity = Mathf.Clamp(currentSanity + amount, 0f, maxSanity);
+        float newSanity = Mathf.Clamp(
+            currentSanity + amount,
+            0f,
+            maxSanity
+        );
+
+        if (Mathf.Approximately(newSanity, currentSanity))
+            return;
+
+        SanityLevel previousLevel = currentLevel;
+
+        currentSanity = newSanity;
         currentLevel = CalculateLevel();
+
+        SanityChanged?.Invoke(currentSanity, maxSanity);
+
+        if (currentLevel != previousLevel)
+        {
+            Debug.Log(
+                $"Sanity level changed: {previousLevel} → {currentLevel}",
+                this
+            );
+
+            SanityLevelChanged?.Invoke(currentLevel);
+        }
     }
 
     private SanityLevel CalculateLevel()
