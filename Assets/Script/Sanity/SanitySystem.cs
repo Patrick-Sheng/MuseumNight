@@ -20,6 +20,10 @@ public sealed class SanitySystem : MonoBehaviour
     private float currentSanity;
     private SanityLevel currentLevel;
 
+    public float StableThreshold => stableMinimum;
+    public float UneasyThreshold => uneasyMinimum;
+    public float DisturbedThreshold => disturbedMinimum;
+
     public float CurrentSanity => currentSanity;
     public float MaxSanity => maxSanity;
     public float NormalizedSanity => maxSanity > 0f ? currentSanity / maxSanity : 0f;
