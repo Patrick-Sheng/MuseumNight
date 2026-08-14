@@ -242,6 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSanity: 100
   startingSanity: 100
+  drainEnabled: 1
+  drainPerSecond: 1
   stableMinimum: 0.75
   uneasyMinimum: 0.5
   disturbedMinimum: 0.25

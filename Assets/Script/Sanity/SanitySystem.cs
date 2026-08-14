@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public sealed class SanitySystem : MonoBehaviour
@@ -6,6 +8,10 @@ public sealed class SanitySystem : MonoBehaviour
     [Header("Sanity")]
     [SerializeField, Min(1f)] private float maxSanity = 100f;
     [SerializeField, Min(0f)] private float startingSanity = 100f;
+
+    [Header("Continuous Drain")]
+    [SerializeField] private bool drainEnabled = true;
+    [SerializeField, Min(0f)] private float drainPerSecond = 1f;
 
     [Header("Level Thresholds (percentage of maximum)")]
     [SerializeField, Range(0f, 1f)] private float stableMinimum = 0.75f;
@@ -25,6 +31,16 @@ public sealed class SanitySystem : MonoBehaviour
         currentSanity = Mathf.Clamp(startingSanity, 0f, maxSanity);
         currentLevel = CalculateLevel();
         Debug.Log($"Starting sanity: {currentSanity}/{maxSanity}, level: {currentLevel}", this);
+    }
+
+    private void Update()
+    {
+        if (!drainEnabled || currentSanity <= 0f)
+            return;
+
+        ChangeSanity(-drainPerSecond * Time.deltaTime);
+        if (currentSanity <= 0f)
+            Debug.Log("Sanity reached zero.", this);
     }
 
     public void ChangeSanity(float amount)
@@ -53,6 +69,7 @@ public sealed class SanitySystem : MonoBehaviour
     {
         maxSanity = Mathf.Max(1f, maxSanity);
         startingSanity = Mathf.Clamp(startingSanity, 0f, maxSanity);
+        drainPerSecond = Mathf.Max(0f, drainPerSecond);
 
         stableMinimum = Mathf.Clamp01(stableMinimum);
         uneasyMinimum = Mathf.Clamp(uneasyMinimum, 0f, stableMinimum);
