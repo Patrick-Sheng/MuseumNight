@@ -14,6 +14,19 @@ public sealed class SanityLevelActions : MonoBehaviour
     [SerializeField] private UnityEvent onDisturbed = new UnityEvent();
     [SerializeField] private UnityEvent onCritical = new UnityEvent();
 
+    private void Awake()
+    {
+        if (sanitySystem != null)
+            return;
+
+        Debug.LogError(
+            "Sanity Level Actions needs a Sanity System reference.",
+            this
+        );
+
+        enabled = false;
+    }
+
     private void OnEnable()
     {
         if (sanitySystem != null)
@@ -22,16 +35,6 @@ public sealed class SanityLevelActions : MonoBehaviour
 
     private void Start()
     {
-        if (sanitySystem == null)
-        {
-            Debug.LogError(
-                "Sanity Level Actions needs a Sanity System reference.",
-                this
-            );
-
-            return;
-        }
-
         if (invokeCurrentLevelOnStart)
             HandleLevelChanged(sanitySystem.CurrentLevel);
     }

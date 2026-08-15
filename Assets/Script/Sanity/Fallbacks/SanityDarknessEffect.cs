@@ -9,6 +9,19 @@ public sealed class SanityDarknessEffect : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float maximumDarkness = 0.65f;
 
+    private void Awake()
+    {
+        if (sanitySystem != null && darknessOverlay != null)
+            return;
+
+        Debug.LogError(
+            "Sanity Darkness Effect has missing Inspector references.",
+            this
+        );
+
+        enabled = false;
+    }
+
     private void OnEnable()
     {
         if (sanitySystem != null)
@@ -17,16 +30,6 @@ public sealed class SanityDarknessEffect : MonoBehaviour
 
     private void Start()
     {
-        if (sanitySystem == null || darknessOverlay == null)
-        {
-            Debug.LogError(
-                "Sanity Darkness Effect has missing Inspector references.",
-                this
-            );
-
-            return;
-        }
-
         UpdateDarkness(
             sanitySystem.CurrentSanity,
             sanitySystem.MaxSanity

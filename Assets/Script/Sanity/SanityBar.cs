@@ -28,6 +28,19 @@ public sealed class SanityBar : MonoBehaviour
     [SerializeField] private Color criticalColour =
         new Color(0.7f, 0.05f, 0.1f);
 
+    private void Awake()
+    {
+        if (ReferencesAreAssigned())
+            return;
+
+        Debug.LogError(
+            "Sanity Bar has missing Inspector references.",
+            this
+        );
+
+        enabled = false;
+    }
+
     private void OnEnable()
     {
         if (sanitySystem == null)
@@ -39,16 +52,6 @@ public sealed class SanityBar : MonoBehaviour
 
     private void Start()
     {
-        if (!ReferencesAreAssigned())
-        {
-            Debug.LogError(
-                "Sanity Bar has missing Inspector references.",
-                this
-            );
-
-            return;
-        }
-
         UpdateFill(
             sanitySystem.CurrentSanity,
             sanitySystem.MaxSanity

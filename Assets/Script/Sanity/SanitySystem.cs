@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public sealed class SanitySystem : MonoBehaviour
@@ -26,8 +26,11 @@ public sealed class SanitySystem : MonoBehaviour
 
     public float CurrentSanity => currentSanity;
     public float MaxSanity => maxSanity;
-    public float NormalizedSanity => maxSanity > 0f ? currentSanity / maxSanity : 0f;
+    public float NormalizedSanity => maxSanity > 0f
+        ? currentSanity / maxSanity
+        : 0f;
     public SanityLevel CurrentLevel => currentLevel;
+    public bool DrainEnabled => drainEnabled;
 
     public event Action<float, float> SanityChanged;
     public event Action<SanityLevel> SanityLevelChanged;
@@ -52,6 +55,16 @@ public sealed class SanitySystem : MonoBehaviour
     public void SetDrainEnabled(bool enabled)
     {
         drainEnabled = enabled;
+    }
+
+    public void LoseSanity(float amount)
+    {
+        ChangeSanity(-Mathf.Abs(amount));
+    }
+
+    public void RestoreSanity(float amount)
+    {
+        ChangeSanity(Mathf.Abs(amount));
     }
 
     public void ChangeSanity(float amount)

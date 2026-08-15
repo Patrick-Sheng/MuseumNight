@@ -14,6 +14,14 @@ public sealed class SanityTrigger : MonoBehaviour
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
+    private void OnValidate()
+    {
+        BoxCollider2D triggerCollider = GetComponent<BoxCollider2D>();
+
+        if (triggerCollider != null)
+            triggerCollider.isTrigger = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (triggerOnce && hasTriggered)

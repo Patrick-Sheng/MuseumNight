@@ -18,12 +18,13 @@ public sealed class SanityVignetteEffect : MonoBehaviour
 
     private void Awake()
     {
-        if (volume == null
+        if (sanitySystem == null
+            || volume == null
             || volume.profile == null
             || !volume.profile.TryGet(out vignette))
         {
             Debug.LogError(
-                "Sanity Vignette Effect needs a Volume profile containing a Vignette.",
+                "Sanity Vignette Effect has missing references or no Vignette override.",
                 this
             );
 
@@ -39,17 +40,6 @@ public sealed class SanityVignetteEffect : MonoBehaviour
 
     private void Start()
     {
-        if (sanitySystem == null)
-        {
-            Debug.LogError(
-                "Sanity Vignette Effect needs a Sanity System reference.",
-                this
-            );
-
-            enabled = false;
-            return;
-        }
-
         UpdateVignette(
             sanitySystem.CurrentSanity,
             sanitySystem.MaxSanity
@@ -78,5 +68,13 @@ public sealed class SanityVignetteEffect : MonoBehaviour
         );
 
         vignette.intensity.Override(intensity);
+    }
+
+    private void OnValidate()
+    {
+        maximumIntensity = Mathf.Max(
+            maximumIntensity,
+            minimumIntensity
+        );
     }
 }
