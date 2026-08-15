@@ -143,9 +143,9 @@ private void OnDisable()
 
 ### `SanitySystem`
 
-Add one `SanitySystem` component to the object responsible for sanity state in
-the scene. Configure its starting value, maximum, drain, and level thresholds
-through the Inspector.
+Add `Assets/Prefab/Sanity/SanitySystem.prefab` to the scene, or add one
+`SanitySystem` component to the object responsible for sanity state. Configure
+its starting value, maximum, drain, and level thresholds through the Inspector.
 
 Continuous drain uses `Time.deltaTime`, so it is frame-rate independent and
 pauses when the game uses `Time.timeScale = 0`. Story systems can also pause it
@@ -179,10 +179,11 @@ references to:
 - the Stable, Uneasy, and Disturbed threshold-marker RectTransforms.
 
 The bar positions its markers from the configured thresholds rather than
-assuming fixed pixel positions.
-
-There is no reusable HUD prefab yet. The test-scene HUD is a reference
-implementation, not a final artist-approved design.
+assuming fixed pixel positions. `Assets/Prefab/Sanity/SanityHUD.prefab` contains
+the complete prototype HUD with its internal UI references already assigned.
+Place it under a scene Canvas, then assign that scene's `SanitySystem` to the
+prefab instance. The HUD remains placeholder UI rather than a final
+artist-approved design.
 
 ### `SanityLevelActions`
 
@@ -238,7 +239,7 @@ Useful manual checks:
 - Sanity resets when the scene reloads and does not persist between scenes.
 - There is no save/load integration.
 - The system is not integrated into the shared player or production scenes.
-- The HUD is placeholder UI and has no reusable prefab.
+- The reusable HUD prefab still uses placeholder visuals.
 - Thresholds, drain rate, colours, and vignette intensity are not balanced from
   player testing.
 - The vignette is centred on the screen rather than tracking an independently
