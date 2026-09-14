@@ -14,6 +14,8 @@ public class RoomManager : MonoBehaviour
     private string currentSceneName;
     private bool isTransitioning = false;
 
+    public string CurrentSceneName => currentSceneName;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,16 +28,24 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(TransitionRoutine(startingSceneName, "default_spawn"));
+        SaveData save = SaveSystem.Load();
+        if (save != null)
+        {
+            StartCoroutine(TransitionRoutine(save.sceneName, null, save));
+        }
+        else
+        {
+            StartCoroutine(TransitionRoutine(startingSceneName, "default_spawn", null));
+        }
     }
 
     public void GoToRoom(string sceneName, string entryPointId)
     {
         if (isTransitioning) return;
-        StartCoroutine(TransitionRoutine(sceneName, entryPointId));
+        StartCoroutine(TransitionRoutine(sceneName, entryPointId, null));
     }
 
-    private IEnumerator TransitionRoutine(string sceneName, string entryPointId)
+    private IEnumerator TransitionRoutine(string sceneName, string entryPointId, SaveData loadedSave)
     {
         isTransitioning = true;
 
@@ -48,11 +58,26 @@ public class RoomManager : MonoBehaviour
         currentSceneName = sceneName;
 
         Scene loadedScene = SceneManager.GetSceneByName(sceneName);
-        EntryPoint entry = FindEntryPointInScene(loadedScene, entryPointId);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (entry != null && player != null)
-            player.transform.position = entry.transform.position;
+        if (loadedSave != null)
+        {
+            if (player != null)
+                player.transform.position = new Vector3(loadedSave.playerX, loadedSave.playerY, loadedSave.playerZ);
+
+            if (loadedSave.hasSanity)
+            {
+                SanitySystem sanity = player != null ? player.GetComponentInChildren<SanitySystem>() : null;
+                if (sanity != null)
+                    sanity.SetSanity(loadedSave.sanityValue);
+            }
+        }
+        else
+        {
+            EntryPoint entry = FindEntryPointInScene(loadedScene, entryPointId);
+            if (entry != null && player != null)
+                player.transform.position = entry.transform.position;
+        }
 
         yield return StartCoroutine(FadeTo(0f));
 

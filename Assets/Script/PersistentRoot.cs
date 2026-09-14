@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class PersistentRoot : MonoBehaviour
 {
-    private static PersistentRoot instance;
+    public static PersistentRoot Instance { get; private set; }
 
     void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 }

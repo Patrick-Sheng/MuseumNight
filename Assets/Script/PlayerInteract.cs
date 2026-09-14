@@ -6,6 +6,9 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.IsPaused)
+            return;
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentInteractable?.Interact();
