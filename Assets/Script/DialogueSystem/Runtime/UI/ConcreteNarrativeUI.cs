@@ -21,10 +21,14 @@ namespace DialogueSystem.Runtime.UI
         [SerializeField] private Button nextMessageButton;
         [SerializeField] private Vector2 buttonOffset;
         [SerializeField, Min(1)] private int numberOfColumns = 2;
+        [SerializeField] private bool useParentLayoutGroup = true;
+        [SerializeField, Min(1f)] private float optionTextFontSize = 24f;
 
         [Space, Header("UI Rendering")]
         [SerializeField] private Optional<Image> characterSprite;
         [SerializeField] private Image dialogueBubble;
+        [SerializeField] private Optional<Image> narratorDialogueBubble;
+        [SerializeField] private bool useNarratorBubbleForHiddenCharacter = true;
     
         private List<Button> _currentOptionButtonList;
         private bool _textTyperNotNull;
@@ -33,6 +37,7 @@ namespace DialogueSystem.Runtime.UI
         {
             _currentOptionButtonList = new List<Button>();
             _textTyperNotNull = textTyper != null;
+            RemoveOptions();
             SetUIActive(false);
         }
         
@@ -40,7 +45,9 @@ namespace DialogueSystem.Runtime.UI
             ChoosePathDelegate choosePathFunction)
         {
             DisableNextNarrationUI();
+            RemoveOptions();
             var parentRect = buttonsParent.GetComponent<RectTransform>().rect;
+            var shouldUseManualPlacement = !(useParentLayoutGroup && buttonsParent.GetComponent<LayoutGroup>() != null);
 
             var columnIndex = 0;
             var rowIndex = 0;
@@ -63,10 +70,14 @@ namespace DialogueSystem.Runtime.UI
                         choosePathFunction(options.IndexOf(option));
                         RemoveOptions();
                         EnableNextNarrationUI();
-                    });
+                    },
+                    optionTextFontSize);
 
-                var buttonRect = newOptionButton.GetComponent<RectTransform>();
-                ButtonFactory.PlaceButton(buttonRect, parentRect, columnIndex, rowIndex, numberOfOptionsInRow, buttonOffset);
+                if (shouldUseManualPlacement)
+                {
+                    var buttonRect = newOptionButton.GetComponent<RectTransform>();
+                    ButtonFactory.PlaceButton(buttonRect, parentRect, columnIndex, rowIndex, numberOfOptionsInRow, buttonOffset);
+                }
 
                 columnIndex++;
                 numberOfOptionsLeft--;
@@ -85,7 +96,11 @@ namespace DialogueSystem.Runtime.UI
 
         private void RemoveOptions()
         {
-            _currentOptionButtonList.ForEach(button => Destroy(button.gameObject));
+            foreach (Transform child in buttonsParent)
+            {
+                Destroy(child.gameObject);
+            }
+
             _currentOptionButtonList.Clear();
         }
 
@@ -97,8 +112,23 @@ namespace DialogueSystem.Runtime.UI
     
         public override void DisplayDialogueBubble(DialogueMessage messageData, CharacterData characterData)
         {
+            SetBubbleVisual(messageData.HideCharacter);
             DisplayCharacterName(messageData.CharacterName, messageData.HideCharacter);
             DisplayCharacter(characterData.DefaultState.CharacterFace, messageData.HideCharacter);
+        }
+
+        private void SetBubbleVisual(bool hideCharacter)
+        {
+            var useNarratorBubble = useNarratorBubbleForHiddenCharacter && hideCharacter && narratorDialogueBubble.Enabled;
+
+            dialogueBubble.gameObject.SetActive(!useNarratorBubble);
+
+            if (!narratorDialogueBubble.Enabled)
+            {
+                return;
+            }
+
+            narratorDialogueBubble.Value.gameObject.SetActive(useNarratorBubble);
         }
 
         public override void DisplayMessage(string text)
@@ -131,15 +161,20 @@ namespace DialogueSystem.Runtime.UI
             buttonsParent.gameObject.SetActive(active);
             nextMessageButton.gameObject.SetActive(active);
             dialogueBubble.gameObject.SetActive(active);
+            if (narratorDialogueBubble.Enabled)
+            {
+                narratorDialogueBubble.Value.gameObject.SetActive(false);
+            }
             characterSprite.Value.gameObject.SetActive(active);
         }
     
         public override void InitializeUI()
         {
-            _currentOptionButtonList = new List<Button>();
+            RemoveOptions();
             _textTyperNotNull = textTyper != null;
             messageTextContainer.text = string.Empty;
             speakerNameText.text = string.Empty;
+            SetBubbleVisual(false);
             DisplayCharacter(new Optional<Sprite>(), true);
         }
 

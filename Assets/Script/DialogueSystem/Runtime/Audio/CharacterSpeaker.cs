@@ -1,17 +1,26 @@
-﻿using System.Collections;
-using DialogueSystem.Runtime.UI;
+﻿using DialogueSystem.Runtime.UI;
 using DialogueSystem.Utility;
 using UnityEngine;
 
+// Modify this script so that character can repeatedly speak in a dialogue. Including a slider to control talking speed.
 namespace DialogueSystem.Runtime.Audio
 {
     public class CharacterSpeaker : MonoBehaviour
     {
+        private enum SpeakingPlaybackMode
+        {
+            LoopWhileTyping,
+            OneShotAtStart
+        }
+
         [SerializeField] private TextTyper textTyper;
         [Header("Audio Sources"), SerializeField] private AudioSource speakingAudioSource;
         [SerializeField] private AudioSource reactionAudioSource;
-        [Header("Speaking Pace"), SerializeField] private float speakingPace = 1f;
-        [SerializeField] private bool synchronizeWithVariablePace = true;
+        [Header("Speaking Playback")]
+        [SerializeField] private SpeakingPlaybackMode speakingPlaybackMode = SpeakingPlaybackMode.LoopWhileTyping;
+        [SerializeField, Min(0.1f)] private float speakingSpeedMultiplier = 1f;
+
+        private float _basePitch = 1f;
         
         private void Awake()
         {
@@ -19,9 +28,50 @@ namespace DialogueSystem.Runtime.Audio
             textTyper.OnTypingEnd += StopSpeaking;
         }
 
-        private void Speak() => StartCoroutine(SpeakCoroutine());
+        private void OnDestroy()
+        {
+            if (textTyper == null)
+            {
+                return;
+            }
+
+            textTyper.OnTypingStart -= Speak;
+            textTyper.OnTypingEnd -= StopSpeaking;
+        }
+
+        private void Speak()
+        {
+            if (speakingAudioSource == null || speakingAudioSource.clip == null)
+            {
+                return;
+            }
+
+            speakingAudioSource.Stop();
+
+            switch (speakingPlaybackMode)
+            {
+                case SpeakingPlaybackMode.OneShotAtStart:
+                    speakingAudioSource.loop = false;
+                    speakingAudioSource.PlayOneShot(speakingAudioSource.clip);
+                    break;
+                case SpeakingPlaybackMode.LoopWhileTyping:
+                    speakingAudioSource.loop = true;
+                    speakingAudioSource.Play();
+                    break;
+            }
+        }
         
-        public void ChangePitch(float newPitch) => speakingAudioSource.pitch = newPitch;
+        public void ChangePitch(float newPitch)
+        {
+            _basePitch = Mathf.Max(0.01f, newPitch);
+
+            if (speakingAudioSource == null)
+            {
+                return;
+            }
+
+            speakingAudioSource.pitch = _basePitch * speakingSpeedMultiplier;
+        }
 
         public void React(Optional<AudioClip> reactionClip)
         {
@@ -33,26 +83,16 @@ namespace DialogueSystem.Runtime.Audio
         }
 
         public void ChangeVoice(AudioClip newVoice) => speakingAudioSource.clip = newVoice;
-        private IEnumerator SpeakCoroutine()
+
+        private void StopSpeaking()
         {
-            while(textTyper.IsTyping)
+            if (speakingAudioSource == null)
             {
-                var pace = synchronizeWithVariablePace ? textTyper.TyperPace * speakingPace : textTyper.DefaultTyperPace * speakingPace;
-
-                speakingAudioSource.Play();
-                
-                yield return new WaitForSeconds(pace);
-
-                if (!textTyper.IsPaused)
-                {
-                    continue;
-                }
-                
-                speakingAudioSource.Play();
-                yield return new WaitUntil(() => textTyper.IsPaused == false);
+                return;
             }
-        }
 
-        private void StopSpeaking() => StopAllCoroutines();
+            speakingAudioSource.Stop();
+            speakingAudioSource.loop = false;
+        }
     }
 }

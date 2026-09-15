@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NPC : MonoBehaviour, IInteractable
+public class ChestTest : MonoBehaviour, IInteractable
 {
     [SerializeField] GameObject speechBubble;
+    [SerializeField] Sprite closeUpSprite;
     public UnityEvent someEvent;
+
 
     void Awake()
     {
@@ -14,7 +16,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Talking to NPC");
+        Debug.Log("Opening Chest Test");
 
         if (someEvent != null)
         {
