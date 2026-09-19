@@ -49,9 +49,10 @@ public class ObjectiveItem : MonoBehaviour, IInteractable
         if (!isActiveAndEnabled || collected || nearbyPlayer == null ||
             !nearbyPlayer.isActiveAndEnabled || playerColliders.Count == 0 || !room.IsPlaying) return;
 
+        if (!room.TryCollectObjective()) return;
+
         collected = true;
         ClearInteraction();
-        room.CompleteRoom();
         gameObject.SetActive(false);
     }
 

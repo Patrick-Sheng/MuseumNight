@@ -1,21 +1,63 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>Owns the playing, caught, and completed flow for a single-guard room.</summary>
+/// <summary>Owns stealth, pickup/escape, caught, and completed flow for the room.</summary>
 public class StealthRoomController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private GuardPatrol guardPatrol;
     [SerializeField] private GuardVision guardVision;
 
+    [Header("Escape after pickup")]
+    [SerializeField] private ChaseEnemy enemyPrefab;
+    [SerializeField] private Transform firstSpawnPoint;
+    [SerializeField] private Transform secondSpawnPoint;
+    [SerializeField] private bool keepGuardActiveDuringEscape = true;
+
     private Rigidbody2D playerBody;
     private PlayerInteract playerInteraction;
     private bool restarting;
     private string retryError;
+    private ChaseEnemy firstEnemy;
+    private ChaseEnemy secondEnemy;
 
     public bool IsCaught { get; private set; }
     public bool IsCompleted { get; private set; }
+    public bool HasObjective { get; private set; }
     public bool IsPlaying => isActiveAndEnabled && !IsCaught && !IsCompleted;
+
+    public bool IsPlayer(Collider2D other) => other.attachedRigidbody == playerBody;
+
+    // Returns false without consuming the item if the escape setup is incomplete.
+    public bool TryCollectObjective()
+    {
+        if (!IsPlaying || HasObjective) return false;
+        if (enemyPrefab == null || firstSpawnPoint == null || secondSpawnPoint == null ||
+            !enemyPrefab.IsConfigured)
+        {
+            Debug.LogError("Assign an active ChaseEnemy prefab (dynamic Rigidbody2D, solid CircleCollider2D) and two spawn points to the room.", this);
+            return false;
+        }
+
+        HasObjective = true;
+        firstEnemy = SpawnEnemy(firstSpawnPoint);
+        secondEnemy = SpawnEnemy(secondSpawnPoint);
+        if (!keepGuardActiveDuringEscape)
+        {
+            guardPatrol.enabled = false;
+            guardVision.enabled = false;
+        }
+        return true;
+    }
+
+    private ChaseEnemy SpawnEnemy(Transform point)
+    {
+        Vector3 position = new Vector3(point.position.x, point.position.y, playerMovement.transform.position.z);
+        ChaseEnemy enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        SceneManager.MoveGameObjectToScene(enemy.gameObject, gameObject.scene);
+        enemy.Initialize(playerBody, this);
+        return enemy;
+    }
 
     private void Awake()
     {
@@ -40,7 +82,7 @@ public class StealthRoomController : MonoBehaviour
 
     public void CompleteRoom()
     {
-        if (!IsPlaying) return;
+        if (!IsPlaying || !HasObjective) return;
         IsCompleted = true;
         StopRoom();
     }
@@ -54,6 +96,8 @@ public class StealthRoomController : MonoBehaviour
         playerBody.simulated = false;
         guardPatrol.enabled = false;
         guardVision.enabled = false;
+        if (firstEnemy != null) firstEnemy.StopChasing();
+        if (secondEnemy != null) secondEnemy.StopChasing();
     }
 
     private void Update()
@@ -80,7 +124,23 @@ public class StealthRoomController : MonoBehaviour
 
     private void OnGUI()
     {
-        if (IsPlaying) return;
+        if (IsPlaying)
+        {
+            if (HasObjective)
+            {
+                float escapeScale = Mathf.Clamp(Screen.height / 720f, 0.75f, 2f);
+                GUIStyle escapeStyle = new GUIStyle(GUI.skin.box)
+                {
+                    fontSize = Mathf.RoundToInt(24f * escapeScale),
+                    alignment = TextAnchor.MiddleCenter,
+                    wordWrap = true
+                };
+                float escapeWidth = Mathf.Min(600f * escapeScale, Screen.width - 20f);
+                GUI.Box(new Rect((Screen.width - escapeWidth) * 0.5f, 20f,
+                    escapeWidth, 65f * escapeScale), "Item collected — reach the exit!", escapeStyle);
+            }
+            return;
+        }
 
         // Temporary prototype feedback; replace with the game's Canvas UI later.
         float scale = Mathf.Clamp(Screen.height / 720f, 0.75f, 2f);
@@ -104,7 +164,7 @@ public class StealthRoomController : MonoBehaviour
 
         GUI.Box(panel, GUIContent.none);
         GUI.Label(new Rect(panel.x + 15f, panel.y + height * 0.1f,
-            width - 30f, height * 0.3f), IsCompleted ? "Item secured!" : "Caught!", titleStyle);
+            width - 30f, height * 0.3f), IsCompleted ? "Escaped!" : "Caught!", titleStyle);
         GUI.Label(new Rect(panel.x + 15f, panel.y + height * 0.45f,
             width - 30f, height * 0.45f),
             retryError ?? (IsCompleted ? "Room complete. Press R to play again." : "Press R to retry the room."), messageStyle);
