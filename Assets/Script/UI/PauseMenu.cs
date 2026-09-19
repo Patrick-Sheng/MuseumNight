@@ -94,7 +94,7 @@ public class PauseMenu : MonoBehaviour
 
     private void SaveGame()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = PlayerMovement.FindInScene()?.gameObject;
         if (player == null || RoomManager.Instance == null)
         {
             Debug.LogWarning("Cannot save: missing Player or RoomManager.");

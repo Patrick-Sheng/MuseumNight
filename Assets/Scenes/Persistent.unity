@@ -1953,7 +1953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 141049292}
   fadeDuration: 0.4
-  startingSceneName: Room2
+  startingSceneName: Room1
+  startingEntryId: 1
 --- !u!4 &2146165969
 Transform:
   m_ObjectHideFlags: 0

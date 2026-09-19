@@ -65,10 +65,7 @@ public class StealthRoomController : MonoBehaviour
     private void Awake()
     {
         if (playerMovement == null)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null) playerMovement = player.GetComponent<PlayerMovement>();
-        }
+            playerMovement = PlayerMovement.FindInScene();
 
         if (playerMovement == null)
         {
