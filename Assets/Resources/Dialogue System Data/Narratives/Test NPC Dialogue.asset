@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: Test NPC Dialogue
+  m_EditorClassIdentifier: 
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 42b75958-be9e-4f61-bc40-9b37780eb2aa
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: a4d6d9bd-7bb7-43af-81e1-1aa23e557d66
+  - <BaseNodeGuid>k__BackingField: a4d6d9bd-7bb7-43af-81e1-1aa23e557d66
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 102b94b0-7809-48da-aced-ab0e1d8d2402
+  - <BaseNodeGuid>k__BackingField: 102b94b0-7809-48da-aced-ab0e1d8d2402
+    <PortName>k__BackingField: Yes
+    <TargetNodeGuid>k__BackingField: bac11fc6-a265-4419-b748-298b4703c4ab
+  - <BaseNodeGuid>k__BackingField: 102b94b0-7809-48da-aced-ab0e1d8d2402
+    <PortName>k__BackingField: No
+    <TargetNodeGuid>k__BackingField: 0d8b0fa7-9ba9-4fe9-9e3e-152953feed7b
+  <DialogueNodeData>k__BackingField:
+  - guid: 42b75958-be9e-4f61-bc40-9b37780eb2aa
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: a4d6d9bd-7bb7-43af-81e1-1aa23e557d66
+    dialogue:
+    - <CharacterName>k__BackingField: NPC
+      <Content>k__BackingField: Well well well. Look who is here.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: NPC
+      <Content>k__BackingField: I have waited for a long time for you to come here.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Tiger Boy
+      <Content>k__BackingField: Ummm... Who are you, and why am I here?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: NPC
+      <Content>k__BackingField: Ha Ha Ha. Take it slow. I will explain to you.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 228, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: bac11fc6-a265-4419-b748-298b4703c4ab
+    dialogue:
+    - <CharacterName>k__BackingField: NPC
+      <Content>k__BackingField: Explore around this room. You will likely find something
+        useful.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 992, y: 124.799995}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 0d8b0fa7-9ba9-4fe9-9e3e-152953feed7b
+    dialogue:
+    - <CharacterName>k__BackingField: NPC
+      <Content>k__BackingField: I see. You are not the first time here.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: NPC
+      <Content>k__BackingField: Wish you all the best this time as well.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 992, y: 270.4}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 102b94b0-7809-48da-aced-ab0e1d8d2402
+    dialogue:
+    - <CharacterName>k__BackingField: Tiger Boy
+      <Content>k__BackingField: Do you want to enter the introduction?
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 508.8, y: 200}
+    transitionNode: 0
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField:
+  - {fileID: 11400000, guid: 8cb31c428f4cbf8458906cb90adf415d, type: 2}
+  - {fileID: 11400000, guid: e33de90c07fb2ae47a3e68a9bf55873b, type: 2}
