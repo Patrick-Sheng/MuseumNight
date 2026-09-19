@@ -54,6 +54,7 @@ public class GuardVision : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning) return;
         // Run after patrol movement so the outline and detection use the same pose.
         bool visible = CanSeePlayer();
         bool justDetected = visible && !IsPlayerVisible;

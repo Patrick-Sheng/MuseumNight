@@ -5,6 +5,10 @@ using UnityEngine;
 public class RoomExit : MonoBehaviour
 {
     [SerializeField] private StealthRoomController room;
+    [Tooltip("Leave empty for the standalone completion screen. Set a scene name for production transitions.")]
+    [SerializeField] private string targetSceneName;
+    [SerializeField] private string targetEntryId = "1";
+    private bool transitionAttempted;
 
     private void Reset() => GetComponent<BoxCollider2D>().isTrigger = true;
 
@@ -19,10 +23,21 @@ public class RoomExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) => TryExit(other);
     private void OnTriggerStay2D(Collider2D other) => TryExit(other);
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (room != null && room.IsPlayer(other)) transitionAttempted = false;
+    }
 
     private void TryExit(Collider2D other)
     {
         if (isActiveAndEnabled && room != null && room.IsPlaying && room.HasObjective && room.IsPlayer(other))
-            room.CompleteRoom();
+        {
+            if (string.IsNullOrWhiteSpace(targetSceneName)) room.CompleteRoom();
+            else if (!transitionAttempted)
+            {
+                transitionAttempted = true;
+                room.TryExitToRoom(targetSceneName, targetEntryId);
+            }
+        }
     }
 }

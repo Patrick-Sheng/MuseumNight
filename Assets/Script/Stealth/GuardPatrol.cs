@@ -48,6 +48,7 @@ public class GuardPatrol : MonoBehaviour
 
     private void Update()
     {
+        if (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning) return;
         if (looking)
         {
             lookElapsed += Time.deltaTime;

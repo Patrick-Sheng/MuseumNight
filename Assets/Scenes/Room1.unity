@@ -4364,6 +4364,7 @@ MonoBehaviour:
   firstSpawnPoint: {fileID: 740138814}
   secondSpawnPoint: {fileID: 1475780446}
   keepGuardActiveDuringEscape: 1
+  retryEntryId: 1
 --- !u!4 &766209859
 Transform:
   m_ObjectHideFlags: 0
@@ -4467,7 +4468,7 @@ PrefabInstance:
       objectReference: {fileID: 500411640}
     - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.35
+      value: -5.92
       objectReference: {fileID: 0}
     - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4677,7 +4678,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265854020}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b36c85b15b331640a6091d3979e0e3b, type: 3}
   m_Name: 
@@ -4713,6 +4714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 766209858}
+  targetSceneName: Room2
+  targetEntryId: 1
 --- !u!1 &1319060217
 GameObject:
   m_ObjectHideFlags: 0

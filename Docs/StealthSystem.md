@@ -9,9 +9,9 @@ This guide was checked against the current source and serialized assets; it is
 not a new Play-mode test report.
 
 Player references can now resolve the persistent player by tag at startup.
-Production retry and exit integration are **not implemented**. Keep using the standalone test scene until the integration
-work below is complete. Art, level layout, timings, and difficulty remain
-prototype choices.
+Production retry and gated exit code now use RoomManager when available; scene
+wiring and end-to-end Play-mode validation are still required. Standalone testing
+remains supported. Art, level layout, timings, and difficulty remain prototype choices.
 
 ## Gameplay loop
 
@@ -34,8 +34,8 @@ Caught! -> R to retry
 The exit does nothing before collection. Pickup no longer completes the room.
 Both capture and completion stop player movement, interaction, guard behaviour,
 and spawned pursuers. Retry reloads the saved room scene, restoring its initial
-item, positions, and patrol state. The exit currently displays completion rather
-than loading another level.
+item, positions, and patrol state. An exit with an empty Target Scene Name shows
+completion; a configured destination transitions through RoomManager after pickup.
 
 ## Components and assets
 
@@ -232,10 +232,18 @@ completion only for the controller's player after HasObjective becomes true.
 No E press is needed. Do not overlap pickup and exit unless immediate escape is
 intended.
 
-Enable the saved test scene in the Build Profiles scene list. R reloads the
-controller's scene by path using LoadSceneMode.Single, so save edits **outside
-Play mode** before testing. This is a full standalone-scene reset, not a checkpoint
-or persistent-player reset. Missing build-list setup produces a visible error.
+Enable all destinations in the Build Profiles scene list and save edits outside
+Play mode. Without RoomManager, R reloads the controller's scene using
+LoadSceneMode.Single. With RoomManager, R reloads the current room additively and
+places the existing player at Retry Entry Id (default `1`). Movement, interaction,
+and physics are re-enabled after the fade. Room-owned progress resets; persistent
+sanity is retained. This is not a save/checkpoint reload.
+
+RoomExit has Target Scene Name and Target Entry Id (default `1`). Set these for
+production, or leave the scene name empty for standalone completion. Configure
+the actual doorway with RoomExit, not an additional ungated TransitionTrigger.
+If a transition request is rejected immediately, leave/re-enter the exit to try
+again. Invalid destination/entry errors are reported in the Console.
 
 ## Public interface
 
@@ -249,6 +257,7 @@ or persistent-player reset. Missing build-list setup produces a visible error.
 | `TryCollectObjective()` | Returns success; starts the chase once if configured. |
 | `CatchPlayer()` | Stops an active room as caught; repeat calls do nothing. |
 | `CompleteRoom()` | Stops an active room as completed only after pickup. |
+| `TryExitToRoom(sceneName, entryId)` | Requests a gated RoomManager transition and restores persistent player control on success. |
 | `RetryRoom()` | Reloads after capture or completion. |
 | `IsPlayer(Collider2D)` | Compares the collider's attached Rigidbody2D with the assigned player body. |
 | `ChaseEnemy.Initialize(player, owner)` | Called by the spawner to supply runtime references. |
@@ -289,13 +298,18 @@ Run after changing scripts, physics settings, prefab overrides, or room layout.
 | Pursuers do not appear | Prefab asset/reference, active component, dynamic simulated body, solid circle collider, and both spawn references. |
 | Pursuer gets stuck at cover | Expected direct-pursuit limitation; adjust route/layout or plan navigation separately. |
 | R does not reload | Saved scene enabled in the Build Profiles list; room must be caught/completed. |
+| Exit transitions before pickup | Remove/disable the old ungated TransitionTrigger. Unity delivers 2D trigger callbacks to disabled scripts; TransitionTrigger now explicitly checks isActiveAndEnabled before transitioning. |
 
-## Production integration still required
+## Production integration setup
 
 Main's `PersistentRoot` preserves the player/camera/UI hierarchy.
-`RoomManager.GoToRoom(sceneName, entryPointId)` loads rooms additively and places
-that existing player at an EntryPoint. The standalone components above are not
-yet adapted to this flow.
+`RoomManager.GoToRoom(sceneName, entryPointId)` remains available to existing
+callers. `TryGoToRoom` adds acceptance feedback and an option to restore control
+after capture/completion. Transitions freeze movement/physics, clear the previous
+interaction target, load and validate the destination, then unload the old room.
+On missing entry, the new room is unloaded and the old room retained. Guards and
+stealth outcomes are suspended during the fade. Pause-key toggling is ignored
+during transitions; requests while already paused are rejected.
 
 Before transferring the mechanics into production Room1:
 
@@ -308,17 +322,31 @@ Before transferring the mechanics into production Room1:
    player from the room controller. No per-frame search or late-spawn retry is used.
 3. Include only room-owned content in Room1, avoiding duplicate player, camera,
    shared UI, and lighting objects supplied by Persistent.
-4. Replace Single-scene retry with the room transition/reset flow and explicitly
-   restore player movement, interaction, and Rigidbody2D.simulated. The persistent
-   player survives scene reloads, including its disabled state after capture.
-5. Gate the real exit transition on pickup, restore player control as needed,
-   and call the shared room transition API. Merely adding TransitionTrigger would
-   bypass the objective gate; the current RoomExit only displays completion.
-6. Align entry IDs. At documentation time, fresh startup requests `default_spawn`
-   while Room1's existing EntryPoint is `1`; these need a deliberate shared fix.
+4. Set the room controller's Retry Entry Id to a safe EntryPoint in that room.
+   Room1 currently uses `1`. Place the spawn outside sight cones and exit triggers.
+5. Remove/disable the ungated TransitionTrigger at the production exit. Configure
+   RoomExit with the room controller, Target Scene Name `Room2`, and Target Entry
+   Id `1` (the currently saved Room2 entry). Keep the collider a trigger. Existing
+   unrelated TransitionTrigger components remain unchanged.
+6. On Persistent's RoomManager, set Starting Entry Id to Room1's entry ID. Its
+   new code default is `1`, replacing the hardcoded `default_spawn`. Saved-game
+   loading still uses saved position instead of this fresh-start entry.
 7. Test starting through MainMenu, save/continue, pause/resume, capture/retry,
    and leaving/re-entering Room1. Objective and chase progress are not saved by
    this system; decide intended reset/persistence behaviour before integration.
+
+Production regression checks (not yet verified by this documentation update):
+
+- Start through MainMenu; one player reaches Room1's intended entry.
+- Before pickup, the exit does not change rooms.
+- Get caught before and after pickup; R returns to entry, restores control,
+  resets all guards/objective, and removes spawned pursuers. Repeat twice.
+- Collect and exit: Room2 loads, Room1 unloads, player can move/interact,
+  and no pursuers remain. Place the destination spawn clear of return triggers.
+- Invalid entry ID: old room remains, an error is logged, and retry remains possible.
+- Pause/resume remains usable; no control or physics becomes permanently disabled.
+- Open StealthTest alone: its empty-destination completion and Single-scene retry
+  still work.
 
 ## Known prototype limits
 
@@ -330,5 +358,5 @@ Before transferring the mechanics into production Room1:
   LateUpdate; same-frame detection/pickup behaviour needs playtesting.
 - Point-based detection and an approximate cone outline can differ at tight edges.
 - OnGUI prompts/results are temporary and need final Canvas/art treatment later.
-- Standalone testing is supported; persistent-player, production transitions, and
-  save/continue integration are outstanding.
+- Persistent retry/exit code requires scene configuration and runtime validation.
+  Save/continue does not persist objective/chase progress; reloading resets it.

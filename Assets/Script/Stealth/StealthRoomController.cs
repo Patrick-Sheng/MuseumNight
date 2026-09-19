@@ -16,6 +16,8 @@ public class StealthRoomController : MonoBehaviour
     [SerializeField] private Transform firstSpawnPoint;
     [SerializeField] private Transform secondSpawnPoint;
     [SerializeField] private bool keepGuardActiveDuringEscape = true;
+    [Header("Persistent room retry")]
+    [SerializeField] private string retryEntryId = "1";
 
     private Rigidbody2D playerBody;
     private PlayerInteract playerInteraction;
@@ -27,7 +29,8 @@ public class StealthRoomController : MonoBehaviour
     public bool IsCaught { get; private set; }
     public bool IsCompleted { get; private set; }
     public bool HasObjective { get; private set; }
-    public bool IsPlaying => isActiveAndEnabled && !IsCaught && !IsCompleted;
+    public bool IsPlaying => isActiveAndEnabled && !IsCaught && !IsCompleted &&
+        (RoomManager.Instance == null || !RoomManager.Instance.IsTransitioning);
 
     public bool IsPlayer(Collider2D other) => other.attachedRigidbody == playerBody;
 
@@ -121,6 +124,30 @@ public class StealthRoomController : MonoBehaviour
         StopRoom();
     }
 
+    public bool TryExitToRoom(string sceneName, string entryId)
+    {
+        if (!IsPlaying || !HasObjective || PauseMenu.IsPaused) return false;
+        RoomManager manager = RoomManager.Instance;
+        if (manager == null)
+        {
+            Debug.LogError("Room transitions require Persistent/RoomManager. Leave the exit destination empty for standalone completion.", this);
+            return false;
+        }
+        if (!manager.TryGoToRoom(sceneName, entryId, true, HandleTransitionFinished)) return false;
+        IsCompleted = true;
+        restarting = true;
+        StopRoom();
+        return true;
+    }
+
+    private void HandleTransitionFinished(bool succeeded)
+    {
+        if (this == null || succeeded) return;
+        restarting = false;
+        retryError = "Transition failed. Check the Console and entry ID. Press R to retry this room.";
+        StopRoom();
+    }
+
     private void StopRoom()
     {
         playerMovement.enabled = false;
@@ -140,7 +167,15 @@ public class StealthRoomController : MonoBehaviour
 
     public void RetryRoom()
     {
-        if (!isActiveAndEnabled || IsPlaying || restarting) return;
+        if (!isActiveAndEnabled || (!IsCaught && !IsCompleted) || restarting || PauseMenu.IsPaused) return;
+
+        if (RoomManager.Instance != null)
+        {
+            restarting = RoomManager.Instance.TryGoToRoom(gameObject.scene.name, retryEntryId,
+                true, HandleTransitionFinished);
+            if (!restarting) retryError = "Cannot retry now. Check the Console and room scene settings.";
+            return;
+        }
 
         // Use this object's scene, avoiding ambiguity if another scene is active.
         string scenePath = gameObject.scene.path;
@@ -157,6 +192,7 @@ public class StealthRoomController : MonoBehaviour
 
     private void OnGUI()
     {
+        if (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning) return;
         if (IsPlaying)
         {
             if (HasObjective)
