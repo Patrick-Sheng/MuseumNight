@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
     public bool isMoving;
+    public Vector2 InputDirection => inputDirection;
 
     static readonly int HorizontalHash = Animator.StringToHash("horizontal");
     static readonly int VerticalHash   = Animator.StringToHash("vertical");
