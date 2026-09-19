@@ -8,7 +8,8 @@ public class ChaseEnemy : MonoBehaviour
 
     private Rigidbody2D body;
     private Rigidbody2D target;
-    private StealthRoomController room;
+    private System.Action onCaught;
+    private System.Func<bool> canChase;
 
     public bool IsConfigured => gameObject.activeSelf && enabled &&
         GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Dynamic &&
@@ -35,13 +36,20 @@ public class ChaseEnemy : MonoBehaviour
 
     public void Initialize(Rigidbody2D player, StealthRoomController owner)
     {
+        Initialize(player, () => { if (owner != null) owner.CatchPlayer(); },
+            () => owner != null && owner.IsPlaying);
+    }
+
+    public void Initialize(Rigidbody2D player, System.Action caught, System.Func<bool> chaseAllowed)
+    {
         target = player;
-        room = owner;
+        onCaught = caught;
+        canChase = chaseAllowed;
     }
 
     private void FixedUpdate()
     {
-        if (room == null || target == null || !room.IsPlaying)
+        if (target == null || canChase == null || !canChase())
         {
             body.linearVelocity = Vector2.zero;
             return;
@@ -56,8 +64,9 @@ public class ChaseEnemy : MonoBehaviour
 
     private void CheckPlayerContact(Collision2D collision)
     {
-        if (isActiveAndEnabled && room != null && room.IsPlaying && room.IsPlayer(collision.collider))
-            room.CatchPlayer();
+        if (isActiveAndEnabled && target != null && canChase != null && canChase() &&
+            collision.collider.attachedRigidbody == target)
+            onCaught?.Invoke();
     }
 
     public void StopChasing()

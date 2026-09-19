@@ -4148,6 +4148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602234183}
+  - component: {fileID: 602234184}
   m_Layer: 0
   m_Name: EnemySpawns
   m_TagString: Untagged
@@ -4172,6 +4173,28 @@ Transform:
   - {fileID: 1475780446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602234184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602234182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c19efae9354d238d7681a1e465ecfb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  enemyPrefab: {fileID: 1651225017175527103, guid: 3d4797b4385c3a2498a13864bd96a388, type: 3}
+  spawnPoints:
+  - {fileID: 740138814}
+  - {fileID: 1475780446}
+  playerTarget: {fileID: 0}
+  room: {fileID: 766209858}
+  spawnOnce: 1
+  onPlayerCaught:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &704382165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,9 +4383,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
-  enemyPrefab: {fileID: 1651225017175527103, guid: 3d4797b4385c3a2498a13864bd96a388, type: 3}
-  firstSpawnPoint: {fileID: 740138814}
-  secondSpawnPoint: {fileID: 1475780446}
+  spawnChaseOnPickup: 1
+  objectiveSpawner: {fileID: 602234184}
+  enemyPrefab: {fileID: 0}
+  firstSpawnPoint: {fileID: 0}
+  secondSpawnPoint: {fileID: 0}
   keepGuardActiveDuringEscape: 1
   retryEntryId: 1
 --- !u!4 &766209859

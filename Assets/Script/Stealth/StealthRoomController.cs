@@ -12,6 +12,10 @@ public class StealthRoomController : MonoBehaviour
     private readonly List<GuardVision> guardVisions = new List<GuardVision>();
 
     [Header("Escape after pickup")]
+    [SerializeField] private bool spawnChaseOnPickup = true;
+    [Tooltip("Optional reusable spawner. When assigned, replaces the legacy two-point pickup setup below.")]
+    [SerializeField] private ChaseSpawner objectiveSpawner;
+    [Header("Legacy pickup spawning (used only without Objective Spawner)")]
     [SerializeField] private ChaseEnemy enemyPrefab;
     [SerializeField] private Transform firstSpawnPoint;
     [SerializeField] private Transform secondSpawnPoint;
@@ -23,8 +27,7 @@ public class StealthRoomController : MonoBehaviour
     private PlayerInteract playerInteraction;
     private bool restarting;
     private string retryError;
-    private ChaseEnemy firstEnemy;
-    private ChaseEnemy secondEnemy;
+    private readonly List<ChaseEnemy> chaseEnemies = new List<ChaseEnemy>();
 
     public bool IsCaught { get; private set; }
     public bool IsCompleted { get; private set; }
@@ -38,16 +41,23 @@ public class StealthRoomController : MonoBehaviour
     public bool TryCollectObjective()
     {
         if (!IsPlaying || HasObjective) return false;
-        if (enemyPrefab == null || firstSpawnPoint == null || secondSpawnPoint == null ||
-            !enemyPrefab.IsConfigured)
+        if (spawnChaseOnPickup && objectiveSpawner != null)
         {
-            Debug.LogError("Assign an active ChaseEnemy prefab (dynamic Rigidbody2D, solid CircleCollider2D) and two spawn points to the room.", this);
-            return false;
+            if (!objectiveSpawner.TrySpawnForRoom(this)) return false;
+        }
+        else if (spawnChaseOnPickup)
+        {
+            if (enemyPrefab == null || firstSpawnPoint == null || secondSpawnPoint == null ||
+                !enemyPrefab.IsConfigured)
+            {
+                Debug.LogError("Assign Objective Spawner, configure the legacy two spawn points, or disable Spawn Chase On Pickup.", this);
+                return false;
+            }
+            SpawnEnemy(firstSpawnPoint);
+            SpawnEnemy(secondSpawnPoint);
         }
 
         HasObjective = true;
-        firstEnemy = SpawnEnemy(firstSpawnPoint);
-        secondEnemy = SpawnEnemy(secondSpawnPoint);
         if (!keepGuardActiveDuringEscape)
         {
             StopGuards();
@@ -61,7 +71,13 @@ public class StealthRoomController : MonoBehaviour
         ChaseEnemy enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(enemy.gameObject, gameObject.scene);
         enemy.Initialize(playerBody, this);
+        RegisterChaseEnemy(enemy);
         return enemy;
+    }
+
+    public void RegisterChaseEnemy(ChaseEnemy enemy)
+    {
+        if (enemy != null && !chaseEnemies.Contains(enemy)) chaseEnemies.Add(enemy);
     }
 
     private void Awake()
@@ -156,8 +172,8 @@ public class StealthRoomController : MonoBehaviour
         // Removing the body from simulation also cancels pending movement/contact motion.
         playerBody.simulated = false;
         StopGuards();
-        if (firstEnemy != null) firstEnemy.StopChasing();
-        if (secondEnemy != null) secondEnemy.StopChasing();
+        foreach (ChaseEnemy enemy in chaseEnemies)
+            if (enemy != null) enemy.StopChasing();
     }
 
     private void Update()

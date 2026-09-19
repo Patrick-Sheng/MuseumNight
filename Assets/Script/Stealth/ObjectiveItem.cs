@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>A one-use objective, collected through the existing E-key interaction.</summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class ObjectiveItem : MonoBehaviour, IInteractable
 {
     [SerializeField] private StealthRoomController room;
+    [SerializeField] private UnityEvent onCollected = new UnityEvent();
 
     private readonly HashSet<Collider2D> playerColliders = new HashSet<Collider2D>();
     private PlayerInteract nearbyPlayer;
@@ -54,6 +56,7 @@ public class ObjectiveItem : MonoBehaviour, IInteractable
         collected = true;
         ClearInteraction();
         gameObject.SetActive(false);
+        onCollected.Invoke();
     }
 
     private void OnDisable()
