@@ -1,0 +1,778 @@
+fileFormatVersion: 2
+guid: 7434ce34b271bef44ba15d349c9063f0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4620629751553580130
+    second: GDG_MC2_0
+  - first:
+      213: -4058469086603237063
+    second: GDG_MC2_1
+  - first:
+      213: 1109355183343802240
+    second: GDG_MC2_2
+  - first:
+      213: -8402142603385786277
+    second: GDG_MC2_3
+  - first:
+      213: 2638605445317727013
+    second: GDG_MC2_4
+  - first:
+      213: -8091269531449095349
+    second: GDG_MC2_5
+  - first:
+      213: -3527828224587472430
+    second: GDG_MC2_6
+  - first:
+      213: 8288625663503259711
+    second: GDG_MC2_7
+  - first:
+      213: 3182338488682332676
+    second: GDG_MC2_8
+  - first:
+      213: -8233525876113217160
+    second: GDG_MC2_9
+  - first:
+      213: -2996860377442239483
+    second: GDG_MC2_10
+  - first:
+      213: 8168034040549549451
+    second: GDG_MC2_11
+  - first:
+      213: -389322318817498252
+    second: GDG_MC2_12
+  - first:
+      213: 3859391354242865095
+    second: GDG_MC2_13
+  - first:
+      213: -2232793092896875840
+    second: GDG_MC2_14
+  - first:
+      213: 4980431990673151653
+    second: GDG_MC2_15
+  - first:
+      213: 2213027191937250853
+    second: GDG_MC2_16
+  - first:
+      213: 6112110501836072342
+    second: GDG_MC2_17
+  - first:
+      213: -4076297709097351832
+    second: GDG_MC2_18
+  - first:
+      213: -2726366069638647305
+    second: GDG_MC2_19
+  - first:
+      213: 6244055775754950573
+    second: GDG_MC2_20
+  - first:
+      213: -3925149741032254502
+    second: GDG_MC2_21
+  - first:
+      213: 1315572500616310127
+    second: GDG_MC2_22
+  - first:
+      213: -9211898701173498822
+    second: GDG_MC2_23
+  - first:
+      213: 6925104645038776054
+    second: GDG_MC2_24
+  - first:
+      213: 5845317593178555194
+    second: GDG_MC2_25
+  - first:
+      213: 1885231475723426960
+    second: GDG_MC2_26
+  - first:
+      213: 2500537681395620661
+    second: GDG_MC2_27
+  - first:
+      213: -727613825292166647
+    second: GDG_MC2_28
+  - first:
+      213: 712774321403008195
+    second: GDG_MC2_29
+  - first:
+      213: -5198397011713463307
+    second: GDG_MC2_30
+  - first:
+      213: 2166613366891172433
+    second: GDG_MC2_31
+  - first:
+      213: -4670606590392200450
+    second: GDG_MC2_32
+  - first:
+      213: 7205722105218447946
+    second: GDG_MC2_33
+  - first:
+      213: -6118861891476690904
+    second: GDG_MC2_34
+  - first:
+      213: -1006952024441969173
+    second: GDG_MC2_35
+  - first:
+      213: 4714734957573884536
+    second: GDG_MC2_36
+  - first:
+      213: 5055768044871180963
+    second: GDG_MC2_37
+  - first:
+      213: 231967828458139303
+    second: GDG_MC2_38
+  - first:
+      213: 4055978506295261726
+    second: GDG_MC2_39
+  - first:
+      213: -8795290175111678012
+    second: GDG_MC2_40
+  - first:
+      213: 1791748275768518829
+    second: GDG_MC2_41
+  - first:
+      213: -7358021974068940255
+    second: GDG_MC2_42
+  - first:
+      213: -8809789590549925789
+    second: GDG_MC2_43
+  - first:
+      213: -6707163829049352562
+    second: GDG_MC2_44
+  - first:
+      213: -1597040319313783839
+    second: GDG_MC2_45
+  - first:
+      213: 367846928022705330
+    second: GDG_MC2_46
+  - first:
+      213: -8383647871762006058
+    second: GDG_MC2_47
+  - first:
+      213: -3992271282907447141
+    second: GDG_MC2_48
+  - first:
+      213: 548008839525193676
+    second: GDG_MC2_49
+  - first:
+      213: -9110831515907194106
+    second: GDG_MC2_50
+  - first:
+      213: 2204232466097279258
+    second: GDG_MC2_51
+  - first:
+      213: 3063655345696984712
+    second: GDG_MC2_52
+  - first:
+      213: -964454667524333202
+    second: GDG_MC2_53
+  - first:
+      213: -6598126890310152814
+    second: GDG_MC2_54
+  - first:
+      213: -4647090978826020498
+    second: GDG_MC2_55
+  - first:
+      213: -7100646762975005540
+    second: GDG_MC2_56
+  - first:
+      213: 3170788665833134586
+    second: GDG_MC2_57
+  - first:
+      213: 2893756339647458274
+    second: GDG_MC2_58
+  - first:
+      213: -110318804003753650
+    second: GDG_MC2_59
+  - first:
+      213: 7450067092364216531
+    second: GDG_MC2_60
+  - first:
+      213: 6973547324649479775
+    second: GDG_MC2_61
+  - first:
+      213: 4194542898820948189
+    second: GDG_MC2_62
+  - first:
+      213: -8952405274208755547
+    second: GDG_MC2_63
+  - first:
+      213: 6282531445804333299
+    second: GDG_MC2_64
+  - first:
+      213: -1039486030078049881
+    second: GDG_MC2_65
+  - first:
+      213: 50282689485134294
+    second: GDG_MC2_66
+  - first:
+      213: -4005738390925635064
+    second: GDG_MC2_67
+  - first:
+      213: 657927910748039268
+    second: GDG_MC2_68
+  - first:
+      213: -3932186996816867821
+    second: GDG_MC2_69
+  - first:
+      213: -2916288920965119623
+    second: GDG_MC2_70
+  - first:
+      213: 6682752876799735520
+    second: GDG_MC2_71
+  - first:
+      213: 481817739549166457
+    second: GDG_MC2_72
+  - first:
+      213: -2714581724119040403
+    second: GDG_MC2_73
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 160
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GDG_MC2_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1322
+        width: 236
+        height: 326
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26cd3f32746cf1040800000000000000
+      internalID: 4620629751553580130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_1
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 1313
+        width: 218
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9392c115edb6da7c0800000000000000
+      internalID: -4058469086603237063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_2
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1313
+        width: 245
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08712f069a8356f00800000000000000
+      internalID: 1109355183343802240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_3
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 1313
+        width: 236
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b50b30591d7956b80800000000000000
+      internalID: -8402142603385786277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_25
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 890
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33cfb4916dbe1150800000000000000
+      internalID: 5845317593178555194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_26
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 881
+        width: 227
+        height: 362
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09c51ede900b92a10800000000000000
+      internalID: 1885231475723426960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_27
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 892
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53b9017d5c1b3b220800000000000000
+      internalID: 2500537681395620661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_28
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 881
+        width: 227
+        height: 362
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90a1cc9b41ff6e5f0800000000000000
+      internalID: -727613825292166647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_44
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 458
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8e1a27980e5be2a0800000000000000
+      internalID: -6707163829049352562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_45
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 458
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e353538a4c26d9e0800000000000000
+      internalID: -1597040319313783839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_46
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 458
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4138405dada1500800000000000000
+      internalID: 367846928022705330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_47
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 458
+        width: 227
+        height: 344
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df7aa9ddac47ab80800000000000000
+      internalID: -8383647871762006058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_50
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 71
+        width: 227
+        height: 371
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6030bede103df8180800000000000000
+      internalID: -9110831515907194106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_52
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 71
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ece721e4a448a20800000000000000
+      internalID: 3063655345696984712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_53
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 89
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e61ae3cf6919d92f0800000000000000
+      internalID: -964454667524333202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC2_54
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 80
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d4c183d8ebe64a0800000000000000
+      internalID: -6598126890310152814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 54097b9daa4f5714186113c4d41d6c64
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GDG_MC2_0: 4620629751553580130
+      GDG_MC2_1: -4058469086603237063
+      GDG_MC2_10: -2996860377442239483
+      GDG_MC2_11: 8168034040549549451
+      GDG_MC2_12: -389322318817498252
+      GDG_MC2_13: 3859391354242865095
+      GDG_MC2_14: -2232793092896875840
+      GDG_MC2_15: 4980431990673151653
+      GDG_MC2_16: 2213027191937250853
+      GDG_MC2_17: 6112110501836072342
+      GDG_MC2_18: -4076297709097351832
+      GDG_MC2_19: -2726366069638647305
+      GDG_MC2_2: 1109355183343802240
+      GDG_MC2_20: 6244055775754950573
+      GDG_MC2_21: -3925149741032254502
+      GDG_MC2_22: 1315572500616310127
+      GDG_MC2_23: -9211898701173498822
+      GDG_MC2_24: 6925104645038776054
+      GDG_MC2_25: 5845317593178555194
+      GDG_MC2_26: 1885231475723426960
+      GDG_MC2_27: 2500537681395620661
+      GDG_MC2_28: -727613825292166647
+      GDG_MC2_29: 712774321403008195
+      GDG_MC2_3: -8402142603385786277
+      GDG_MC2_30: -5198397011713463307
+      GDG_MC2_31: 2166613366891172433
+      GDG_MC2_32: -4670606590392200450
+      GDG_MC2_33: 7205722105218447946
+      GDG_MC2_34: -6118861891476690904
+      GDG_MC2_35: -1006952024441969173
+      GDG_MC2_36: 4714734957573884536
+      GDG_MC2_37: 5055768044871180963
+      GDG_MC2_38: 231967828458139303
+      GDG_MC2_39: 4055978506295261726
+      GDG_MC2_4: 2638605445317727013
+      GDG_MC2_40: -8795290175111678012
+      GDG_MC2_41: 1791748275768518829
+      GDG_MC2_42: -7358021974068940255
+      GDG_MC2_43: -8809789590549925789
+      GDG_MC2_44: -6707163829049352562
+      GDG_MC2_45: -1597040319313783839
+      GDG_MC2_46: 367846928022705330
+      GDG_MC2_47: -8383647871762006058
+      GDG_MC2_48: -3992271282907447141
+      GDG_MC2_49: 548008839525193676
+      GDG_MC2_5: -8091269531449095349
+      GDG_MC2_50: -9110831515907194106
+      GDG_MC2_51: 2204232466097279258
+      GDG_MC2_52: 3063655345696984712
+      GDG_MC2_53: -964454667524333202
+      GDG_MC2_54: -6598126890310152814
+      GDG_MC2_55: -4647090978826020498
+      GDG_MC2_56: -7100646762975005540
+      GDG_MC2_57: 3170788665833134586
+      GDG_MC2_58: 2893756339647458274
+      GDG_MC2_59: -110318804003753650
+      GDG_MC2_6: -3527828224587472430
+      GDG_MC2_60: 7450067092364216531
+      GDG_MC2_61: 6973547324649479775
+      GDG_MC2_62: 4194542898820948189
+      GDG_MC2_63: -8952405274208755547
+      GDG_MC2_64: 6282531445804333299
+      GDG_MC2_65: -1039486030078049881
+      GDG_MC2_66: 50282689485134294
+      GDG_MC2_67: -4005738390925635064
+      GDG_MC2_68: 657927910748039268
+      GDG_MC2_69: -3932186996816867821
+      GDG_MC2_7: 8288625663503259711
+      GDG_MC2_70: -2916288920965119623
+      GDG_MC2_71: 6682752876799735520
+      GDG_MC2_72: 481817739549166457
+      GDG_MC2_73: -2714581724119040403
+      GDG_MC2_8: 3182338488682332676
+      GDG_MC2_9: -8233525876113217160
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
