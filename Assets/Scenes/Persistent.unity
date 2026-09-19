@@ -167,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 58091889}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b66206c0ffd62bc43a435ceb17e95731, type: 2}
+  m_Controller: {fileID: 9100000, guid: df7c2104006e11d4591af0a184e94485, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -204,8 +204,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sprintMultiplier: 1.6
   lastDirection: {x: 0, y: -1}
   isMoving: 0
+  isSprinting: 0
 --- !u!61 &58091894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -244,7 +246,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5625, y: 1.75}
+    oldSize: {x: 1.4750001, y: 2.0379522}
     newSize: {x: 1.5625, y: 1.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -323,7 +325,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 4681871484550909081, guid: 07128ae7f68f677459c6b721e1eb3a81, type: 3}
+  m_Sprite: {fileID: 4620629751553580130, guid: 7434ce34b271bef44ba15d349c9063f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
