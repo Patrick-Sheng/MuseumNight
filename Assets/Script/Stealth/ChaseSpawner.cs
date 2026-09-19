@@ -27,9 +27,24 @@ public class ChaseSpawner : MonoBehaviour
 
     public bool TrySpawnForRoom(StealthRoomController owner)
     {
+        if (owner == null)
+        {
+            Debug.LogError("TrySpawnForRoom requires a room controller.", this);
+            return false;
+        }
         if (room != null && room != owner)
         {
             Debug.LogError("ChaseSpawner is assigned to a different room controller.", this);
+            return false;
+        }
+        if (owner.gameObject.scene != gameObject.scene)
+        {
+            Debug.LogError("ChaseSpawner and its room controller must belong to the same scene.", this);
+            return false;
+        }
+        if (room == null && hasSpawned)
+        {
+            Debug.LogError("Assign Room before spawning enemies when reusing this spawner for an objective.", this);
             return false;
         }
         room = owner;
@@ -67,6 +82,7 @@ public class ChaseSpawner : MonoBehaviour
         }
 
         hasSpawned = true;
+        enemies.RemoveAll(enemy => enemy == null);
         foreach (Transform point in spawnPoints)
         {
             Vector3 position = new Vector3(point.position.x, point.position.y, playerTarget.transform.position.z);

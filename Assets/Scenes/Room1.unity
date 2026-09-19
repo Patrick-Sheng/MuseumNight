@@ -4385,9 +4385,6 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   spawnChaseOnPickup: 1
   objectiveSpawner: {fileID: 602234184}
-  enemyPrefab: {fileID: 0}
-  firstSpawnPoint: {fileID: 0}
-  secondSpawnPoint: {fileID: 0}
   keepGuardActiveDuringEscape: 1
   retryEntryId: 1
 --- !u!4 &766209859

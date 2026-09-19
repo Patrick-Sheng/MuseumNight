@@ -34,12 +34,6 @@ public class ChaseEnemy : MonoBehaviour
         body.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    public void Initialize(Rigidbody2D player, StealthRoomController owner)
-    {
-        Initialize(player, () => { if (owner != null) owner.CatchPlayer(); },
-            () => owner != null && owner.IsPlaying);
-    }
-
     public void Initialize(Rigidbody2D player, System.Action caught, System.Func<bool> chaseAllowed)
     {
         target = player;

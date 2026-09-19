@@ -48,11 +48,12 @@ public class GuardPatrol : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.IsPaused) return;
         if (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning) return;
         if (looking)
         {
             lookElapsed += Time.deltaTime;
-            float progress = Mathf.Clamp01(lookElapsed / lookDuration);
+            float progress = lookDuration > 0f ? Mathf.Clamp01(lookElapsed / lookDuration) : 1f;
             // One sweep: centre -> left -> right -> centre.
             float angle = arrivalAngle + Mathf.Sin(progress * Mathf.PI * 2f) * lookAngle;
             TurnTowards(angle);

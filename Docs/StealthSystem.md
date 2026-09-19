@@ -20,7 +20,7 @@ Avoid the patrolling guard
          |
 Approach objective and press E
          |
-Item disappears; configured pickup chase starts (legacy setup: two pursuers)
+Item disappears; configured pickup chase starts
          |
 Run to the exit while avoiding capture
          |
@@ -99,10 +99,14 @@ The player needs the `Player` tag, `PlayerMovement`, `PlayerInteract`, a solid
 Collider2D, and a simulated dynamic Rigidbody2D with zero gravity and frozen Z
 rotation. Enable interpolation for smoother rendering.
 
-After the main-branch animation merge, `PlayerMovement` also requires an Animator
-on the same GameObject. Assign `Assets/Animation/PlayerAnimation.controller`,
+PlayerMovement requires an Animator on the same GameObject.
+Assign `Assets/Animation/PlayerAnimation.controller`,
 leave Avatar empty, and disable Apply Root Motion. The SpriteRenderer needs a
 valid default sprite from `Assets/Sprites/GDG_character.png`.
+
+Guards suspend patrol and detection while paused. Shared player movement and
+animation behaviour remain owned by the player system; its proposed cleanup
+changes were reverted. ClearInteraction remains available for room transitions.
 
 Walls/cover need solid Collider2D components. A TilemapCollider2D is suitable for
 the wall tilemap. Put sight-blocking objects on `VisionObstacle`; keep the floor,
@@ -193,11 +197,9 @@ On StealthRoomController, assign:
 | Field | Assign |
 | --- | --- |
 | Player Movement | Optional assigned player; when empty, finds PlayerMovement on the active Player-tagged object once in Awake. |
-| Spawn Chase On Pickup | Enabled by default for compatibility. Disable for independently triggered chases. |
-| Objective Spawner | Optional ChaseSpawner used instead of the legacy two-point setup. |
+| Spawn Chase On Pickup | Enabled by default. Disable for independently triggered chases. |
+| Objective Spawner | Required ChaseSpawner when Spawn Chase On Pickup is enabled. |
 | Guard Patrol / Guard Vision | No Inspector fields needed: all guards in the controller's scene are found once in Awake. |
-| Enemy Prefab | Legacy fallback ChaseEnemy prefab when Objective Spawner is empty. |
-| First / Second Spawn Point | Legacy fallback points; ignored when Objective Spawner is assigned or pickup spawning is off. |
 | Keep Guard Active During Escape | Whether all patrol guards continue after pickup. |
 
 Keep Guard Active During Escape defaults to **true**, also enabled in the saved
@@ -205,19 +207,21 @@ test scene when this guide was written. False disables every discovered patrol
 and vision component after pickup; it does not turn patrol guards into pursuers.
 
 With pickup spawning enabled, pickup validates/starts Objective Spawner before
-consuming the item. If unassigned, the original two-enemy setup is used. With
+consuming the item. If unassigned, collection logs a setup error and is rejected. With
 pickup spawning disabled, no enemy configuration is required to collect the item.
 Successful pickup sets HasObjective and fires the item's On Collected UnityEvent
-once. Existing saved scenes retain the legacy behaviour without migration.
+once. Both Room1 and StealthTest use ChaseSpawner; the former two-point controller
+fields and spawn method have been removed.
 
 ## Reusable chase spawning
 
 Room1 is wired to a ChaseSpawner on its existing EnemySpawns object, using Spawn1
 and Spawn2 and the existing ChaseEnemy prefab. RoomController's Objective Spawner
-points to it, Spawn Chase On Pickup is enabled, and the legacy fields are cleared.
+points to it and Spawn Chase On Pickup is enabled.
 Player Target is resolved by tag and Room is assigned. Spawn Once is enabled.
 Edit EnemySpawns -> ChaseSpawner -> Spawn Points to change Room1's enemy count.
-StealthTest still uses its legacy two-point setup.
+StealthTest also has a ChaseSpawner on EnemySpawns, wired to its original two
+points, existing player, and room controller.
 
 ChaseSpawner can work with or without StealthRoomController. Each spawn point
 creates one copy of the selected ChaseEnemy prefab, so a list of one spawns one
@@ -284,8 +288,7 @@ to allow a fair escape. Keep the prefab asset active but remove any temporary
 scene copy used to create it; the controller spawns the actual pair.
 
 Collision enter/stay with the supplied player Rigidbody2D invokes a capture callback.
-For legacy spawning this calls CatchPlayer; reusable spawners handle it through
-their optional Room reference and On Player Caught event.
+Spawners handle it through their optional Room reference and On Player Caught event.
 This is contact capture, not sight-based detection. StopChasing disables physics
 simulation and the component when the room ends.
 
@@ -325,7 +328,6 @@ again. Invalid destination/entry errors are reported in the Console.
 | `TryExitToRoom(sceneName, entryId)` | Requests a gated RoomManager transition and restores persistent player control on success. |
 | `RetryRoom()` | Reloads after capture or completion. |
 | `IsPlayer(Collider2D)` | Compares the collider's attached Rigidbody2D with the assigned player body. |
-| `ChaseEnemy.Initialize(player, owner)` | Called by the spawner to supply runtime references. |
 | `ChaseEnemy.Initialize(player, caught, chaseAllowed)` | General callback-based setup used by ChaseSpawner, without a mandatory stealth controller. |
 | `ChaseSpawner.Spawn()` / `TrySpawn()` | Event-friendly spawn method / boolean result. |
 | `ChaseSpawner.TrySpawnForRoom(owner)` | Supplies controller ownership for validated objective spawning. |
@@ -343,7 +345,7 @@ Run after changing scripts, physics settings, prefab overrides, or room layout.
 5. Get caught; movement/interaction stop; R restores the room. Repeat once.
 6. Enter the exit before pickup: no completion.
 7. Approach/leave the item: prompt appears/disappears; E outside range does nothing.
-8. Collect: item disappears, configured pickup wave spawns (two for legacy setup), player remains controllable.
+8. Collect: item disappears, configured pickup wave spawns, player remains controllable.
 9. Duplicate a guard group before play. Check independent patrol routes, detection
    by either guard, and that capture/completion stops all guards. Confirm all guard
    activity matches Keep Guard Active During Escape. If another room is loaded
@@ -420,7 +422,7 @@ Production regression checks (not yet verified by this documentation update):
 ## Known prototype limits
 
 - Multiple scene-placed patrol guards and one objective phase. ChaseSpawner supports
-  one or more pursuers; the old pickup configuration retains two for compatibility.
+  one or more pursuers; both included scenes currently configure two points.
   Runtime-spawned patrol guards require additional registration support.
 - No guard pathfinding, pursuer obstacle routing, suspicion meter, or chase timeout.
 - No explicit tie-break rule for exit/contact events in the same physics step;
