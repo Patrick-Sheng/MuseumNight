@@ -20,6 +20,8 @@ public class PlayerInteract : MonoBehaviour
         currentInteractable = interactable;
     }
 
+    public void ClearInteraction() => currentInteractable = null;
+
     public void ClearCurrentInteractable(IInteractable interactable)
     {
         if (currentInteractable == interactable)
