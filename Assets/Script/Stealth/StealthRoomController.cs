@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>Owns the caught/retry flow for a single-guard prototype room.</summary>
+/// <summary>Owns the playing, caught, and completed flow for a single-guard room.</summary>
 public class StealthRoomController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
@@ -14,6 +14,8 @@ public class StealthRoomController : MonoBehaviour
     private string retryError;
 
     public bool IsCaught { get; private set; }
+    public bool IsCompleted { get; private set; }
+    public bool IsPlaying => isActiveAndEnabled && !IsCaught && !IsCompleted;
 
     private void Awake()
     {
@@ -31,9 +33,20 @@ public class StealthRoomController : MonoBehaviour
     // Connect GuardVision's On Player Detected event to this method in the scene.
     public void CatchPlayer()
     {
-        if (!isActiveAndEnabled || IsCaught) return;
+        if (!IsPlaying) return;
         IsCaught = true;
+        StopRoom();
+    }
 
+    public void CompleteRoom()
+    {
+        if (!IsPlaying) return;
+        IsCompleted = true;
+        StopRoom();
+    }
+
+    private void StopRoom()
+    {
         playerMovement.enabled = false;
         playerMovement.isMoving = false;
         if (playerInteraction != null) playerInteraction.enabled = false;
@@ -45,12 +58,12 @@ public class StealthRoomController : MonoBehaviour
 
     private void Update()
     {
-        if (IsCaught && Input.GetKeyDown(KeyCode.R)) RetryRoom();
+        if ((IsCaught || IsCompleted) && Input.GetKeyDown(KeyCode.R)) RetryRoom();
     }
 
     public void RetryRoom()
     {
-        if (!isActiveAndEnabled || !IsCaught || restarting) return;
+        if (!isActiveAndEnabled || IsPlaying || restarting) return;
 
         // Use this object's scene, avoiding ambiguity if another scene is active.
         string scenePath = gameObject.scene.path;
@@ -67,7 +80,7 @@ public class StealthRoomController : MonoBehaviour
 
     private void OnGUI()
     {
-        if (!IsCaught) return;
+        if (IsPlaying) return;
 
         // Temporary prototype feedback; replace with the game's Canvas UI later.
         float scale = Mathf.Clamp(Screen.height / 720f, 0.75f, 2f);
@@ -91,9 +104,9 @@ public class StealthRoomController : MonoBehaviour
 
         GUI.Box(panel, GUIContent.none);
         GUI.Label(new Rect(panel.x + 15f, panel.y + height * 0.1f,
-            width - 30f, height * 0.3f), "Caught!", titleStyle);
+            width - 30f, height * 0.3f), IsCompleted ? "Item secured!" : "Caught!", titleStyle);
         GUI.Label(new Rect(panel.x + 15f, panel.y + height * 0.45f,
             width - 30f, height * 0.45f),
-            retryError ?? "Press R to retry the room.", messageStyle);
+            retryError ?? (IsCompleted ? "Room complete. Press R to play again." : "Press R to retry the room."), messageStyle);
     }
 }
