@@ -8,6 +8,7 @@ public class PushableObject : MonoBehaviour
     [SerializeField] float pushSpeed = 4f;
     [SerializeField] float gridSize = 1f;
     [SerializeField] float pushAlignmentThreshold = 0.5f;
+    [SerializeField] PushableSlider slider;
 
     Rigidbody2D rb;
     BoxCollider2D boxCollider;
@@ -17,6 +18,10 @@ public class PushableObject : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        if (slider == null)
+            slider = GetComponentInChildren<PushableSlider>();
+        if (slider == null && transform.parent != null)
+            slider = transform.parent.GetComponentInChildren<PushableSlider>();
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -28,23 +33,20 @@ public class PushableObject : MonoBehaviour
         if (player == null || !player.isMoving)
             return;
 
-        Vector2 pushDirection = GetCardinalDirection((Vector2)transform.position - (Vector2)collision.transform.position);
+        Vector2 relative = (Vector2)transform.position - (Vector2)collision.transform.position;
+        if (Mathf.Abs(relative.x) <= Mathf.Abs(relative.y))
+            return; // statues can only be pushed horizontally
+
+        Vector2 pushDirection = new Vector2(Mathf.Sign(relative.x), 0f);
 
         if (Vector2.Dot(pushDirection, player.InputDirection) < pushAlignmentThreshold)
             return;
 
         Vector2 destination = rb.position + pushDirection * gridSize;
-        if (IsBlocked(destination))
+        if (IsBlocked(destination) || (slider != null && !slider.Contains(destination.x)))
             return;
 
         StartCoroutine(MoveTo(destination));
-    }
-
-    static Vector2 GetCardinalDirection(Vector2 direction)
-    {
-        return Mathf.Abs(direction.x) > Mathf.Abs(direction.y)
-            ? new Vector2(Mathf.Sign(direction.x), 0f)
-            : new Vector2(0f, Mathf.Sign(direction.y));
     }
 
     bool IsBlocked(Vector2 destination)
