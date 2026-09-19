@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
+    [SerializeField] float sprintMultiplier = 1.6f;
 
     Animator animator;
     Vector2 inputVector;
@@ -11,11 +12,19 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
     public bool isMoving;
+    public bool isSprinting;
+    public Vector2 InputDirection => inputDirection;
 
     static readonly int HorizontalHash = Animator.StringToHash("horizontal");
     static readonly int VerticalHash   = Animator.StringToHash("vertical");
     static readonly int LastHorizontalHash = Animator.StringToHash("lastHorizontal");
     static readonly int LastVerticalHash   = Animator.StringToHash("lastVertical");
+
+    public static PlayerMovement FindInScene()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        return player != null ? player.GetComponent<PlayerMovement>() : null;
+    }
 
     void Awake()
     {
@@ -27,12 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("I am moving! " + isMoving);
-
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         inputDirection = new Vector2(x, y).normalized;
         isMoving = inputDirection != Vector2.zero;
+        isSprinting = isMoving && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
 
         animator.SetBool("isMoving", isMoving);
 
@@ -47,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + inputDirection * (speed * Time.fixedDeltaTime));
+        float currentSpeed = isSprinting ? speed * sprintMultiplier : speed;
+        rb.MovePosition(rb.position + inputDirection * (currentSpeed * Time.fixedDeltaTime));
     }
 }
