@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>Owns stealth, pickup/escape, caught, and completed flow for the room.</summary>
 public class StealthRoomController : MonoBehaviour
 {
+    [Tooltip("Optional override. When empty, finds PlayerMovement on the active Player-tagged object once in Awake.")]
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private GuardPatrol guardPatrol;
-    [SerializeField] private GuardVision guardVision;
+    // Only guards belonging to this room scene are managed, including initially inactive guards.
+    private readonly List<GuardPatrol> guardPatrols = new List<GuardPatrol>();
+    private readonly List<GuardVision> guardVisions = new List<GuardVision>();
 
     [Header("Escape after pickup")]
     [SerializeField] private ChaseEnemy enemyPrefab;
@@ -44,8 +47,7 @@ public class StealthRoomController : MonoBehaviour
         secondEnemy = SpawnEnemy(secondSpawnPoint);
         if (!keepGuardActiveDuringEscape)
         {
-            guardPatrol.enabled = false;
-            guardVision.enabled = false;
+            StopGuards();
         }
         return true;
     }
@@ -61,18 +63,50 @@ public class StealthRoomController : MonoBehaviour
 
     private void Awake()
     {
-        if (playerMovement == null || guardPatrol == null || guardVision == null)
+        if (playerMovement == null)
         {
-            Debug.LogError("StealthRoomController needs Player Movement, Guard Patrol, and Guard Vision references.", this);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) playerMovement = player.GetComponent<PlayerMovement>();
+        }
+
+        if (playerMovement == null)
+        {
+            Debug.LogError("StealthRoomController needs assigned Player Movement or an active Player-tagged object with PlayerMovement. Load Persistent before this room, or assign a test player.", this);
             enabled = false;
             return;
         }
 
         playerBody = playerMovement.GetComponent<Rigidbody2D>();
         playerInteraction = playerMovement.GetComponent<PlayerInteract>();
+
+        foreach (GameObject root in gameObject.scene.GetRootGameObjects())
+        {
+            guardPatrols.AddRange(root.GetComponentsInChildren<GuardPatrol>(true));
+            guardVisions.AddRange(root.GetComponentsInChildren<GuardVision>(true));
+        }
     }
 
-    // Connect GuardVision's On Player Detected event to this method in the scene.
+    private void OnEnable()
+    {
+        foreach (GuardVision vision in guardVisions)
+            if (vision != null) vision.AddDetectionListener(CatchPlayer);
+    }
+
+    private void OnDisable()
+    {
+        foreach (GuardVision vision in guardVisions)
+            if (vision != null) vision.RemoveDetectionListener(CatchPlayer);
+    }
+
+    private void StopGuards()
+    {
+        foreach (GuardPatrol patrol in guardPatrols)
+            if (patrol != null) patrol.enabled = false;
+        foreach (GuardVision vision in guardVisions)
+            if (vision != null) vision.enabled = false;
+    }
+
+    // Automatically connected to every GuardVision in this room scene.
     public void CatchPlayer()
     {
         if (!IsPlaying) return;
@@ -94,8 +128,7 @@ public class StealthRoomController : MonoBehaviour
         if (playerInteraction != null) playerInteraction.enabled = false;
         // Removing the body from simulation also cancels pending movement/contact motion.
         playerBody.simulated = false;
-        guardPatrol.enabled = false;
-        guardVision.enabled = false;
+        StopGuards();
         if (firstEnemy != null) firstEnemy.StopChasing();
         if (secondEnemy != null) secondEnemy.StopChasing();
     }

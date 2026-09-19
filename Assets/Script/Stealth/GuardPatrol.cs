@@ -3,7 +3,10 @@ using UnityEngine;
 /// <summary>A predictable patrol on the XY plane. Local +Y is the guard's forward direction.</summary>
 public class GuardPatrol : MonoBehaviour
 {
+    [Tooltip("Optional explicit route. When empty, use the direct children of Route Root in Hierarchy order.")]
     [SerializeField] private Transform[] waypoints;
+    [Tooltip("Stationary route container, usually a sibling of this moving Guard inside a shared prefab root.")]
+    [SerializeField] private Transform routeRoot;
     [SerializeField, Min(0.1f)] private float moveSpeed = 2f;
     [SerializeField, Min(1f)] private float turnSpeed = 180f;
     [SerializeField, Min(0f)] private float lookDuration = 3f;
@@ -18,9 +21,16 @@ public class GuardPatrol : MonoBehaviour
 
     private void Start()
     {
+        if ((waypoints == null || waypoints.Length == 0) && routeRoot != null)
+        {
+            waypoints = new Transform[routeRoot.childCount];
+            for (int i = 0; i < waypoints.Length; i++)
+                waypoints[i] = routeRoot.GetChild(i);
+        }
+
         if (waypoints == null || waypoints.Length == 0)
         {
-            Debug.LogError("GuardPatrol needs at least one waypoint.", this);
+            Debug.LogError("GuardPatrol needs explicit waypoints or a Route Root containing waypoint children.", this);
             enabled = false;
             return;
         }
@@ -29,7 +39,7 @@ public class GuardPatrol : MonoBehaviour
         {
             if (point == null || point == transform || point.IsChildOf(transform))
             {
-                Debug.LogError("GuardPatrol waypoints must be assigned and outside the guard hierarchy.", this);
+                Debug.LogError("Waypoints must be assigned and outside the moving Guard. Put Guard and PatrolRoute beside each other under a stationary parent.", this);
                 enabled = false;
                 return;
             }
@@ -97,13 +107,15 @@ public class GuardPatrol : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + transform.up);
-        if (waypoints == null || waypoints.Length == 0) return;
+        bool explicitRoute = waypoints != null && waypoints.Length > 0;
+        int count = explicitRoute ? waypoints.Length : (routeRoot != null ? routeRoot.childCount : 0);
+        if (count == 0) return;
 
         Gizmos.color = Color.cyan;
-        for (int i = 0; i < waypoints.Length; i++)
+        for (int i = 0; i < count; i++)
         {
-            Transform point = waypoints[i];
-            Transform next = waypoints[(i + 1) % waypoints.Length];
+            Transform point = explicitRoute ? waypoints[i] : routeRoot.GetChild(i);
+            Transform next = explicitRoute ? waypoints[(i + 1) % count] : routeRoot.GetChild((i + 1) % count);
             if (point == null) continue;
             Gizmos.DrawWireSphere(point.position, 0.15f);
             if (next != null) Gizmos.DrawLine(point.position, next.position);

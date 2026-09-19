@@ -8,8 +8,8 @@ playtesting of patrol, vision, collection, chase, and exit during development.
 This guide was checked against the current source and serialized assets; it is
 not a new Play-mode test report.
 
-The production game's persistent-player integration is **not implemented** in
-these components. Keep using the standalone test scene until the integration
+Player references can now resolve the persistent player by tag at startup.
+Production retry and exit integration are **not implemented**. Keep using the standalone test scene until the integration
 work below is complete. Art, level layout, timings, and difficulty remain
 prototype choices.
 
@@ -56,10 +56,16 @@ Reusable prefabs are in `Assets/Prefab/Stealth/`:
 - `ObjectiveItem.prefab`
 - `ChaseEnemy.prefab`
 
-The room controller and exit are configured scene objects. Waypoints, spawn
-points, player references, and room-event connections belong to each scene.
-Assign these on prefab instances; prefab assets cannot retain references to
-objects in an external scene.
+The room controller and exit are configured scene objects. The controller
+automatically discovers all GuardPatrol and GuardVision components in its own
+scene in Awake (including inactive objects) and connects detection listeners
+while enabled. Use one controller per room scene. Guards in other additively
+loaded scenes are not affected. Guards instantiated after discovery are not
+automatically registered; this setup supports guards placed/duplicated before play.
+
+Waypoint references inside the same prefab are reusable. Spawn points and room
+references belong to the scene. Prefab assets cannot retain references to objects
+in an external scene. Player references can be left empty for tag lookup.
 
 ## Standalone scene setup
 
@@ -71,12 +77,13 @@ StealthTest
 ├── MainPlayer
 ├── Main Camera / lighting
 ├── RoomController
-├── Guard
-│   ├── Body
-│   └── FacingMarker
-├── PatrolRoute
-│   ├── PointA
-│   └── PointB
+├── GuardPatrolGroup (stationary prefab root; duplicate this whole group)
+│   ├── Guard (GuardPatrol, GuardVision, LineRenderer)
+│   │   ├── Body
+│   │   └── FacingMarker
+│   └── PatrolRoute
+│       ├── PointA
+│       └── PointB
 ├── ObjectiveItem
 ├── EnemySpawns
 │   ├── SpawnA
@@ -102,9 +109,28 @@ and pursuer collisions with walls and each other where intended.
 
 ### Guard patrol
 
-Place the guard prefab on clear floor. In `GuardPatrol`, assign the scene's
-waypoints in visit order. Keep waypoints outside the guard hierarchy so they do
-not move with it. The route loops from the final point back to the first.
+Place the guard prefab on clear floor. The existing explicit Waypoints array
+continues to work and takes priority when non-empty. Alternatively, set its size
+to zero and assign Route Root: the script reads that container's direct children
+in Hierarchy order once at startup. The route loops back to its first point.
+
+To create a reusable guard-plus-route prefab in Unity:
+
+1. Create an empty GuardPatrolGroup with scale (1, 1, 1).
+2. Parent the moving Guard and stationary PatrolRoute beneath it as siblings.
+   Keep GuardPatrol/GuardVision on the Guard child, not the shared parent.
+3. Set GuardPatrol's Waypoints size to zero and assign the sibling PatrolRoute
+   to Route Root. Only put waypoint objects directly under PatrolRoute.
+4. Save the whole group as a new prefab, for example GuardPatrolGroup, in
+   Assets/Prefab/Stealth. This is a grouping workflow, not a new script.
+5. Duplicate the entire group to add guards. Each copy retains references to
+   its own internal route; move the group to relocate guard and route together,
+   then position its individual points to tune that patrol.
+
+Waypoints cannot be children of the moving Guard itself: otherwise they travel
+and rotate with it. They can share the stationary group parent. Keep that parent
+stationary during gameplay. Existing scene layouts and Guard.prefab do not need
+to be replaced to use automatic multiple-guard discovery.
 
 | Setting | Code default | Meaning |
 | --- | ---: | --- |
@@ -124,7 +150,8 @@ produce one overlapping out-and-back line. Prefab Mode has no scene route.
 
 ### Guard vision
 
-Assign `Player Target` to MainPlayer and `Obstacle Layers` to VisionObstacle.
+Assign `Player Target` to MainPlayer for standalone testing, or leave it empty
+to find the active `Player`-tagged object once in Start. Set `Obstacle Layers` to VisionObstacle.
 Defaults are View Distance **5** and View Angle **70 degrees** (the full cone).
 
 Visibility requires all three:
@@ -139,8 +166,11 @@ an approximate wall-clipped outline using 48 angular segments: yellow normally,
 red when visible. Assign its material to Sprites-Default. The script sets its
 width to 0.04 and sorting order to 4 during play.
 
-On the scene guard, wire **On Player Detected** to
-`RoomController -> StealthRoomController.CatchPlayer()` in the Inspector.
+The room controller automatically connects each scene guard's **On Player Detected**
+to CatchPlayer at runtime. No per-copy Inspector hookup is needed. Remove old
+manual CatchPlayer event entries when convenient; leaving them is harmless because
+CatchPlayer ignores repeat calls after the first accepted capture. Keep other
+intentional event actions, such as sound effects.
 The event fires on becoming visible, not every frame; visibility must be lost
 before it can fire again. Once capture disables vision, the outline disappears.
 
@@ -160,15 +190,15 @@ On StealthRoomController, assign:
 
 | Field | Assign |
 | --- | --- |
-| Player Movement | Scene player with PlayerMovement. |
-| Guard Patrol / Guard Vision | Scene guard's respective components. |
+| Player Movement | Optional assigned player; when empty, finds PlayerMovement on the active Player-tagged object once in Awake. |
+| Guard Patrol / Guard Vision | No Inspector fields needed: all guards in the controller's scene are found once in Awake. |
 | Enemy Prefab | ChaseEnemy prefab asset from the Project window. |
 | First / Second Spawn Point | Two separate scene Transforms on clear floor. |
-| Keep Guard Active During Escape | Whether the original guard continues after pickup. |
+| Keep Guard Active During Escape | Whether all patrol guards continue after pickup. |
 
 Keep Guard Active During Escape defaults to **true**, also enabled in the saved
-test scene when this guide was written. False disables patrol and vision after
-pickup; it does not turn the original guard into a pursuer.
+test scene when this guide was written. False disables every discovered patrol
+and vision component after pickup; it does not turn patrol guards into pursuers.
 
 Pickup validates the enemy prefab and both spawn references before consuming
 the item. Missing/invalid setup logs an error and leaves it collectible.
@@ -213,6 +243,7 @@ or persistent-player reset. Missing build-list setup produces a visible error.
 | --- | --- |
 | `GuardPatrol.FacingDirection` | Read-only current local-up direction. |
 | `GuardVision.IsPlayerVisible` | Read-only current visibility result. |
+| `GuardVision.AddDetectionListener` / `RemoveDetectionListener` | Runtime detection subscription used by the room controller. |
 | `StealthRoomController.IsPlaying` | Enabled/active room with neither terminal outcome. Includes escape phase. |
 | `HasObjective`, `IsCaught`, `IsCompleted` | Read-only progress/outcome flags. |
 | `TryCollectObjective()` | Returns success; starts the chase once if configured. |
@@ -235,7 +266,10 @@ Run after changing scripts, physics settings, prefab overrides, or room layout.
 6. Enter the exit before pickup: no completion.
 7. Approach/leave the item: prompt appears/disappears; E outside range does nothing.
 8. Collect: item disappears, exactly two pursuers spawn, player remains controllable.
-9. Confirm guard activity matches Keep Guard Active During Escape.
+9. Duplicate a guard group before play. Check independent patrol routes, detection
+   by either guard, and that capture/completion stops all guards. Confirm all guard
+   activity matches Keep Guard Active During Escape. If another room is loaded
+   additively, its guards must remain outside this controller's management.
 10. Let each pursuer catch the player in separate runs; verify retry removes both
     spawned objects and restores the objective.
 11. Escape with the item: completion appears and enemies stop. R allows another run.
@@ -266,9 +300,12 @@ yet adapted to this flow.
 Before transferring the mechanics into production Room1:
 
 1. Coordinate changes to shared Room1/Persistent assets with their owners.
-2. Bind the existing persistent player to the room controller and guard vision
-   at runtime; ordinary scene asset references cannot provide this connection.
-   Current Awake/Start validation assumes references are already assigned.
+2. Leave Player Movement and Player Target empty to use the implemented startup
+   lookup. Persistent must supply exactly one active Player-tagged object before
+   the room loads, with PlayerMovement on that object. Explicit Inspector references
+   take priority. Lookup runs only once, before validation; missing players produce
+   a setup error and disable the affected component. ChaseEnemy still receives its
+   player from the room controller. No per-frame search or late-spawn retry is used.
 3. Include only room-owned content in Room1, avoiding duplicate player, camera,
    shared UI, and lighting objects supplied by Persistent.
 4. Replace Single-scene retry with the room transition/reset flow and explicitly
@@ -285,7 +322,8 @@ Before transferring the mechanics into production Room1:
 
 ## Known prototype limits
 
-- One assigned patrol guard, one objective phase, and exactly two spawned pursuers.
+- Multiple scene-placed patrol guards, one objective phase, and exactly two spawned
+  pursuers. Runtime-spawned patrol guards require additional registration support.
 - No guard pathfinding, pursuer obstacle routing, suspicion meter, or chase timeout.
 - No explicit tie-break rule for exit/contact events in the same physics step;
   the first accepted terminal outcome wins. Pickup runs in Update before vision's

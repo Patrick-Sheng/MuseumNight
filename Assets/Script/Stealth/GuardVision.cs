@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(LineRenderer))]
 public class GuardVision : MonoBehaviour
 {
+    [Tooltip("Optional override. When empty, finds the active Player-tagged object once at startup.")]
     [SerializeField] private Transform playerTarget;
     [SerializeField, Min(0.1f)] private float viewDistance = 5f;
     [SerializeField, Range(1f, 179f)] private float viewAngle = 70f;
@@ -20,6 +21,9 @@ public class GuardVision : MonoBehaviour
 
     public bool IsPlayerVisible { get; private set; }
 
+    public void AddDetectionListener(UnityAction listener) => onPlayerDetected.AddListener(listener);
+    public void RemoveDetectionListener(UnityAction listener) => onPlayerDetected.RemoveListener(listener);
+
     private void Awake()
     {
         outline = GetComponent<LineRenderer>();
@@ -34,7 +38,13 @@ public class GuardVision : MonoBehaviour
     {
         if (playerTarget == null)
         {
-            Debug.LogError("GuardVision needs a Player Target from this scene.", this);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) playerTarget = player.transform;
+        }
+
+        if (playerTarget == null)
+        {
+            Debug.LogError("GuardVision needs an assigned Player Target or an active Player-tagged object. Load Persistent before this room, or assign a test player.", this);
             enabled = false;
             return;
         }
