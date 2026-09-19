@@ -25,6 +25,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        if (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning) return;
+
         if (!Input.GetKeyDown(KeyCode.Escape))
             return;
 

@@ -7,6 +7,9 @@ public class TransitionTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Unity sends 2D trigger callbacks even to disabled MonoBehaviours.
+        if (!isActiveAndEnabled) return;
+
         if (other.CompareTag("Player"))
         {
             RoomManager.Instance.GoToRoom(targetSceneName, targetEntryId);

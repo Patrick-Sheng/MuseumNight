@@ -10,11 +10,18 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 0.4f;
     [SerializeField] private string startingSceneName;
+    [SerializeField] private string startingEntryId = "1";
 
     private string currentSceneName;
     private bool isTransitioning = false;
 
     public string CurrentSceneName => currentSceneName;
+    public bool IsTransitioning => isTransitioning;
+
+    void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+    }
 
     void Awake()
     {
@@ -35,30 +42,92 @@ public class RoomManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(TransitionRoutine(startingSceneName, "default_spawn", null));
+            StartCoroutine(TransitionRoutine(startingSceneName, startingEntryId, null));
         }
     }
 
     public void GoToRoom(string sceneName, string entryPointId)
     {
-        if (isTransitioning) return;
-        StartCoroutine(TransitionRoutine(sceneName, entryPointId, null));
+        TryGoToRoom(sceneName, entryPointId);
     }
 
-    private IEnumerator TransitionRoutine(string sceneName, string entryPointId, SaveData loadedSave)
+    public bool TryGoToRoom(string sceneName, string entryPointId,
+        bool restorePlayerControl = false, System.Action<bool> onFinished = null)
     {
+        if (isTransitioning || PauseMenu.IsPaused) return false;
+        if (string.IsNullOrWhiteSpace(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            Debug.LogError("RoomManager: destination must be an enabled scene in Build Profiles: " + sceneName, this);
+            return false;
+        }
+        StartCoroutine(TransitionRoutine(sceneName, entryPointId, null, restorePlayerControl, onFinished));
+        return true;
+    }
+
+    private IEnumerator TransitionRoutine(string sceneName, string entryPointId, SaveData loadedSave,
+        bool restorePlayerControl = false, System.Action<bool> onFinished = null)
+    {
+        if (string.IsNullOrWhiteSpace(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            Debug.LogError("RoomManager cannot load scene: " + sceneName, this);
+            onFinished?.Invoke(false);
+            yield break;
+        }
+
         isTransitioning = true;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null)
+        {
+            Debug.LogError("RoomManager requires the persistent Player before loading a room.", this);
+            isTransitioning = false;
+            onFinished?.Invoke(false);
+            yield break;
+        }
+
+        PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        PlayerInteract interaction = player.GetComponent<PlayerInteract>();
+        Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+        bool movementWasEnabled = movement != null && movement.enabled;
+        bool interactionWasEnabled = interaction != null && interaction.enabled;
+        bool bodyWasSimulated = body != null && body.simulated;
+        if (movement != null) { movement.enabled = false; movement.isMoving = false; }
+        if (interaction != null) { interaction.ClearInteraction(); interaction.enabled = false; }
+        if (body != null) { body.linearVelocity = Vector2.zero; body.simulated = false; }
+        Animator animator = player.GetComponent<Animator>();
+        if (animator != null) animator.SetBool("isMoving", false);
 
         yield return StartCoroutine(FadeTo(1f));
 
-        if (!string.IsNullOrEmpty(currentSceneName))
-            yield return SceneManager.UnloadSceneAsync(currentSceneName);
-
+        // Keep the old room until the destination and its entry are validated.
+        // Capture the loaded Scene directly: retries briefly have two scenes with the same name.
+        Scene oldScene = string.IsNullOrEmpty(currentSceneName) ? default : SceneManager.GetSceneByName(currentSceneName);
+        Scene loadedScene = default;
+        void CaptureLoadedScene(Scene scene, LoadSceneMode mode)
+        {
+            if (mode == LoadSceneMode.Additive && (scene.name == sceneName || scene.path == sceneName))
+                loadedScene = scene;
+        }
+        SceneManager.sceneLoaded += CaptureLoadedScene;
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        currentSceneName = sceneName;
+        SceneManager.sceneLoaded -= CaptureLoadedScene;
+        EntryPoint entry = loadedScene.IsValid() ? FindEntryPointInScene(loadedScene, entryPointId) : null;
+        if (!loadedScene.IsValid() || (loadedSave == null && entry == null))
+        {
+            Debug.LogError("RoomManager: destination or EntryPoint is missing: " + sceneName + " / " + entryPointId, this);
+            if (loadedScene.IsValid()) yield return SceneManager.UnloadSceneAsync(loadedScene);
+            yield return StartCoroutine(FadeTo(0f));
+            if (movement != null) movement.enabled = movementWasEnabled;
+            if (interaction != null) interaction.enabled = interactionWasEnabled;
+            if (body != null) body.simulated = bodyWasSimulated;
+            isTransitioning = false;
+            onFinished?.Invoke(false);
+            yield break;
+        }
 
-        Scene loadedScene = SceneManager.GetSceneByName(sceneName);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (oldScene.IsValid() && oldScene.isLoaded)
+            yield return SceneManager.UnloadSceneAsync(oldScene);
+        currentSceneName = loadedScene.name;
+        SceneManager.SetActiveScene(loadedScene);
 
         if (loadedSave != null)
         {
@@ -74,14 +143,25 @@ public class RoomManager : MonoBehaviour
         }
         else
         {
-            EntryPoint entry = FindEntryPointInScene(loadedScene, entryPointId);
             if (entry != null && player != null)
                 player.transform.position = entry.transform.position;
         }
 
+        if (body != null)
+        {
+            body.position = player.transform.position;
+            body.linearVelocity = Vector2.zero;
+            body.angularVelocity = 0f;
+        }
+        Physics2D.SyncTransforms();
+
         yield return StartCoroutine(FadeTo(0f));
 
+        if (movement != null) movement.enabled = restorePlayerControl || movementWasEnabled;
+        if (interaction != null) interaction.enabled = restorePlayerControl || interactionWasEnabled;
+        if (body != null) body.simulated = restorePlayerControl || bodyWasSimulated;
         isTransitioning = false;
+        onFinished?.Invoke(true);
     }
 
     private IEnumerator FadeTo(float targetAlpha)
@@ -91,7 +171,7 @@ public class RoomManager : MonoBehaviour
 
         while (t < fadeDuration)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float a = Mathf.Lerp(startAlpha, targetAlpha, t / fadeDuration);
             SetAlpha(a);
             yield return null;
