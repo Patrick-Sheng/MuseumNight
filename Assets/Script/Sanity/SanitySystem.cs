@@ -57,6 +57,16 @@ public sealed class SanitySystem : MonoBehaviour
         drainEnabled = enabled;
     }
 
+    public void SetSanity(float value)
+    {
+        float newSanity = Mathf.Clamp(value, 0f, maxSanity);
+        currentSanity = newSanity;
+        currentLevel = CalculateLevel();
+
+        SanityChanged?.Invoke(currentSanity, maxSanity);
+        SanityLevelChanged?.Invoke(currentLevel);
+    }
+
     public void LoseSanity(float amount)
     {
         ChangeSanity(-Mathf.Abs(amount));
