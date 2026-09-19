@@ -28,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("I am moving! " + isMoving);
-
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         inputDirection = new Vector2(x, y).normalized;
