@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TigerBoyCharacterData
   m_EditorClassIdentifier: 
   characterName: Tiger Boy
-  speakingSound: {fileID: 8300000, guid: 0a7ff43c0993b6245a9857a2ce7cdf16, type: 3}
+  speakingSound: {fileID: 0}
   defaultState:
     emotionLabel: 0
-    speakingSoundPitch: 1.008
+    speakingSoundPitch: 1.231
     reactionSound:
       enabled: 0
       value: {fileID: 0}

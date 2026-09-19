@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 07128ae7f68f677459c6b721e1eb3a81
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8554395588893087229
+    second: GDG_character_0
+  - first:
+      213: 4681871484550909081
+    second: GDG_character_1
+  - first:
+      213: 1055103533958923160
+    second: GDG_character_2
+  - first:
+      213: -1080452800917162949
+    second: GDG_character_3
+  - first:
+      213: -8105162276365635610
+    second: GDG_character_4
+  - first:
+      213: 137488919890772604
+    second: GDG_character_5
+  - first:
+      213: -3651726149110824577
+    second: GDG_character_6
+  - first:
+      213: -3976305208925328346
+    second: GDG_character_7
+  - first:
+      213: -1038644646586606390
+    second: GDG_character_8
+  - first:
+      213: 5694338337720267101
+    second: GDG_character_9
+  - first:
+      213: -9175680969548509352
+    second: GDG_character_10
+  - first:
+      213: 8101084721188917515
+    second: GDG_character_11
+  - first:
+      213: 3731150312677199399
+    second: GDG_character_12
+  - first:
+      213: -6135517724646002181
+    second: GDG_character_13
+  - first:
+      213: 3656790665247132973
+    second: GDG_character_14
+  - first:
+      213: 3572774081599851004
+    second: GDG_character_15
+  - first:
+      213: 6363282071536836941
+    second: GDG_character_16
+  - first:
+      213: 764162936552985927
+    second: GDG_character_17
+  - first:
+      213: 4561024888528336503
+    second: GDG_character_18
+  - first:
+      213: -4446950122056307318
+    second: GDG_character_19
+  - first:
+      213: -7948034992001910235
+    second: GDG_character_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GDG_character_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 45
+        width: 55
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30aebd7f88ea84980800000000000000
+      internalID: -8554395588893087229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 107
+        width: 25
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c00b04f4959f040800000000000000
+      internalID: 4681871484550909081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_2
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 106
+        width: 25
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89381eee21b74ae00800000000000000
+      internalID: 1055103533958923160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 106
+        width: 25
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34b1cce6e57101f0800000000000000
+      internalID: -1080452800917162949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_4
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 107
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ef64564adda48f80800000000000000
+      internalID: -8105162276365635610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_5
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 107
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7244a6b17578e100800000000000000
+      internalID: 137488919890772604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_6
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 75
+        width: 25
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f718e314a66725dc0800000000000000
+      internalID: -3651726149110824577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_7
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 74
+        width: 25
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c6877da7351d8c0800000000000000
+      internalID: -3976305208925328346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_8
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 74
+        width: 25
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acc1858623ef591f0800000000000000
+      internalID: -1038644646586606390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_9
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 75
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5174ba5c8a560f40800000000000000
+      internalID: 5694338337720267101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_10
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 75
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85fcfb5e5ce69a080800000000000000
+      internalID: -9175680969548509352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_11
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 43
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b015fcde1a5dc6070800000000000000
+      internalID: 8101084721188917515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_12
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 43
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72e46bed075b7c330800000000000000
+      internalID: 3731150312677199399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_13
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 43
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1bc5503234adaa0800000000000000
+      internalID: -6135517724646002181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_14
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 43
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2d050c4cb78fb230800000000000000
+      internalID: 3656790665247132973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_15
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 43
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf94b7c091b059130800000000000000
+      internalID: 3572774081599851004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_16
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 11
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d41a097745bee4850800000000000000
+      internalID: 6363282071536836941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_17
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 11
+        width: 20
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74592cf542ada9a00800000000000000
+      internalID: 764162936552985927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_18
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 11
+        width: 21
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 776727488f30c4f30800000000000000
+      internalID: 4561024888528336503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_19
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 11
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d24f8cc624942c0800000000000000
+      internalID: -4446950122056307318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_character_20
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 12
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52af9570948e2b190800000000000000
+      internalID: -7948034992001910235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d1f4eedf730486e448d74bedb5ed07b5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GDG_character_0: -8554395588893087229
+      GDG_character_1: 4681871484550909081
+      GDG_character_10: -9175680969548509352
+      GDG_character_11: 8101084721188917515
+      GDG_character_12: 3731150312677199399
+      GDG_character_13: -6135517724646002181
+      GDG_character_14: 3656790665247132973
+      GDG_character_15: 3572774081599851004
+      GDG_character_16: 6363282071536836941
+      GDG_character_17: 764162936552985927
+      GDG_character_18: 4561024888528336503
+      GDG_character_19: -4446950122056307318
+      GDG_character_2: 1055103533958923160
+      GDG_character_20: -7948034992001910235
+      GDG_character_3: -1080452800917162949
+      GDG_character_4: -8105162276365635610
+      GDG_character_5: 137488919890772604
+      GDG_character_6: -3651726149110824577
+      GDG_character_7: -3976305208925328346
+      GDG_character_8: -1038644646586606390
+      GDG_character_9: 5694338337720267101
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
