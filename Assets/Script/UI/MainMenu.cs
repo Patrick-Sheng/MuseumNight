@@ -19,6 +19,8 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartClicked()
     {
+        // Only request story intro for a fresh start flow.
+        GameStartContext.SetStoryIntroForNextLoad(!SaveSystem.HasSave());
         SceneManager.LoadScene(gameSceneName);
     }
 

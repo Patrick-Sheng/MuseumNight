@@ -43,11 +43,13 @@ namespace DialogueSystem.Runtime.Narration
         private const string PathSeparator = ".";
 
         private DialogueMonoBehaviour.DialogueEvent[] _events;
+        private readonly HashSet<string> _missingCharacterWarnings = new HashSet<string>();
 
         
         public void BeginNarration(DialogueContainer narrativeToLoad, DialogueMonoBehaviour.DialogueEvent[] dialogueEvents)
         {
             _events = dialogueEvents;
+            _missingCharacterWarnings.Clear();
             _narrative = narrativeLoader.LoadNarrative(narrativeToLoad);
 
             if (_narrative == null)
@@ -182,6 +184,15 @@ namespace DialogueSystem.Runtime.Narration
         private CharacterData GetCharacter(string characterName)
         {
             var character = _narrative.FindCharacter(characterName);
+            if (character == null && !string.IsNullOrWhiteSpace(characterName))
+            {
+                var key = characterName.Trim();
+                if (_missingCharacterWarnings.Add(key))
+                {
+                    LogHandler.Warn($"Character '{key}' was not found in this DialogueContainer. Falling back to default character.");
+                }
+            }
+
             return character ? character : defaultCharacterData;
         }
 

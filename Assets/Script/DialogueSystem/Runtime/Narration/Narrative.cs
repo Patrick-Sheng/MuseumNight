@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using DialogueSystem.Data;
 
 namespace DialogueSystem.Runtime.Narration
@@ -17,7 +18,19 @@ namespace DialogueSystem.Runtime.Narration
     
         public void AddNarrativeNode(NarrativeNode node) => NarrativeNodes.Add(node);
     
-        public CharacterData FindCharacter(string characterName) => Characters.Find(character => character.CharacterName == characterName);
+        public CharacterData FindCharacter(string characterName)
+        {
+            if (string.IsNullOrWhiteSpace(characterName) || Characters == null)
+            {
+                return null;
+            }
+
+            var normalizedName = characterName.Trim();
+            return Characters.Find(character =>
+                character != null &&
+                !string.IsNullOrWhiteSpace(character.CharacterName) &&
+                string.Equals(character.CharacterName.Trim(), normalizedName, StringComparison.OrdinalIgnoreCase));
+        }
         
         public NarrativeNode FindStartNodeFromPath(string pathID)
         {

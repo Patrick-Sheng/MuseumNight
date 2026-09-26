@@ -1,4 +1,6 @@
 using System.Collections;
+using DialogueSystem.Data;
+using DialogueSystem.Runtime.Narration;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,6 +13,12 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.4f;
     [SerializeField] private string startingSceneName;
     [SerializeField] private string startingEntryId = "1";
+
+    [Header("Story Intro")]
+    [SerializeField] private bool playStoryIntroOnFreshStart = true;
+    [SerializeField] private NarrativeController storyNarrativeController;
+    [SerializeField] private DialogueContainer storyIntroDialogue;
+    [SerializeField] private GameObject storyIntroBlackBackground;
 
     private string currentSceneName;
     private bool isTransitioning = false;
@@ -157,6 +165,9 @@ public class RoomManager : MonoBehaviour
 
         yield return StartCoroutine(FadeTo(0f));
 
+        if (ShouldPlayStoryIntro(loadedSave))
+            yield return StartCoroutine(PlayStoryIntroRoutine());
+
         if (movement != null) movement.enabled = restorePlayerControl || movementWasEnabled;
         if (interaction != null) interaction.enabled = restorePlayerControl || interactionWasEnabled;
         if (body != null) body.simulated = restorePlayerControl || bodyWasSimulated;
@@ -198,5 +209,50 @@ public class RoomManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private bool ShouldPlayStoryIntro(SaveData loadedSave)
+    {
+        if (!playStoryIntroOnFreshStart || loadedSave != null)
+            return false;
+
+        return GameStartContext.ConsumeStoryIntroRequest();
+    }
+
+    private IEnumerator PlayStoryIntroRoutine()
+    {
+        if (storyIntroDialogue == null)
+            yield break;
+
+        SetStoryIntroBackgroundActive(true);
+
+        if (storyNarrativeController == null)
+            storyNarrativeController = FindFirstObjectByType<NarrativeController>();
+
+        if (storyNarrativeController == null)
+        {
+            Debug.LogWarning("RoomManager: Story intro is configured but no NarrativeController was found.", this);
+            SetStoryIntroBackgroundActive(false);
+            yield break;
+        }
+
+        if (storyNarrativeController.IsNarrating)
+        {
+            SetStoryIntroBackgroundActive(false);
+            yield break;
+        }
+
+        storyNarrativeController.BeginNarration(storyIntroDialogue, null);
+
+        while (storyNarrativeController != null && storyNarrativeController.IsNarrating)
+            yield return null;
+
+        SetStoryIntroBackgroundActive(false);
+    }
+
+    private void SetStoryIntroBackgroundActive(bool active)
+    {
+        if (storyIntroBlackBackground != null)
+            storyIntroBlackBackground.SetActive(active);
     }
 }
