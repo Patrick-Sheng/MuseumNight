@@ -4196,6 +4196,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 386462239}
     - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.66
       objectReference: {fileID: 0}
@@ -4651,11 +4659,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5202252744630771258, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5202252744630771258, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5352411067309302286, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_Sprite
@@ -4709,6 +4717,14 @@ PrefabInstance:
       propertyPath: 'waypoints.Array.data[1]'
       value: 
       objectReference: {fileID: 500411640}
+    - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4359099432207887428, guid: 30ecb9c35ec1a2641a33d0c094cb448c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.92
