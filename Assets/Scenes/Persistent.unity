@@ -1955,7 +1955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 141049292}
   fadeDuration: 0.4
-  startingSceneName: Room3
+  startingSceneName: Room2
   startingEntryId: 1
 --- !u!4 &2146165969
 Transform:
@@ -2224,7 +2224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5006044442321517072, guid: 4befb6c7dffc0ee479a01bdccc0b6004, type: 3}
+  m_Sprite: {fileID: 693595533508975979, guid: aff3d3ba8e432744189268b4aa110188, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2250,8 +2250,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000097275, y: -0.0016022}
-  m_SizeDelta: {x: 996.41, y: 555.44}
+  m_AnchoredPosition: {x: -0.021072, y: -0.47748}
+  m_SizeDelta: {x: 886.4488, y: 798.8367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4906174520364563774
 CanvasRenderer:
@@ -2277,8 +2277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0211, y: -0.4775}
-  m_SizeDelta: {x: 837.485, y: 400.4445}
+  m_AnchoredPosition: {x: -0.0211, y: 0.1403}
+  m_SizeDelta: {x: 837.485, y: 747.6248}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5442102746881437214
 MonoBehaviour:
