@@ -3570,6 +3570,10 @@ PrefabInstance:
       propertyPath: closeUpSprite
       value: 
       objectReference: {fileID: 6985810002543488068, guid: 3c4e67675e23dbb409d86f11d43ddeeb, type: 3}
+    - target: {fileID: 8241957302649113103, guid: 168f764f2a7eed74dbf095b48d07fe4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
