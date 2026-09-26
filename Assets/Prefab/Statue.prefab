@@ -81,6 +81,7 @@ MonoBehaviour:
   columns: 10
   gridSize: 1
   statueBody: {fileID: 8241957302649113021}
+  homeIndex: 4
 --- !u!1 &8241957302649113020
 GameObject:
   m_ObjectHideFlags: 0

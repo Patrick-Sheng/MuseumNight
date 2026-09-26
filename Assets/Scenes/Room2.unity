@@ -3238,9 +3238,9 @@ MonoBehaviour:
   - slider: {fileID: 850000001}
     targetIndex: 6
   - slider: {fileID: 850000002}
-    targetIndex: 0
+    targetIndex: 9
   - slider: {fileID: 850000003}
-    targetIndex: 0
+    targetIndex: 8
   - slider: {fileID: 850000004}
     targetIndex: 0
   doorTransition: {fileID: 1733156117}

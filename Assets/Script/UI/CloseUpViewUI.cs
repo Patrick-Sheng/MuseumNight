@@ -17,14 +17,6 @@ public class CloseUpViewUI : MonoBehaviour
             panel.SetActive(false);
     }
 
-    void Update()
-    {
-        if (isOpen && Input.GetKeyDown(KeyCode.Escape))
-        {
-            Hide();
-        }
-    }
-
     public void Show(Sprite sprite)
     {
         if (panel == null) return;

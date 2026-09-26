@@ -11,7 +11,10 @@ public class PlayerInteract : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            currentInteractable?.Interact();
+            if (CloseUpViewUI.Instance != null && CloseUpViewUI.Instance.IsOpen)
+                CloseUpViewUI.Instance.Hide();
+            else
+                currentInteractable?.Interact();
         }
     }
 
