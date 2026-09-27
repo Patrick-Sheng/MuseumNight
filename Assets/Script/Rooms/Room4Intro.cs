@@ -1,4 +1,6 @@
 using System.Collections;
+using DialogueSystem.Data;
+using DialogueSystem.Runtime.Narration;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -12,6 +14,10 @@ public class Room4Intro : MonoBehaviour
     [SerializeField] private Room4CameraZoom roomCamera;
     [SerializeField] private CanvasGroup borders;
     [SerializeField] private Room4Outcome outcome;
+    [Header("Dialogue")]
+    [SerializeField] private NarrativeController narrativeController;
+    [SerializeField] private DialogueContainer middleDialogue;
+    [SerializeField] private DialogueContainer medusaRevealDialogue;
     [SerializeField, Min(0.1f)] private float walkSpeed = 2f;
     [SerializeField, Min(0f)] private float statuePause = 0.8f;
     [SerializeField, Min(0f)] private float revealTime = 10f;
@@ -88,6 +94,9 @@ public class Room4Intro : MonoBehaviour
         introDirector.Play();
         yield return MoveTo(player.transform, walkUp.position);
         SetWalking(Vector2.zero);
+        PauseTimeline();
+        yield return PlayDialogue(middleDialogue);
+        ResumeTimeline();
         yield return new WaitForSeconds(statuePause);
         yield return MoveTo(player.transform, walkLeft.position);
         SetWalking(Vector2.zero);
@@ -98,10 +107,50 @@ public class Room4Intro : MonoBehaviour
         roomCamera.RevealRoom();
         yield return FadeBorders();
 
+        // Play the reveal dialogue immediately after Medusa is visible.
+        PauseTimeline();
+        yield return PlayDialogue(medusaRevealDialogue);
+        ResumeTimeline();
+
         while (introDirector != null && introDirector.time < introDirector.duration - 0.02)
             yield return null;
 
         outcome.PlayOutcome();
+    }
+
+    private IEnumerator PlayDialogue(DialogueContainer dialogue)
+    {
+        if (dialogue == null)
+            yield break;
+
+        if (narrativeController == null)
+            narrativeController = FindFirstObjectByType<NarrativeController>();
+
+        if (narrativeController == null)
+        {
+            Debug.LogWarning("Room4Intro: dialogue is assigned but no NarrativeController was found.", this);
+            yield break;
+        }
+
+        while (narrativeController.IsNarrating)
+            yield return null;
+
+        narrativeController.BeginNarration(dialogue, null);
+
+        while (narrativeController != null && narrativeController.IsNarrating)
+            yield return null;
+    }
+
+    private void PauseTimeline()
+    {
+        if (introDirector != null && introDirector.state == PlayState.Playing)
+            introDirector.Pause();
+    }
+
+    private void ResumeTimeline()
+    {
+        if (introDirector != null && introDirector.state == PlayState.Paused)
+            introDirector.Play();
     }
 
     private IEnumerator FadeBorders()
