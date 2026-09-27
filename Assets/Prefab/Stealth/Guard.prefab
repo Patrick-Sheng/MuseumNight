@@ -225,6 +225,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  routeRoot: {fileID: 0}
   moveSpeed: 2
   turnSpeed: 180
   lookDuration: 3
@@ -358,3 +359,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   logDetection: 1
+  useGradientCone: 0
+  coneColor: {r: 1, g: 0.04, b: 0.02, a: 1}
+  coneIntensity: 2
+  innerAngleRatio: 0.5
+  coneFalloff: 0.2
