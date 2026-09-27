@@ -19,6 +19,8 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private NarrativeController storyNarrativeController;
     [SerializeField] private DialogueContainer storyIntroDialogue;
     [SerializeField] private GameObject storyIntroBlackBackground;
+    [SerializeField] private float storyIntroBackgroundFadeOutDuration = 0.35f;
+    [SerializeField] private CanvasGroup storyIntroBackgroundCanvasGroup;
 
     private string currentSceneName;
     private bool isTransitioning = false;
@@ -234,13 +236,13 @@ public class RoomManager : MonoBehaviour
         if (storyNarrativeController == null)
         {
             Debug.LogWarning("RoomManager: Story intro is configured but no NarrativeController was found.", this);
-            SetStoryIntroBackgroundActive(false);
+            yield return StartCoroutine(HideStoryIntroBackgroundRoutine());
             yield break;
         }
 
         if (storyNarrativeController.IsNarrating)
         {
-            SetStoryIntroBackgroundActive(false);
+            yield return StartCoroutine(HideStoryIntroBackgroundRoutine());
             yield break;
         }
 
@@ -249,12 +251,40 @@ public class RoomManager : MonoBehaviour
         while (storyNarrativeController != null && storyNarrativeController.IsNarrating)
             yield return null;
 
-        SetStoryIntroBackgroundActive(false);
+        yield return StartCoroutine(HideStoryIntroBackgroundRoutine());
     }
 
     private void SetStoryIntroBackgroundActive(bool active)
     {
+        if (active && storyIntroBackgroundCanvasGroup != null)
+            storyIntroBackgroundCanvasGroup.alpha = 1f;
+
         if (storyIntroBlackBackground != null)
             storyIntroBlackBackground.SetActive(active);
+    }
+
+    private IEnumerator HideStoryIntroBackgroundRoutine()
+    {
+        if (storyIntroBlackBackground == null)
+            yield break;
+
+        if (storyIntroBackgroundCanvasGroup == null || storyIntroBackgroundFadeOutDuration <= 0f)
+        {
+            storyIntroBlackBackground.SetActive(false);
+            yield break;
+        }
+
+        float startAlpha = storyIntroBackgroundCanvasGroup.alpha;
+        float t = 0f;
+        while (t < storyIntroBackgroundFadeOutDuration)
+        {
+            t += Time.unscaledDeltaTime;
+            float normalized = Mathf.Clamp01(t / storyIntroBackgroundFadeOutDuration);
+            storyIntroBackgroundCanvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, normalized);
+            yield return null;
+        }
+
+        storyIntroBackgroundCanvasGroup.alpha = 0f;
+        storyIntroBlackBackground.SetActive(false);
     }
 }
