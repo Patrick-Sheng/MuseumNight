@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlatformerPlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForce = 8f;
+    [SerializeField] float jumpForce = 13f;
 
     Rigidbody2D rb;
     Animator animator;

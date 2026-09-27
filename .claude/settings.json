@@ -3,7 +3,10 @@
     "allow": [
       "Bash(powershell -Command \"[guid]::NewGuid\\(\\).ToString\\('N'\\)\")",
       "Bash(powershell -Command \"Get-Content -Tail 15 'c:\\\\Users\\\\Patrick Sheng\\\\Documents\\\\Unity game\\\\MuseumNight\\\\Assets\\\\Scenes\\\\Room2.unity'\")",
-      "Bash(powershell -Command \"\\(Get-Content 'c:\\\\Users\\\\Patrick Sheng\\\\Documents\\\\Unity game\\\\MuseumNight\\\\Assets\\\\Scenes\\\\Room2.unity'\\).Count\")"
+      "Bash(powershell -Command \"\\(Get-Content 'c:\\\\Users\\\\Patrick Sheng\\\\Documents\\\\Unity game\\\\MuseumNight\\\\Assets\\\\Scenes\\\\Room2.unity'\\).Count\")",
+      "Bash(powershell -Command \"1..3 | ForEach-Object { [guid]::NewGuid\\(\\).ToString\\('N'\\) }\")",
+      "Bash(powershell -Command \"\\(Get-Content 'c:\\\\Users\\\\Patrick Sheng\\\\Documents\\\\Unity game\\\\MuseumNight\\\\Assets\\\\Scenes\\\\Room3.unity'\\).Count\")",
+      "Bash(powershell -Command \"1..4 | ForEach-Object { [guid]::NewGuid\\(\\).ToString\\('N'\\) }\")"
     ]
   }
 }
