@@ -39,7 +39,7 @@ public class Room4EndingVisuals : MonoBehaviour
     private SpriteRenderer incomingBeam;
     private SpriteRenderer reflectedBeam;
 
-    public void Play(bool win)
+    public void Play(int shardCount)
     {
         if (medusa == null || emptyMirror == null || mirrorOne == null || mirrorTwo == null ||
             mirrorThree == null || beamSprite == null || medusaStone == null || playerStone == null)
@@ -58,10 +58,10 @@ public class Room4EndingVisuals : MonoBehaviour
         playerAnimator = player.GetComponent<Animator>();
         originalPlayerSprite = playerRenderer.sprite;
         originalPlayerScale = playerRenderer.transform.localScale;
-        StartCoroutine(PlaySequence(win));
+        StartCoroutine(PlaySequence(Mathf.Clamp(shardCount, 0, 3)));
     }
 
-    private IEnumerator PlaySequence(bool win)
+    private IEnumerator PlaySequence(int shardCount)
     {
         Vector3 playerHit = playerRenderer.transform.position + (Vector3)playerHitOffset;
         Vector3 medusaOrigin = medusa.transform.position + (Vector3)medusaBeamOffset;
@@ -75,12 +75,18 @@ public class Room4EndingVisuals : MonoBehaviour
         mirrorRenderer.transform.position = mirrorPosition;
         mirrorRenderer.transform.localScale = Vector3.one * mirrorScale;
 
-        if (win)
+        if (shardCount >= 1)
         {
             yield return new WaitForSeconds(mirrorStageTime);
             mirrorRenderer.sprite = mirrorOne;
+        }
+        if (shardCount >= 2)
+        {
             yield return new WaitForSeconds(mirrorStageTime);
             mirrorRenderer.sprite = mirrorTwo;
+        }
+        if (shardCount == 3)
+        {
             yield return new WaitForSeconds(mirrorStageTime);
             mirrorRenderer.sprite = mirrorThree;
 

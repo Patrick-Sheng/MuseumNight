@@ -8,9 +8,9 @@ public class Room4Outcome : MonoBehaviour
     [SerializeField] private PlayableDirector lossDirector;
     [SerializeField] private Room4EndingVisuals endingVisuals;
 
-    [Header("Preview before shard pickups are placed")]
+    [Header("Preview shard outcomes")]
     [SerializeField] private bool usePreviewResult;
-    [SerializeField] private bool previewHasAllThree;
+    [SerializeField, Range(0, 3)] private int previewShardCount;
 
     private bool played;
 
@@ -24,14 +24,15 @@ public class Room4Outcome : MonoBehaviour
         }
 
         MirrorShardProgress progress = usePreviewResult ? null : MirrorShardProgress.GetOrCreate();
-        bool hasAllThree = usePreviewResult ? previewHasAllThree : progress != null && progress.HasAllThree;
+        int shardCount = usePreviewResult ? previewShardCount : (progress != null ? progress.CollectedCount : 0);
+        bool hasAllThree = shardCount == 3;
         PlayableDirector selected = hasAllThree ? winDirector : lossDirector;
 
         played = true;
         selected.time = 0;
         selected.Play();
-        endingVisuals.Play(hasAllThree);
+        endingVisuals.Play(shardCount);
         Debug.Log("Room 4 outcome: " + (hasAllThree ? "WIN" : "LOSS")
-            + (usePreviewResult ? " (preview)" : " (" + (progress != null ? progress.CollectedCount : 0) + "/3 shards)"), this);
+            + " (" + shardCount + "/3 shards" + (usePreviewResult ? ", preview" : "") + ")", this);
     }
 }

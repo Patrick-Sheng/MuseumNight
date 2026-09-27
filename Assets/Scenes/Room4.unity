@@ -3001,7 +3001,7 @@ MonoBehaviour:
   lossDirector: {fileID: 394600219}
   endingVisuals: {fileID: 1833937369}
   usePreviewResult: 0
-  previewHasAllThree: 0
+  previewShardCount: 0
 --- !u!114 &1833937369
 MonoBehaviour:
   m_ObjectHideFlags: 0
