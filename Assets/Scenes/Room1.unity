@@ -4798,7 +4798,7 @@ MonoBehaviour:
   retryEntryId: 1
   playEntryDialogueOnRoomStart: 1
   narrativeController: {fileID: 0}
-  roomEntryDialogue: {fileID: 0}
+  roomEntryDialogue: {fileID: 11400000, guid: 24e0b2c98af00ad4eb3554eebf8bf822, type: 2}
 --- !u!4 &766209859
 Transform:
   m_ObjectHideFlags: 0
@@ -5254,6 +5254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSceneName: Room2
   targetEntryId: 1
+  restorePlayerControl: 0
+  destinationMode: 0
 --- !u!4 &1265854025
 Transform:
   m_ObjectHideFlags: 0
@@ -5286,7 +5288,7 @@ MonoBehaviour:
   targetSceneName: Room2
   targetEntryId: 1
   narrativeController: {fileID: 0}
-  blockedExitDialogue: {fileID: 0}
+  blockedExitDialogue: {fileID: 11400000, guid: 0e12f6e0ac3b110498395d3c3d0f3520, type: 2}
 --- !u!1 &1319060217
 GameObject:
   m_ObjectHideFlags: 0
