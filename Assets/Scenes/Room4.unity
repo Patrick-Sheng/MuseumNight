@@ -2849,6 +2849,7 @@ MonoBehaviour:
   targetEntryId: 2
   restorePlayerControl: 0
   destinationMode: 0
+  blockReturnToPreviousRoom: 1
 --- !u!4 &1265854025
 Transform:
   m_ObjectHideFlags: 0
@@ -3456,8 +3457,12 @@ MonoBehaviour:
   winDirector: {fileID: 91423000}
   lossDirector: {fileID: 394600219}
   endingVisuals: {fileID: 1833937369}
-  usePreviewResult: 0
-  previewShardCount: 0
+  winImage: {fileID: 4846896553144377880, guid: bf7f6f5a30a84914787b19dcfbb749d5, type: 3}
+  lossImage: {fileID: -5371971383881768131, guid: b75745f7df6fd72459b935a0983ff9fa, type: 3}
+  endingHoldDuration: 2
+  endingFadeDuration: 2
+  usePreviewResult: 1
+  previewShardCount: 3
 --- !u!114 &1833937369
 MonoBehaviour:
   m_ObjectHideFlags: 0
