@@ -1,10 +1,15 @@
 using System.Collections.Generic;
+using System.Collections;
+using DialogueSystem.Data;
+using DialogueSystem.Runtime.Narration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>Owns stealth, pickup/escape, caught, and completed flow for the room.</summary>
 public class StealthRoomController : MonoBehaviour
 {
+    private static readonly HashSet<string> PlayedEntryDialogueKeys = new HashSet<string>();
+
     [Tooltip("Optional override. When empty, finds PlayerMovement on the active Player-tagged object once in Awake.")]
     [SerializeField] private PlayerMovement playerMovement;
     // Only guards belonging to this room scene are managed, including initially inactive guards.
@@ -19,11 +24,17 @@ public class StealthRoomController : MonoBehaviour
     [Header("Persistent room retry")]
     [SerializeField] private string retryEntryId = "1";
 
+    [Header("Room Entry Dialogue")]
+    [SerializeField] private bool playEntryDialogueOnRoomStart = true;
+    [SerializeField] private NarrativeController narrativeController;
+    [SerializeField] private DialogueContainer roomEntryDialogue;
+
     private Rigidbody2D playerBody;
     private PlayerInteract playerInteraction;
     private bool restarting;
     private string retryError;
     private readonly List<ChaseEnemy> chaseEnemies = new List<ChaseEnemy>();
+    private bool entryDialogueStarted;
 
     public bool IsCaught { get; private set; }
     public bool IsCompleted { get; private set; }
@@ -88,12 +99,55 @@ public class StealthRoomController : MonoBehaviour
     {
         foreach (GuardVision vision in guardVisions)
             if (vision != null) vision.AddDetectionListener(CatchPlayer);
+
+        if (!entryDialogueStarted)
+            StartCoroutine(PlayEntryDialogueWhenReady());
     }
 
     private void OnDisable()
     {
         foreach (GuardVision vision in guardVisions)
             if (vision != null) vision.RemoveDetectionListener(CatchPlayer);
+    }
+
+    private IEnumerator PlayEntryDialogueWhenReady()
+    {
+        if (!playEntryDialogueOnRoomStart || roomEntryDialogue == null)
+            yield break;
+
+        string dialogueKey = GetEntryDialogueKey();
+        if (PlayedEntryDialogueKeys.Contains(dialogueKey))
+            yield break;
+
+        entryDialogueStarted = true;
+
+        while (isActiveAndEnabled && (PauseMenu.IsPaused || (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning)))
+            yield return null;
+
+        if (!isActiveAndEnabled || IsCaught || IsCompleted)
+            yield break;
+
+        if (narrativeController == null)
+            narrativeController = FindFirstObjectByType<NarrativeController>();
+
+        if (narrativeController == null)
+        {
+            Debug.LogWarning("StealthRoomController: Room entry dialogue is set, but no NarrativeController was found.", this);
+            yield break;
+        }
+
+        if (!narrativeController.IsNarrating)
+        {
+            PlayedEntryDialogueKeys.Add(dialogueKey);
+            narrativeController.BeginNarration(roomEntryDialogue, null);
+        }
+    }
+
+    private string GetEntryDialogueKey()
+    {
+        string sceneKey = string.IsNullOrWhiteSpace(gameObject.scene.path) ? gameObject.scene.name : gameObject.scene.path;
+        string dialogueKey = roomEntryDialogue != null ? roomEntryDialogue.name : "None";
+        return sceneKey + "::" + dialogueKey;
     }
 
     private void StopGuards()

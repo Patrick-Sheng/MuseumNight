@@ -21,6 +21,7 @@ namespace DialogueSystem.Runtime.Narration
         
         [Header("Options")]
         [SerializeField] private bool resetNarrativeOnLoad;
+        [SerializeField] private bool lockPlayerControlWhileNarrating = true;
 
         [SerializeField] private UnityEvent onNarrativeStart;
         [SerializeField] private UnityEvent onNarrativeEnd;
@@ -44,6 +45,11 @@ namespace DialogueSystem.Runtime.Narration
 
         private DialogueMonoBehaviour.DialogueEvent[] _events;
         private readonly HashSet<string> _missingCharacterWarnings = new HashSet<string>();
+        private PlayerMovement _lockedPlayerMovement;
+        private PlayerInteract _lockedPlayerInteract;
+        private Animator _lockedPlayerAnimator;
+        private bool _movementWasEnabled;
+        private bool _interactWasEnabled;
 
         
         public void BeginNarration(DialogueContainer narrativeToLoad, DialogueMonoBehaviour.DialogueEvent[] dialogueEvents)
@@ -70,6 +76,7 @@ namespace DialogueSystem.Runtime.Narration
         {
             onNarrativeStart?.Invoke();
             IsNarrating = true;
+            LockPlayerControl();
         
             narrativeUI.SetUIActive(true);
             narrativeUI.InitializeUI();
@@ -250,6 +257,7 @@ namespace DialogueSystem.Runtime.Narration
         {
             narrativeUI.SetUIActive(false);
             IsNarrating = false;
+            UnlockPlayerControl();
 
             narrativeLoader.SaveNarrativePath(NarrativePathID, _currentNarrative?.IsTipNarrativeNode() ?? false);
         
@@ -261,6 +269,57 @@ namespace DialogueSystem.Runtime.Narration
         {
             LogHandler.Log("Dialogue finished!", LogHandler.Color.Blue);
             LogHandler.Log($"Final narrative path ID: {NarrativePathID}", LogHandler.Color.Blue);
+        }
+
+        private void LockPlayerControl()
+        {
+            if (!lockPlayerControlWhileNarrating)
+                return;
+
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+                return;
+
+            _lockedPlayerMovement = player.GetComponent<PlayerMovement>();
+            _lockedPlayerInteract = player.GetComponent<PlayerInteract>();
+            _lockedPlayerAnimator = player.GetComponent<Animator>();
+
+            if (_lockedPlayerMovement != null)
+            {
+                _movementWasEnabled = _lockedPlayerMovement.enabled;
+                _lockedPlayerMovement.enabled = false;
+                _lockedPlayerMovement.isMoving = false;
+            }
+
+            if (_lockedPlayerInteract != null)
+            {
+                _interactWasEnabled = _lockedPlayerInteract.enabled;
+                _lockedPlayerInteract.ClearInteraction();
+                _lockedPlayerInteract.enabled = false;
+            }
+
+            Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+            if (body != null)
+                body.linearVelocity = Vector2.zero;
+
+            if (_lockedPlayerAnimator != null)
+                _lockedPlayerAnimator.SetBool("isMoving", false);
+        }
+
+        private void UnlockPlayerControl()
+        {
+            if (!lockPlayerControlWhileNarrating)
+                return;
+
+            if (_lockedPlayerMovement != null)
+                _lockedPlayerMovement.enabled = _movementWasEnabled;
+
+            if (_lockedPlayerInteract != null)
+                _lockedPlayerInteract.enabled = _interactWasEnabled;
+
+            _lockedPlayerMovement = null;
+            _lockedPlayerInteract = null;
+            _lockedPlayerAnimator = null;
         }
     }
 }
