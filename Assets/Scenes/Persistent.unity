@@ -242,7 +242,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0023758411, y: 0.048563614}
+  m_Offset: {x: -0.03162068, y: 0.19718246}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -252,7 +252,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0672517, y: 0.12420365}
+  m_Size: {x: 1.008762, y: 0.42144135}
   m_EdgeRadius: 0
 --- !u!50 &58091895
 Rigidbody2D:
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 141049292}
   fadeDuration: 0.4
-  startingSceneName: Room1
+  startingSceneName: Room3
   startingEntryId: 1
   playStoryIntroOnFreshStart: 1
   storyNarrativeController: {fileID: 1520340975}
