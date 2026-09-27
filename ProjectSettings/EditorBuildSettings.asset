@@ -23,9 +23,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Dev/StealthTest.unity
     guid: fb6acc569b1137b48bf082a5f40b1153
+  - enabled: 1
+    path: Assets/Scenes/Room3.unity
+    guid: 2fae334311190b941830585e0ffc2659
+  - enabled: 1
+    path: Assets/Scenes/Room3Platformer.unity
+    guid: 6c5194b3cf0ea99fdd2be70412ff6dc0
   - enabled: 0
     path: Assets/Scenes/Dev/NewMap.unity
     guid: 44c5f6a5ba8310e4990d8dec9d2c6770
+  - enabled: 1
+    path: Assets/Scenes/Room4.unity
+    guid: 320a3d7a7ec7ede47b2272848b78b2d7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
