@@ -4,11 +4,11 @@ public class DarkRoomZone : MonoBehaviour
 {
     void OnEnable()
     {
-        RoomLightingManager.Instance?.EnterDarkRoom();
+        RoomLightingManager.Instance?.EnterDarkRoom(this);
     }
 
     void OnDisable()
     {
-        RoomLightingManager.Instance?.ExitDarkRoom();
+        RoomLightingManager.Instance?.ExitDarkRoom(this);
     }
 }
