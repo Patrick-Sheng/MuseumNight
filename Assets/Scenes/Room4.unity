@@ -2849,6 +2849,7 @@ MonoBehaviour:
   targetEntryId: 2
   restorePlayerControl: 0
   destinationMode: 0
+  blockReturnToPreviousRoom: 1
 --- !u!4 &1265854025
 Transform:
   m_ObjectHideFlags: 0
@@ -3437,6 +3438,9 @@ MonoBehaviour:
   roomCamera: {fileID: 6000000104}
   borders: {fileID: 558261763}
   outcome: {fileID: 1833937368}
+  narrativeController: {fileID: 0}
+  middleDialogue: {fileID: 11400000, guid: fc663f0c8f32e334ea904e76dd375302, type: 2}
+  medusaRevealDialogue: {fileID: 11400000, guid: 44cb50109e87feb45a72fb2a1732417f, type: 2}
   walkSpeed: 2
   statuePause: 0.8
   revealTime: 6

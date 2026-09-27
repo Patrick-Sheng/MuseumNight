@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: Room4Second
+  m_EditorClassIdentifier: 
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 6ea28172-46b9-4602-b208-f68639b86efc
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: 31413e07-8963-48f2-b9e4-d37c5b430d16
+  - <BaseNodeGuid>k__BackingField: 31413e07-8963-48f2-b9e4-d37c5b430d16
+    <PortName>k__BackingField: Output
+    <TargetNodeGuid>k__BackingField: 85dcac82-b7f2-4e92-b0ab-d068e4c669ba
+  <DialogueNodeData>k__BackingField:
+  - guid: 6ea28172-46b9-4602-b208-f68639b86efc
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 31413e07-8963-48f2-b9e4-d37c5b430d16
+    dialogue:
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: The familiar stench of a mortal?
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: At long last, my wait is over.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: Not like time had any meaning in this place. Ha!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: Its voice is forks scraping on dineer plates.
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: "Escape is futile. I will pinpoint where you are
+        from the vibrations alone\u2026oh?"
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 227, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: 85dcac82-b7f2-4e92-b0ab-d068e4c669ba
+    dialogue:
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: 'I was sent to this temporal space to immortalise
+        people throughout time. '
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: Flesh and blood are weak, but stone can stand forever.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: You wish not to be remembered??
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: 
+      <Content>k__BackingField: Your heart burns in fear and rage.
+      <HideCharacter>k__BackingField: 1
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Main
+      <Content>k__BackingField: NO! I alone should have the freedom to decide that
+        for myself!
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Main
+      <Content>k__BackingField: "I want to live on. I don\u2019t care if my body
+        eventually decomposes into nothing!"
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Medusa
+      <Content>k__BackingField: You never understand, every single time. And like
+        before, I shall crush you.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 492, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField:
+  - {fileID: 11400000, guid: efd224a5387b92549b100700935d06a5, type: 2}
+  - {fileID: 11400000, guid: 91f2765e1a1e3b746959be467cbdfaac, type: 2}
