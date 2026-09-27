@@ -2464,6 +2464,10 @@ PrefabInstance:
       propertyPath: testAnimationType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3636829067758995821, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
+      propertyPath: testAnimationInEditor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3908730088742145279, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
       propertyPath: m_Resource
       value: 
@@ -2523,6 +2527,10 @@ PrefabInstance:
     - target: {fileID: 6905827484484844287, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044367008953306730, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
+      propertyPath: defaultTyperPace
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7742740613527584264, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
       propertyPath: m_Resource
