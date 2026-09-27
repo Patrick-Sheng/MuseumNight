@@ -14,6 +14,7 @@ public class Room4Outcome : MonoBehaviour
     [SerializeField] private Sprite lossImage;
     [SerializeField, Min(0f)] private float endingHoldDuration = 2f;
     [SerializeField, Min(0f)] private float endingFadeDuration = 1f;
+    [SerializeField, Min(0f)] private float blackScreenDuration = 0.5f;
 
     [Header("Preview shard outcomes")]
     [SerializeField] private bool usePreviewResult;
@@ -49,6 +50,6 @@ public class Room4Outcome : MonoBehaviour
         if (endingHoldDuration > 0f)
             yield return new WaitForSeconds(endingHoldDuration);
 
-        Room4EndingScreen.Show(resultImage, won, endingFadeDuration);
+        Room4EndingScreen.Show(resultImage, won, endingFadeDuration, blackScreenDuration);
     }
 }

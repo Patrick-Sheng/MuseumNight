@@ -3459,10 +3459,11 @@ MonoBehaviour:
   endingVisuals: {fileID: 1833937369}
   winImage: {fileID: 4846896553144377880, guid: bf7f6f5a30a84914787b19dcfbb749d5, type: 3}
   lossImage: {fileID: -5371971383881768131, guid: b75745f7df6fd72459b935a0983ff9fa, type: 3}
-  endingHoldDuration: 2
+  endingHoldDuration: 1
   endingFadeDuration: 2
-  usePreviewResult: 1
-  previewShardCount: 3
+  blackScreenDuration: 0.5
+  usePreviewResult: 0
+  previewShardCount: 0
 --- !u!114 &1833937369
 MonoBehaviour:
   m_ObjectHideFlags: 0
