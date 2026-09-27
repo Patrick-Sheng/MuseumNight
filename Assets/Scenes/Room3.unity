@@ -2132,6 +2132,12 @@ MonoBehaviour:
   fadeDuration: 0.4
   startingSceneName: 
   startingEntryId: 1
+  playStoryIntroOnFreshStart: 1
+  storyNarrativeController: {fileID: 0}
+  storyIntroDialogue: {fileID: 0}
+  storyIntroBlackBackground: {fileID: 0}
+  storyIntroBackgroundFadeOutDuration: 0.35
+  storyIntroBackgroundCanvasGroup: {fileID: 0}
 --- !u!4 &767618126
 Transform:
   m_ObjectHideFlags: 0
@@ -2346,7 +2352,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.013318419, y: -0.013317347}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -2356,7 +2362,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0266368, y: 0.97336435}
   m_EdgeRadius: 0
 --- !u!114 &1265854024
 MonoBehaviour:
@@ -2383,7 +2389,7 @@ Transform:
   m_GameObject: {fileID: 1265854020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36, y: -6.05, z: 0}
+  m_LocalPosition: {x: 0.57, y: -6.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2416,7 +2422,7 @@ Transform:
   m_GameObject: {fileID: 1319060217}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: -0.89, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.5, y: 7.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
