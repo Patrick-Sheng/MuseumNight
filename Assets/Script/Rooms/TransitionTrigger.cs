@@ -8,6 +8,27 @@ public class TransitionTrigger : MonoBehaviour
     [SerializeField] private string targetEntryId;
     [SerializeField] private bool restorePlayerControl = false;
     [SerializeField] private PlayerMode destinationMode = PlayerMode.Unchanged;
+    [SerializeField] private bool blockReturnToPreviousRoom = true;
+
+    public bool IsTransitionAvailable()
+    {
+        if (!isActiveAndEnabled)
+            return false;
+
+        RoomManager manager = RoomManager.Instance;
+        if (manager == null)
+            return false;
+
+        if (blockReturnToPreviousRoom &&
+            !string.IsNullOrWhiteSpace(targetSceneName) &&
+            !string.IsNullOrWhiteSpace(manager.PreviousSceneName) &&
+            string.Equals(targetSceneName, manager.PreviousSceneName, System.StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        return !string.IsNullOrWhiteSpace(targetSceneName);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +37,14 @@ public class TransitionTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            RoomManager.Instance.TryGoToRoom(targetSceneName, targetEntryId, restorePlayerControl, OnArrived);
+            RoomManager manager = RoomManager.Instance;
+            if (manager == null)
+                return;
+
+            if (!IsTransitionAvailable())
+                return;
+
+            manager.TryGoToRoom(targetSceneName, targetEntryId, restorePlayerControl, OnArrived);
         }
     }
 
