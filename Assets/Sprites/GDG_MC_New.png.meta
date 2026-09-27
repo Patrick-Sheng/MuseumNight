@@ -1,0 +1,1070 @@
+fileFormatVersion: 2
+guid: 69fb934d83ce38442b8ca71fd0785230
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7847401274675067247
+    second: GDG_MC_New_0
+  - first:
+      213: -5928354492918235400
+    second: GDG_MC_New_1
+  - first:
+      213: -8144577635129128457
+    second: GDG_MC_New_2
+  - first:
+      213: -5208245265863936850
+    second: GDG_MC_New_3
+  - first:
+      213: -1410823648987188408
+    second: GDG_MC_New_4
+  - first:
+      213: -24513054944929753
+    second: GDG_MC_New_5
+  - first:
+      213: 7437649925292116467
+    second: GDG_MC_New_6
+  - first:
+      213: 5303735538958698984
+    second: GDG_MC_New_7
+  - first:
+      213: 1168930349689749311
+    second: GDG_MC_New_8
+  - first:
+      213: -7510329021554284897
+    second: GDG_MC_New_9
+  - first:
+      213: 2214864388776760506
+    second: GDG_MC_New_10
+  - first:
+      213: 3286516850578052230
+    second: GDG_MC_New_11
+  - first:
+      213: -8576133244780526203
+    second: GDG_MC_New_12
+  - first:
+      213: -3950688421794864259
+    second: GDG_MC_New_13
+  - first:
+      213: 5230051843935744948
+    second: GDG_MC_New_14
+  - first:
+      213: -1740071958641703451
+    second: GDG_MC_New_15
+  - first:
+      213: 7842643816501569964
+    second: GDG_MC_New_16
+  - first:
+      213: -594001112416159195
+    second: GDG_MC_New_17
+  - first:
+      213: -2297690314156110219
+    second: GDG_MC_New_18
+  - first:
+      213: -4712401026542924354
+    second: GDG_MC_New_19
+  - first:
+      213: -3247991721465069891
+    second: GDG_MC_New_20
+  - first:
+      213: 2048293793640109316
+    second: GDG_MC_New_21
+  - first:
+      213: -5421914272086170147
+    second: GDG_MC_New_22
+  - first:
+      213: -1187602695862016540
+    second: GDG_MC_New_23
+  - first:
+      213: -331268196290870590
+    second: GDG_MC_New_24
+  - first:
+      213: 845193583797091081
+    second: GDG_MC_New_25
+  - first:
+      213: -3587123017230538737
+    second: GDG_MC_New_26
+  - first:
+      213: 1001153745674977281
+    second: GDG_MC_New_27
+  - first:
+      213: -7060293198103899559
+    second: GDG_MC_New_28
+  - first:
+      213: -6428225856600890522
+    second: GDG_MC_New_29
+  - first:
+      213: 5752890645540860381
+    second: GDG_MC_New_30
+  - first:
+      213: -5779428591729045791
+    second: GDG_MC_New_31
+  - first:
+      213: -676613785654545509
+    second: GDG_MC_New_32
+  - first:
+      213: 912671475481496221
+    second: GDG_MC_New_33
+  - first:
+      213: -5370509205534031067
+    second: GDG_MC_New_34
+  - first:
+      213: -7629207647708871907
+    second: GDG_MC_New_35
+  - first:
+      213: -4138955951080971858
+    second: GDG_MC_New_36
+  - first:
+      213: -6892975774851565690
+    second: GDG_MC_New_37
+  - first:
+      213: 5466796080883629422
+    second: GDG_MC_New_38
+  - first:
+      213: 2530056198376752808
+    second: GDG_MC_New_39
+  - first:
+      213: 5486568351670800141
+    second: GDG_MC_New_40
+  - first:
+      213: 2808008641086878314
+    second: GDG_MC_New_41
+  - first:
+      213: 7769642415335484081
+    second: GDG_MC_New_42
+  - first:
+      213: -6648125080466563399
+    second: GDG_MC_New_43
+  - first:
+      213: 3481431351947990924
+    second: GDG_MC_New_44
+  - first:
+      213: -4179822942395603804
+    second: GDG_MC_New_45
+  - first:
+      213: -613459454448417699
+    second: GDG_MC_New_46
+  - first:
+      213: -2786106768158751903
+    second: GDG_MC_New_47
+  - first:
+      213: -7146869897977456096
+    second: GDG_MC_New_48
+  - first:
+      213: 8224558992781937849
+    second: GDG_MC_New_49
+  - first:
+      213: 5917932912586830768
+    second: GDG_MC_New_50
+  - first:
+      213: 8930598812101074598
+    second: GDG_MC_New_51
+  - first:
+      213: -7833632489364691762
+    second: GDG_MC_New_52
+  - first:
+      213: -6404016480249611354
+    second: GDG_MC_New_53
+  - first:
+      213: 8683335105696742159
+    second: GDG_MC_New_54
+  - first:
+      213: -7856971864874948241
+    second: GDG_MC_New_55
+  - first:
+      213: 1675837258169291735
+    second: GDG_MC_New_56
+  - first:
+      213: 6840886460125450508
+    second: GDG_MC_New_57
+  - first:
+      213: -2093155030076047416
+    second: GDG_MC_New_58
+  - first:
+      213: 4701634006845016928
+    second: GDG_MC_New_59
+  - first:
+      213: 2969190829300604432
+    second: GDG_MC_New_60
+  - first:
+      213: -2644042945816731233
+    second: GDG_MC_New_61
+  - first:
+      213: -662732370419718209
+    second: GDG_MC_New_62
+  - first:
+      213: 4156167402020318892
+    second: GDG_MC_New_63
+  - first:
+      213: 3630729116034188672
+    second: GDG_MC_New_64
+  - first:
+      213: -1720354089242410782
+    second: GDG_MC_New_65
+  - first:
+      213: 8391601594275384692
+    second: GDG_MC_New_66
+  - first:
+      213: 3778340242683914384
+    second: GDG_MC_New_67
+  - first:
+      213: -8541564632711986960
+    second: GDG_MC_New_68
+  - first:
+      213: 8009446260639648236
+    second: GDG_MC_New_69
+  - first:
+      213: 2054972483551795440
+    second: GDG_MC_New_70
+  - first:
+      213: 1626548935914187200
+    second: GDG_MC_New_71
+  - first:
+      213: -6031371083823951594
+    second: GDG_MC_New_72
+  - first:
+      213: 4149649920588410132
+    second: GDG_MC_New_73
+  - first:
+      213: -759425498557837867
+    second: GDG_MC_New_74
+  - first:
+      213: -1852603507077123698
+    second: GDG_MC_New_75
+  - first:
+      213: -8390002488765753822
+    second: GDG_MC_New_76
+  - first:
+      213: 5151124468435469992
+    second: GDG_MC_New_77
+  - first:
+      213: 3700537908704352179
+    second: GDG_MC_New_78
+  - first:
+      213: 5644335274121246606
+    second: GDG_MC_New_79
+  - first:
+      213: 833402375408453890
+    second: GDG_MC_New_80
+  - first:
+      213: 4792861474497115242
+    second: GDG_MC_New_81
+  - first:
+      213: -7939264842226880751
+    second: GDG_MC_New_82
+  - first:
+      213: -8128231018957089802
+    second: GDG_MC_New_83
+  - first:
+      213: -8575690771036401787
+    second: GDG_MC_New_84
+  - first:
+      213: -1975418226931989876
+    second: GDG_MC_New_85
+  - first:
+      213: -4232913438890423106
+    second: GDG_MC_New_86
+  - first:
+      213: 5036455500470284319
+    second: GDG_MC_New_87
+  - first:
+      213: 3659688863008331389
+    second: GDG_MC_New_88
+  - first:
+      213: -317536574652282841
+    second: GDG_MC_New_89
+  - first:
+      213: -2950010324440266573
+    second: GDG_MC_New_90
+  - first:
+      213: 1999584424760966571
+    second: GDG_MC_New_91
+  - first:
+      213: -5434960194796914779
+    second: GDG_MC_New_92
+  - first:
+      213: -4835235459637494446
+    second: GDG_MC_New_93
+  - first:
+      213: 1364839635007321450
+    second: GDG_MC_New_94
+  - first:
+      213: -8788486736129883355
+    second: GDG_MC_New_95
+  - first:
+      213: 2511526913099532861
+    second: GDG_MC_New_96
+  - first:
+      213: -5865659590658339411
+    second: GDG_MC_New_97
+  - first:
+      213: -6658191673564434018
+    second: GDG_MC_New_98
+  - first:
+      213: -1311439997558215644
+    second: GDG_MC_New_99
+  - first:
+      213: 1109073555461718542
+    second: GDG_MC_New_100
+  - first:
+      213: -4750630272255806042
+    second: GDG_MC_New_101
+  - first:
+      213: 4445163055787732117
+    second: GDG_MC_New_102
+  - first:
+      213: 7259904186066262043
+    second: GDG_MC_New_103
+  - first:
+      213: 6338125382934777708
+    second: GDG_MC_New_104
+  - first:
+      213: -3769979683893373433
+    second: GDG_MC_New_105
+  - first:
+      213: 5751220811382536879
+    second: GDG_MC_New_106
+  - first:
+      213: 4852614299944319372
+    second: GDG_MC_New_107
+  - first:
+      213: 6395856330788819094
+    second: GDG_MC_New_108
+  - first:
+      213: 2867334618995590837
+    second: GDG_MC_New_109
+  - first:
+      213: 7143695324212247471
+    second: GDG_MC_New_110
+  - first:
+      213: -2436300711821925597
+    second: GDG_MC_New_111
+  - first:
+      213: 5678847161684283057
+    second: GDG_MC_New_112
+  - first:
+      213: -7256386373312072149
+    second: GDG_MC_New_113
+  - first:
+      213: 5977499277538181421
+    second: GDG_MC_New_114
+  - first:
+      213: 1296347751138369643
+    second: GDG_MC_New_115
+  - first:
+      213: -7489599296427140041
+    second: GDG_MC_New_116
+  - first:
+      213: 8470631579062337569
+    second: GDG_MC_New_117
+  - first:
+      213: -1246454269618555246
+    second: GDG_MC_New_118
+  - first:
+      213: -3092782138890391098
+    second: GDG_MC_New_119
+  - first:
+      213: 5953217335918064371
+    second: GDG_MC_New_120
+  - first:
+      213: 2303399774195794540
+    second: GDG_MC_New_121
+  - first:
+      213: -9015983344367744962
+    second: GDG_MC_New_122
+  - first:
+      213: -7066368466874091864
+    second: GDG_MC_New_123
+  - first:
+      213: -2428817482461336519
+    second: GDG_MC_New_124
+  - first:
+      213: 2192926367204719170
+    second: GDG_MC_New_125
+  - first:
+      213: -5502783048559606153
+    second: GDG_MC_New_126
+  - first:
+      213: -3236318875306488516
+    second: GDG_MC_New_127
+  - first:
+      213: 6443250680492375950
+    second: GDG_MC_New_128
+  - first:
+      213: -4946572288623517216
+    second: GDG_MC_New_129
+  - first:
+      213: 4373469264215686514
+    second: GDG_MC_New_130
+  - first:
+      213: 126428091451764172
+    second: GDG_MC_New_131
+  - first:
+      213: -3496265671452398076
+    second: GDG_MC_New_132
+  - first:
+      213: 8984462951264018090
+    second: GDG_MC_New_133
+  - first:
+      213: 3167531575559709842
+    second: GDG_MC_New_134
+  - first:
+      213: -6026793312121083253
+    second: GDG_MC_New_135
+  - first:
+      213: -4519980109508939121
+    second: GDG_MC_New_136
+  - first:
+      213: -5113152211678925816
+    second: GDG_MC_New_137
+  - first:
+      213: 5159678821383344719
+    second: GDG_MC_New_138
+  - first:
+      213: 5689805386536754007
+    second: GDG_MC_New_139
+  - first:
+      213: -4664453776205629515
+    second: GDG_MC_New_140
+  - first:
+      213: -6054640646040850490
+    second: GDG_MC_New_141
+  - first:
+      213: -682717860390158179
+    second: GDG_MC_New_142
+  - first:
+      213: -3831848818714162186
+    second: GDG_MC_New_143
+  - first:
+      213: 5494405286772030452
+    second: GDG_MC_New_144
+  - first:
+      213: -7709310691046642143
+    second: GDG_MC_New_145
+  - first:
+      213: -1531208386918384738
+    second: GDG_MC_New_146
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 160
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 1
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GDG_MC_New_9
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 1322
+        width: 236
+        height: 326
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9623fbdb83f5c790800000000000000
+      internalID: -7510329021554284897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_10
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 1313
+        width: 236
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab493be3d67ccbe10800000000000000
+      internalID: 2214864388776760506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_11
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 1313
+        width: 245
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6845a03b9ad0c9d20800000000000000
+      internalID: 3286516850578052230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_12
+      rect:
+        serializedVersion: 2
+        x: 2267
+        y: 1313
+        width: 236
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585407e80447bf880800000000000000
+      internalID: -8576133244780526203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_49
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 890
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bc030f04d0832270800000000000000
+      internalID: 8224558992781937849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_50
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 881
+        width: 227
+        height: 362
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b3b45321a8b02250800000000000000
+      internalID: 5917932912586830768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_51
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 890
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ae5fc2ad4cdfeb70800000000000000
+      internalID: 8930598812101074598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_52
+      rect:
+        serializedVersion: 2
+        x: 2267
+        y: 881
+        width: 227
+        height: 362
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4657a51c8594390800000000000000
+      internalID: -7833632489364691762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_84
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 458
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58f87c00ea60df880800000000000000
+      internalID: -8575690771036401787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_85
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 458
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8203ecb697e594e0800000000000000
+      internalID: -1975418226931989876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_86
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 458
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebc85fd77aba145c0800000000000000
+      internalID: -4232913438890423106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_87
+      rect:
+        serializedVersion: 2
+        x: 2258
+        y: 458
+        width: 227
+        height: 344
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10f798e79515e540800000000000000
+      internalID: 5036455500470284319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_103
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 71
+        width: 227
+        height: 371
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b18d9d1846c50c460800000000000000
+      internalID: 7259904186066262043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_104
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 71
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6fc6b7747b85f750800000000000000
+      internalID: 6338125382934777708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_105
+      rect:
+        serializedVersion: 2
+        x: 1988
+        y: 89
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7069813a3775eabc0800000000000000
+      internalID: -3769979683893373433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GDG_MC_New_106
+      rect:
+        serializedVersion: 2
+        x: 2294
+        y: 80
+        width: 227
+        height: 353
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa3a4f4bd070df40800000000000000
+      internalID: 5751220811382536879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f70a712c3a72b4341ad2c14432b7bac2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GDG_MC_New_0: -7847401274675067247
+      GDG_MC_New_1: -5928354492918235400
+      GDG_MC_New_10: 2214864388776760506
+      GDG_MC_New_100: 1109073555461718542
+      GDG_MC_New_101: -4750630272255806042
+      GDG_MC_New_102: 4445163055787732117
+      GDG_MC_New_103: 7259904186066262043
+      GDG_MC_New_104: 6338125382934777708
+      GDG_MC_New_105: -3769979683893373433
+      GDG_MC_New_106: 5751220811382536879
+      GDG_MC_New_107: 4852614299944319372
+      GDG_MC_New_108: 6395856330788819094
+      GDG_MC_New_109: 2867334618995590837
+      GDG_MC_New_11: 3286516850578052230
+      GDG_MC_New_110: 7143695324212247471
+      GDG_MC_New_111: -2436300711821925597
+      GDG_MC_New_112: 5678847161684283057
+      GDG_MC_New_113: -7256386373312072149
+      GDG_MC_New_114: 5977499277538181421
+      GDG_MC_New_115: 1296347751138369643
+      GDG_MC_New_116: -7489599296427140041
+      GDG_MC_New_117: 8470631579062337569
+      GDG_MC_New_118: -1246454269618555246
+      GDG_MC_New_119: -3092782138890391098
+      GDG_MC_New_12: -8576133244780526203
+      GDG_MC_New_120: 5953217335918064371
+      GDG_MC_New_121: 2303399774195794540
+      GDG_MC_New_122: -9015983344367744962
+      GDG_MC_New_123: -7066368466874091864
+      GDG_MC_New_124: -2428817482461336519
+      GDG_MC_New_125: 2192926367204719170
+      GDG_MC_New_126: -5502783048559606153
+      GDG_MC_New_127: -3236318875306488516
+      GDG_MC_New_128: 6443250680492375950
+      GDG_MC_New_129: -4946572288623517216
+      GDG_MC_New_13: -3950688421794864259
+      GDG_MC_New_130: 4373469264215686514
+      GDG_MC_New_131: 126428091451764172
+      GDG_MC_New_132: -3496265671452398076
+      GDG_MC_New_133: 8984462951264018090
+      GDG_MC_New_134: 3167531575559709842
+      GDG_MC_New_135: -6026793312121083253
+      GDG_MC_New_136: -4519980109508939121
+      GDG_MC_New_137: -5113152211678925816
+      GDG_MC_New_138: 5159678821383344719
+      GDG_MC_New_139: 5689805386536754007
+      GDG_MC_New_14: 5230051843935744948
+      GDG_MC_New_140: -4664453776205629515
+      GDG_MC_New_141: -6054640646040850490
+      GDG_MC_New_142: -682717860390158179
+      GDG_MC_New_143: -3831848818714162186
+      GDG_MC_New_144: 5494405286772030452
+      GDG_MC_New_145: -7709310691046642143
+      GDG_MC_New_146: -1531208386918384738
+      GDG_MC_New_15: -1740071958641703451
+      GDG_MC_New_16: 7842643816501569964
+      GDG_MC_New_17: -594001112416159195
+      GDG_MC_New_18: -2297690314156110219
+      GDG_MC_New_19: -4712401026542924354
+      GDG_MC_New_2: -8144577635129128457
+      GDG_MC_New_20: -3247991721465069891
+      GDG_MC_New_21: 2048293793640109316
+      GDG_MC_New_22: -5421914272086170147
+      GDG_MC_New_23: -1187602695862016540
+      GDG_MC_New_24: -331268196290870590
+      GDG_MC_New_25: 845193583797091081
+      GDG_MC_New_26: -3587123017230538737
+      GDG_MC_New_27: 1001153745674977281
+      GDG_MC_New_28: -7060293198103899559
+      GDG_MC_New_29: -6428225856600890522
+      GDG_MC_New_3: -5208245265863936850
+      GDG_MC_New_30: 5752890645540860381
+      GDG_MC_New_31: -5779428591729045791
+      GDG_MC_New_32: -676613785654545509
+      GDG_MC_New_33: 912671475481496221
+      GDG_MC_New_34: -5370509205534031067
+      GDG_MC_New_35: -7629207647708871907
+      GDG_MC_New_36: -4138955951080971858
+      GDG_MC_New_37: -6892975774851565690
+      GDG_MC_New_38: 5466796080883629422
+      GDG_MC_New_39: 2530056198376752808
+      GDG_MC_New_4: -1410823648987188408
+      GDG_MC_New_40: 5486568351670800141
+      GDG_MC_New_41: 2808008641086878314
+      GDG_MC_New_42: 7769642415335484081
+      GDG_MC_New_43: -6648125080466563399
+      GDG_MC_New_44: 3481431351947990924
+      GDG_MC_New_45: -4179822942395603804
+      GDG_MC_New_46: -613459454448417699
+      GDG_MC_New_47: -2786106768158751903
+      GDG_MC_New_48: -7146869897977456096
+      GDG_MC_New_49: 8224558992781937849
+      GDG_MC_New_5: -24513054944929753
+      GDG_MC_New_50: 5917932912586830768
+      GDG_MC_New_51: 8930598812101074598
+      GDG_MC_New_52: -7833632489364691762
+      GDG_MC_New_53: -6404016480249611354
+      GDG_MC_New_54: 8683335105696742159
+      GDG_MC_New_55: -7856971864874948241
+      GDG_MC_New_56: 1675837258169291735
+      GDG_MC_New_57: 6840886460125450508
+      GDG_MC_New_58: -2093155030076047416
+      GDG_MC_New_59: 4701634006845016928
+      GDG_MC_New_6: 7437649925292116467
+      GDG_MC_New_60: 2969190829300604432
+      GDG_MC_New_61: -2644042945816731233
+      GDG_MC_New_62: -662732370419718209
+      GDG_MC_New_63: 4156167402020318892
+      GDG_MC_New_64: 3630729116034188672
+      GDG_MC_New_65: -1720354089242410782
+      GDG_MC_New_66: 8391601594275384692
+      GDG_MC_New_67: 3778340242683914384
+      GDG_MC_New_68: -8541564632711986960
+      GDG_MC_New_69: 8009446260639648236
+      GDG_MC_New_7: 5303735538958698984
+      GDG_MC_New_70: 2054972483551795440
+      GDG_MC_New_71: 1626548935914187200
+      GDG_MC_New_72: -6031371083823951594
+      GDG_MC_New_73: 4149649920588410132
+      GDG_MC_New_74: -759425498557837867
+      GDG_MC_New_75: -1852603507077123698
+      GDG_MC_New_76: -8390002488765753822
+      GDG_MC_New_77: 5151124468435469992
+      GDG_MC_New_78: 3700537908704352179
+      GDG_MC_New_79: 5644335274121246606
+      GDG_MC_New_8: 1168930349689749311
+      GDG_MC_New_80: 833402375408453890
+      GDG_MC_New_81: 4792861474497115242
+      GDG_MC_New_82: -7939264842226880751
+      GDG_MC_New_83: -8128231018957089802
+      GDG_MC_New_84: -8575690771036401787
+      GDG_MC_New_85: -1975418226931989876
+      GDG_MC_New_86: -4232913438890423106
+      GDG_MC_New_87: 5036455500470284319
+      GDG_MC_New_88: 3659688863008331389
+      GDG_MC_New_89: -317536574652282841
+      GDG_MC_New_9: -7510329021554284897
+      GDG_MC_New_90: -2950010324440266573
+      GDG_MC_New_91: 1999584424760966571
+      GDG_MC_New_92: -5434960194796914779
+      GDG_MC_New_93: -4835235459637494446
+      GDG_MC_New_94: 1364839635007321450
+      GDG_MC_New_95: -8788486736129883355
+      GDG_MC_New_96: 2511526913099532861
+      GDG_MC_New_97: -5865659590658339411
+      GDG_MC_New_98: -6658191673564434018
+      GDG_MC_New_99: -1311439997558215644
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

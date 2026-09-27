@@ -39,6 +39,14 @@ public class RoomLightingManager : MonoBehaviour
         Apply(false);
     }
 
+    // Unconditionally forces lit state, ignoring zone ownership - for rooms that must
+    // never be dark regardless of which zone last claimed activeZone (e.g. Room4Lighting).
+    public void ForceExitDarkRoom()
+    {
+        activeZone = null;
+        Apply(false);
+    }
+
     void Apply(bool isDarkRoom)
     {
         if (globalLight != null)
