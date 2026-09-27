@@ -1,14 +1,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>Shows the final Room 4 result over the game and returns to the main menu.</summary>
+/// <summary>Shows the final Room 4 result over the game, then closes the game.</summary>
 public class Room4EndingScreen : MonoBehaviour
 {
-    private const string MainMenuScene = "MainMenu";
-
     public static void Show(Sprite endingImage, bool won, float fadeDuration, float blackScreenDuration)
     {
         GameObject root = new GameObject("EndingScreen", typeof(RectTransform), typeof(Canvas),
@@ -59,9 +56,9 @@ public class Room4EndingScreen : MonoBehaviour
         buttonRect.anchoredPosition = new Vector2(0f, -320f);
 
         Button button = buttonImage.gameObject.AddComponent<Button>();
-        button.onClick.AddListener(ReturnToMainMenu);
+        button.onClick.AddListener(QuitGame);
 
-        TextMeshProUGUI label = CreateText("Label", buttonRect, "MAIN MENU", 40);
+        TextMeshProUGUI label = CreateText("Label", buttonRect, "QUIT", 40);
         Stretch(label.rectTransform);
 
         content.SetActive(false);
@@ -126,11 +123,12 @@ public class Room4EndingScreen : MonoBehaviour
         rect.offsetMax = Vector2.zero;
     }
 
-    private void ReturnToMainMenu()
+    private void QuitGame()
     {
-        Time.timeScale = 1f;
-        if (PersistentRoot.Instance != null)
-            Destroy(PersistentRoot.Instance.gameObject);
-        SceneManager.LoadScene(MainMenuScene);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
