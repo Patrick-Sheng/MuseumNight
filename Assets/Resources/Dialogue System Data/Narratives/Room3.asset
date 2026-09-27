@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d50752db9e472b8d367dcf46cdbad8, type: 3}
+  m_Name: Room3
+  m_EditorClassIdentifier: 
+  <NodeLinks>k__BackingField:
+  - <BaseNodeGuid>k__BackingField: 703206a8-77ae-4a06-81c5-ab93f3358717
+    <PortName>k__BackingField: Next
+    <TargetNodeGuid>k__BackingField: a56e6733-bda5-40c1-9d69-b3748dd9277b
+  <DialogueNodeData>k__BackingField:
+  - guid: 703206a8-77ae-4a06-81c5-ab93f3358717
+    dialogue: []
+    position: {x: 100, y: 200}
+    transitionNode: 0
+    entryPoint: 1
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  - guid: a56e6733-bda5-40c1-9d69-b3748dd9277b
+    dialogue:
+    - <CharacterName>k__BackingField: Main
+      <Content>k__BackingField: This painting... <p:normal> impressive...
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    - <CharacterName>k__BackingField: Main
+      <Content>k__BackingField: Up close the brushstrokes are loose, but far away
+        it looks so real.
+      <HideCharacter>k__BackingField: 0
+      <DialogueEvent>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+    position: {x: 250, y: 200}
+    transitionNode: 1
+    entryPoint: 0
+    isCheckpoint: 0
+    disableAlreadyChosenOptions: 0
+  <PathToCheckpoint>k__BackingField: 
+  <IsNarrativeEndReached>k__BackingField: 0
+  <StartFromPreviousNarrativePath>k__BackingField: 1
+  <Characters>k__BackingField:
+  - {fileID: 11400000, guid: efd224a5387b92549b100700935d06a5, type: 2}

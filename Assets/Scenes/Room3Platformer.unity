@@ -260,6 +260,7 @@ MonoBehaviour:
   targetEntryId: 2
   restorePlayerControl: 1
   destinationMode: 1
+  blockReturnToPreviousRoom: 0
 --- !u!1 &100020
 GameObject:
   m_ObjectHideFlags: 0
