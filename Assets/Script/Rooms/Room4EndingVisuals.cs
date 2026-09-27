@@ -39,12 +39,13 @@ public class Room4EndingVisuals : MonoBehaviour
     private SpriteRenderer incomingBeam;
     private SpriteRenderer reflectedBeam;
 
-    public void Play(int shardCount)
+    public void Play(int shardCount, System.Action onFinished)
     {
         if (medusa == null || emptyMirror == null || mirrorOne == null || mirrorTwo == null ||
             mirrorThree == null || beamSprite == null || medusaStone == null || playerStone == null)
         {
             Debug.LogError("Room4EndingVisuals is missing a sprite or Medusa reference.", this);
+            onFinished?.Invoke();
             return;
         }
 
@@ -52,16 +53,17 @@ public class Room4EndingVisuals : MonoBehaviour
         if (player == null || !player.TryGetComponent(out playerRenderer))
         {
             Debug.LogError("Room4EndingVisuals needs the persistent Player SpriteRenderer.", this);
+            onFinished?.Invoke();
             return;
         }
 
         playerAnimator = player.GetComponent<Animator>();
         originalPlayerSprite = playerRenderer.sprite;
         originalPlayerScale = playerRenderer.transform.localScale;
-        StartCoroutine(PlaySequence(Mathf.Clamp(shardCount, 0, 3)));
+        StartCoroutine(PlaySequence(Mathf.Clamp(shardCount, 0, 3), onFinished));
     }
 
-    private IEnumerator PlaySequence(int shardCount)
+    private IEnumerator PlaySequence(int shardCount, System.Action onFinished)
     {
         Vector3 playerHit = playerRenderer.transform.position + (Vector3)playerHitOffset;
         Vector3 medusaOrigin = medusa.transform.position + (Vector3)medusaBeamOffset;
@@ -101,6 +103,8 @@ public class Room4EndingVisuals : MonoBehaviour
             yield return GrowBeam(incomingBeam, medusaOrigin, mirrorPosition, playerHit, beamTravelTime);
             TurnPlayerToStone();
         }
+
+        onFinished?.Invoke();
     }
 
     private IEnumerator GrowBeam(SpriteRenderer visual, Vector3 origin, Vector3 startEnd,
