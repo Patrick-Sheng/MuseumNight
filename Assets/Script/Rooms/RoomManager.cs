@@ -163,9 +163,13 @@ public class RoomManager : MonoBehaviour
         }
         Physics2D.SyncTransforms();
 
+        bool shouldPlayStoryIntro = ShouldPlayStoryIntro(loadedSave);
+        if (shouldPlayStoryIntro)
+            SetStoryIntroBackgroundActive(true);
+
         yield return StartCoroutine(FadeTo(0f));
 
-        if (ShouldPlayStoryIntro(loadedSave))
+        if (shouldPlayStoryIntro)
             yield return StartCoroutine(PlayStoryIntroRoutine());
 
         if (movement != null) movement.enabled = restorePlayerControl || movementWasEnabled;
@@ -223,8 +227,6 @@ public class RoomManager : MonoBehaviour
     {
         if (storyIntroDialogue == null)
             yield break;
-
-        SetStoryIntroBackgroundActive(true);
 
         if (storyNarrativeController == null)
             storyNarrativeController = FindFirstObjectByType<NarrativeController>();

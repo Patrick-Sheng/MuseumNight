@@ -45,9 +45,9 @@ MonoBehaviour:
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
-    - <CharacterName>k__BackingField: 
-      <Content>k__BackingField: 'Chaser: "We... should n... be here"'
-      <HideCharacter>k__BackingField: 1
+    - <CharacterName>k__BackingField: ChaserDark
+      <Content>k__BackingField: We... should n... be here...
+      <HideCharacter>k__BackingField: 0
       <DialogueEvent>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
@@ -80,3 +80,4 @@ MonoBehaviour:
   <StartFromPreviousNarrativePath>k__BackingField: 1
   <Characters>k__BackingField:
   - {fileID: 11400000, guid: efd224a5387b92549b100700935d06a5, type: 2}
+  - {fileID: 11400000, guid: 5f331365341be554589fa21df80f5623, type: 2}
