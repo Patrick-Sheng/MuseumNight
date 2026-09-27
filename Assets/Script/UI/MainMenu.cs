@@ -63,6 +63,8 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(holdDuration);
 
         // Load game
+        // Only request story intro for a fresh start flow.
+        GameStartContext.SetStoryIntroForNextLoad(!SaveSystem.HasSave());
         SceneManager.LoadScene(gameSceneName);
     }
 
