@@ -24,7 +24,7 @@ public class Room4Lighting : MonoBehaviour
 
     private void ApplyLighting()
     {
-        RoomLightingManager.Instance?.ExitDarkRoom();
+        RoomLightingManager.Instance?.ForceExitDarkRoom();
     }
 
     private void OnDisable()
