@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3bc85cafab3871419d75290204278d6
+guid: 441bd82afc73e1b4899b3da8bbaf2f69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 92510168888373192
-    second: train_background_0
+      213: -4181537720704337805
+    second: Room3_Platformer_Background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: train_background_0
+      name: Room3_Platformer_Background_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 596
-        height: 335
+        width: 4096
+        height: 2985
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8cfe3ba2289a84100800000000000000
-      internalID: 92510168888373192
+      spriteID: 3787586099138f5c0800000000000000
+      internalID: -4181537720704337805
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f2f04b8f48e79c24a91af2c98e8d545d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      train_background_0: 92510168888373192
+      Room3_Platformer_Background_0: -4181537720704337805
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

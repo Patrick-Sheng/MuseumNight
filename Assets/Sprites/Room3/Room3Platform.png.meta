@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: c3bc85cafab3871419d75290204278d6
+guid: b93d12a7a93fd8d45bb69687c15b1aa9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 92510168888373192
-    second: train_background_0
+      213: -3605038988248299139
+    second: Room3Platform_0
+  - first:
+      213: 7213064861604874535
+    second: Room3Platform_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,12 +40,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -73,8 +76,8 @@ TextureImporter:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
+    resizeAlgorithm: 1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -113,23 +116,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: train_background_0
+      name: Room3Platform_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 596
-        height: 335
+        y: 48
+        width: 64
+        height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8cfe3ba2289a84100800000000000000
-      internalID: 92510168888373192
+      spriteID: d79c608f32458fdc0800000000000000
+      internalID: -3605038988248299139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Room3Platform_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7298fc17644f91460800000000000000
+      internalID: 7213064861604874535
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f2f04b8f48e79c24a91af2c98e8d545d
+    spriteID: a4404fe6a2cd436449a0480c03035aca
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      train_background_0: 92510168888373192
+      Room3Platform_0: -3605038988248299139
+      Room3Platform_1: 7213064861604874535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

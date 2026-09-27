@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3bc85cafab3871419d75290204278d6
+guid: 04406d1ec817f7740a12ff6171df4678
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 92510168888373192
-    second: train_background_0
+      213: 4952717264675452323
+    second: painting3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: train_background_0
+      name: painting3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 596
-        height: 335
+        width: 4000
+        height: 3339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8cfe3ba2289a84100800000000000000
-      internalID: 92510168888373192
+      spriteID: 3a5bce19c169bb440800000000000000
+      internalID: 4952717264675452323
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f2f04b8f48e79c24a91af2c98e8d545d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      train_background_0: 92510168888373192
+      painting3_0: 4952717264675452323
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
