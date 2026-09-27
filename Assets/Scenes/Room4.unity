@@ -164,6 +164,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &91422998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91422999}
+  - component: {fileID: 91423000}
+  m_Layer: 0
+  m_Name: WinCutScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &91422999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91422998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1833937366}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &91423000
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91422998}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 7b8e2f7953766e640a36ad00d8994c0c, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &184095266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,6 +1680,55 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &394600217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394600218}
+  - component: {fileID: 394600219}
+  m_Layer: 0
+  m_Name: LossCutScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &394600218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394600217}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1833937366}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &394600219
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394600217}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 88de9c07664822a4b9d19233247ac0f9, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &530548653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2223,7 @@ Transform:
   m_GameObject: {fileID: 1102374792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.57, y: 0.92, z: 0}
+  m_LocalPosition: {x: -3.57, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2803,7 +2901,7 @@ Transform:
   m_GameObject: {fileID: 1745487700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1, y: 0.96, z: 0.030812616}
+  m_LocalPosition: {x: 3.03, y: 1.08, z: 0.030812616}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2820,6 +2918,8 @@ GameObject:
   - component: {fileID: 1833937366}
   - component: {fileID: 1833937365}
   - component: {fileID: 1833937367}
+  - component: {fileID: 1833937368}
+  - component: {fileID: 1833937369}
   m_Layer: 0
   m_Name: Room4CutScene
   m_TagString: Untagged
@@ -2858,7 +2958,9 @@ Transform:
   m_LocalPosition: {x: 0.59475374, y: -0.9264974, z: 0.030812616}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 91422999}
+  - {fileID: 394600218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1833937367
@@ -2878,10 +2980,58 @@ MonoBehaviour:
   walkLeft: {fileID: 1102374793}
   roomCamera: {fileID: 6000000104}
   borders: {fileID: 558261763}
+  outcome: {fileID: 1833937368}
   walkSpeed: 2
   statuePause: 0.8
   revealTime: 6
   borderFadeDuration: 0.8
+--- !u!114 &1833937368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833937364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202530d8ff4345debde2b417c89b99e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winDirector: {fileID: 91423000}
+  lossDirector: {fileID: 394600219}
+  endingVisuals: {fileID: 1833937369}
+  usePreviewResult: 0
+  previewHasAllThree: 0
+--- !u!114 &1833937369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833937364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09e2ce97fe04c75a76082f189b2fb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  medusa: {fileID: 1745487701}
+  emptyMirror: {fileID: 7949223259884827268, guid: 717ffec0f7d85314bb6ce1283366c66a, type: 3}
+  mirrorOne: {fileID: 7922998926302495893, guid: 717ffec0f7d85314bb6ce1283366c66a, type: 3}
+  mirrorTwo: {fileID: 8451100409000336981, guid: 717ffec0f7d85314bb6ce1283366c66a, type: 3}
+  mirrorThree: {fileID: -312689985237259091, guid: 717ffec0f7d85314bb6ce1283366c66a, type: 3}
+  beamSprite: {fileID: 4006551286565287207, guid: 0f17e0fe46f5639459cb7e6938b8d916, type: 3}
+  medusaStone: {fileID: -6053884303216139044, guid: 261aa12c81ae60643b29b0f414681eff, type: 3}
+  playerStone: {fileID: 2683717240053367923, guid: e34e0b2cf1bd0dd499caa10ad7ab7af2, type: 3}
+  medusaBeamOffset: {x: -0.8, y: 0.4}
+  playerHitOffset: {x: 0, y: 1}
+  mirrorDistanceFromPlayer: 0.28
+  mirrorScale: 0.8
+  beamHeight: 0.55
+  playerStoneOffset: {x: 0, y: 0.8}
+  medusaStoneOffset: {x: 0, y: 0}
+  beamTravelTime: 0.55
+  mirrorStageTime: 0.45
+  failedMirrorHold: 0.5
 --- !u!1 &1841094887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +3057,7 @@ Transform:
   m_GameObject: {fileID: 1841094887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.97, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

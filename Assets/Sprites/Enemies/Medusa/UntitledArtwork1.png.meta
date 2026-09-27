@@ -266,7 +266,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_3
+      name: empty_mirror
       rect:
         serializedVersion: 2
         x: 784
@@ -288,7 +288,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_4
+      name: 1_mirror
       rect:
         serializedVersion: 2
         x: 1024
@@ -552,7 +552,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_16
+      name: 3_mirror
       rect:
         serializedVersion: 2
         x: 784
@@ -574,7 +574,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_17
+      name: 2_mirror
       rect:
         serializedVersion: 2
         x: 1024
@@ -596,7 +596,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_18
+      name: shard_1
       rect:
         serializedVersion: 2
         x: 869
@@ -618,7 +618,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_19
+      name: shard_3
       rect:
         serializedVersion: 2
         x: 894
@@ -640,7 +640,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UntitledArtwork1_20
+      name: shard_2
       rect:
         serializedVersion: 2
         x: 969
@@ -873,6 +873,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      1_mirror: 7922998926302495893
+      2_mirror: 8451100409000336981
+      3_mirror: -312689985237259091
       UntitledArtwork1_0: 8225728356676695347
       UntitledArtwork1_1: 3513874909503230411
       UntitledArtwork1_10: 3137157389916813514
@@ -881,12 +884,7 @@ TextureImporter:
       UntitledArtwork1_13: 3391893498118070819
       UntitledArtwork1_14: 7404186405778712447
       UntitledArtwork1_15: -5692624096361740820
-      UntitledArtwork1_16: -312689985237259091
-      UntitledArtwork1_17: 8451100409000336981
-      UntitledArtwork1_18: -5357143551515043380
-      UntitledArtwork1_19: -7668787971758177196
       UntitledArtwork1_2: 3079414627364313924
-      UntitledArtwork1_20: 2897205131149802117
       UntitledArtwork1_21: -4386536701792638640
       UntitledArtwork1_22: -9198893979406012462
       UntitledArtwork1_23: 1684382670099903955
@@ -895,14 +893,16 @@ TextureImporter:
       UntitledArtwork1_27: -8686354948285475164
       UntitledArtwork1_28: 4223852783143514460
       UntitledArtwork1_29: -8599600734605924099
-      UntitledArtwork1_3: 7949223259884827268
-      UntitledArtwork1_4: 7922998926302495893
       UntitledArtwork1_5: 2899578840602215490
       UntitledArtwork1_6: 7207200788895914790
       UntitledArtwork1_7: -1468092074986031300
       UntitledArtwork1_8: -1282983021613360840
       UntitledArtwork1_9: -6189057101601293860
+      empty_mirror: 7949223259884827268
       medusa: 3051569750265191011
+      shard_1: -5357143551515043380
+      shard_2: 2897205131149802117
+      shard_3: -7668787971758177196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

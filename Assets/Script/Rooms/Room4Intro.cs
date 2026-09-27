@@ -11,6 +11,7 @@ public class Room4Intro : MonoBehaviour
     [SerializeField] private Transform walkLeft;
     [SerializeField] private Room4CameraZoom roomCamera;
     [SerializeField] private CanvasGroup borders;
+    [SerializeField] private Room4Outcome outcome;
     [SerializeField, Min(0.1f)] private float walkSpeed = 2f;
     [SerializeField, Min(0f)] private float statuePause = 0.8f;
     [SerializeField, Min(0f)] private float revealTime = 10f;
@@ -56,9 +57,9 @@ public class Room4Intro : MonoBehaviour
         while (RoomManager.Instance != null && RoomManager.Instance.IsTransitioning)
             yield return null;
 
-        if (introDirector == null || walkUp == null || walkLeft == null || roomCamera == null || borders == null)
+        if (introDirector == null || walkUp == null || walkLeft == null || roomCamera == null || borders == null || outcome == null)
         {
-            Debug.LogError("Room4Intro needs its Timeline, walk points, camera, and borders assigned.", this);
+            Debug.LogError("Room4Intro needs its Timeline, walk points, camera, borders, and outcome assigned.", this);
             yield break;
         }
 
@@ -100,7 +101,7 @@ public class Room4Intro : MonoBehaviour
         while (introDirector != null && introDirector.time < introDirector.duration - 0.02)
             yield return null;
 
-        // The outcome sequence takes over after this introduction.
+        outcome.PlayOutcome();
     }
 
     private IEnumerator FadeBorders()
