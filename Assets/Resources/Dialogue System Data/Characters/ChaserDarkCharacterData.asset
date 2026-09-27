@@ -10,25 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a856104a895dc44bad575fdc4d698b, type: 3}
-  m_Name: DefaultCharacterScriptableObject
+  m_Name: ChaserDarkCharacterData
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: ChaserDark
   speakingSound: {fileID: 0}
   defaultState:
     emotionLabel: 0
-    speakingSoundPitch: 0.833
+    speakingSoundPitch: 1
     reactionSound:
+      enabled: 0
+      value: {fileID: 0}
+    characterFace:
       enabled: 1
-      value: {fileID: 0}
-    characterFace:
-      enabled: 0
-      value: {fileID: 0}
-  states:
-  - emotionLabel: 4
-    speakingSoundPitch: 0.409
-    reactionSound:
-      enabled: 0
-      value: {fileID: 0}
-    characterFace:
-      enabled: 0
-      value: {fileID: 0}
+      value: {fileID: -5223420337501008812, guid: 0b1fa298149e6c84794f58670f2904e3, type: 3}
+  states: []
