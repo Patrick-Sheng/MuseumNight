@@ -260,6 +260,7 @@ MonoBehaviour:
   targetEntryId: 1
   restorePlayerControl: 0
   destinationMode: 2
+  blockReturnToPreviousRoom: 1
 --- !u!1 &700020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2007,7 @@ GameObject:
   - component: {fileID: 501014955}
   - component: {fileID: 501014954}
   - component: {fileID: 501014953}
+  - component: {fileID: 501014957}
   m_Layer: 0
   m_Name: SceneTransition2
   m_TagString: Untagged
@@ -2083,6 +2085,7 @@ MonoBehaviour:
   targetEntryId: 1
   restorePlayerControl: 0
   destinationMode: 0
+  blockReturnToPreviousRoom: 1
 --- !u!4 &501014956
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,6 +2102,20 @@ Transform:
   - {fileID: 2009662441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &501014957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501014952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b03dbdd999ca646b4e7673deff6035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 11400000, guid: 3876d5c3fd5bfd3489e1b712b00deb9b, type: 2}
+  narrativeController: {fileID: 0}
 --- !u!1 &767618124
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,6 +2149,12 @@ MonoBehaviour:
   fadeDuration: 0.4
   startingSceneName: 
   startingEntryId: 1
+  playStoryIntroOnFreshStart: 1
+  storyNarrativeController: {fileID: 0}
+  storyIntroDialogue: {fileID: 0}
+  storyIntroBlackBackground: {fileID: 0}
+  storyIntroBackgroundFadeOutDuration: 0.35
+  storyIntroBackgroundCanvasGroup: {fileID: 0}
 --- !u!4 &767618126
 Transform:
   m_ObjectHideFlags: 0
@@ -2374,6 +2397,7 @@ MonoBehaviour:
   targetEntryId: 2
   restorePlayerControl: 0
   destinationMode: 0
+  blockReturnToPreviousRoom: 1
 --- !u!4 &1265854025
 Transform:
   m_ObjectHideFlags: 0
@@ -2467,7 +2491,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.51078165, g: 0.6881242, b: 1, a: 1}
+  m_Color: {r: 0.51078165, g: 0.6881242, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2477,6 +2501,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1541801077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541801079}
+  - component: {fileID: 1541801078}
+  m_Layer: 0
+  m_Name: RoomEntryDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1541801078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541801077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9153ebb78f559ec40be5131f9ea81caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entryDialogue: {fileID: 11400000, guid: 2f389eb0969343e41be19ddb01282fde, type: 2}
+  playOnEnable: 1
+  playOncePerSession: 1
+  waitForRoomTransitionToFinish: 1
+  startDelaySeconds: 0
+--- !u!4 &1541801079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541801077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0.03, z: -6.620403}
+  m_LocalScale: {x: -0.62637, y: -0.62637, z: -0.62637}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009662440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,7 +2627,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.51078165, g: 0.6881242, b: 1, a: 1}
+  m_Color: {r: 0.51078165, g: 0.6881242, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2669,3 +2742,4 @@ SceneRoots:
   - {fileID: 970000002}
   - {fileID: 167035241}
   - {fileID: 970000012}
+  - {fileID: 1541801079}

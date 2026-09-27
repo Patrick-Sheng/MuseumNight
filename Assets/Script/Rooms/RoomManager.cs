@@ -23,9 +23,11 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private CanvasGroup storyIntroBackgroundCanvasGroup;
 
     private string currentSceneName;
+    private string previousSceneName;
     private bool isTransitioning = false;
 
     public string CurrentSceneName => currentSceneName;
+    public string PreviousSceneName => previousSceneName;
     public bool IsTransitioning => isTransitioning;
 
     void OnDestroy()
@@ -136,6 +138,8 @@ public class RoomManager : MonoBehaviour
 
         if (oldScene.IsValid() && oldScene.isLoaded)
             yield return SceneManager.UnloadSceneAsync(oldScene);
+
+        previousSceneName = currentSceneName;
         currentSceneName = loadedScene.name;
         SceneManager.SetActiveScene(loadedScene);
 

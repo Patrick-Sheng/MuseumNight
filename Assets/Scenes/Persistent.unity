@@ -2466,7 +2466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3636829067758995821, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
       propertyPath: testAnimationInEditor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3908730088742145279, guid: b22c91dac8b982b46a95121203edcd3a, type: 3}
       propertyPath: m_Resource
