@@ -24,6 +24,16 @@ public class PushableSlider : MonoBehaviour
         }
     }
 
+    // Moves the statue body directly to the given slot, bypassing normal pushing.
+    public void SnapTo(int index)
+    {
+        if (statueBody == null) return;
+        index = Mathf.Clamp(index, 0, columns - 1);
+        Vector3 pos = statueBody.position;
+        pos.x = MinX + index * gridSize;
+        statueBody.position = pos;
+    }
+
     public bool Contains(float x)
     {
         const float tolerance = 0.01f;
