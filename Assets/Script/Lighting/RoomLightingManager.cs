@@ -10,7 +10,11 @@ public class RoomLightingManager : MonoBehaviour
     [SerializeField] float litIntensity = 1f;
     [SerializeField] float darkIntensity = 0.05f;
 
-    bool isDarkRoom;
+    // Tracks which zone most recently entered, since RoomManager loads the next room
+    // before unloading the current one - the outgoing room's OnDisable/ExitDarkRoom
+    // would otherwise always fire after the incoming room's OnEnable/EnterDarkRoom
+    // and wrongly clobber it back to lit.
+    Object activeZone;
 
     void Awake()
     {
@@ -22,19 +26,28 @@ public class RoomLightingManager : MonoBehaviour
         Instance = this;
     }
 
-    public void EnterDarkRoom()
+    public void EnterDarkRoom(Object zone)
     {
-        isDarkRoom = true;
-        Apply();
+        activeZone = zone;
+        Apply(true);
     }
 
-    public void ExitDarkRoom()
+    public void ExitDarkRoom(Object zone)
     {
-        isDarkRoom = false;
-        Apply();
+        if (activeZone != zone) return;
+        activeZone = null;
+        Apply(false);
     }
 
-    void Apply()
+    // Unconditionally forces lit state, ignoring zone ownership - for rooms that must
+    // never be dark regardless of which zone last claimed activeZone (e.g. Room4Lighting).
+    public void ForceExitDarkRoom()
+    {
+        activeZone = null;
+        Apply(false);
+    }
+
+    void Apply(bool isDarkRoom)
     {
         if (globalLight != null)
             globalLight.intensity = isDarkRoom ? darkIntensity : litIntensity;

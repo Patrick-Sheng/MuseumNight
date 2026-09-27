@@ -9,6 +9,8 @@ public class ObjectiveItem : MonoBehaviour, IInteractable
     [SerializeField] private StealthRoomController room;
     [SerializeField] private UnityEvent onCollected = new UnityEvent();
 
+    public UnityEvent OnCollected => onCollected;
+
     private readonly HashSet<Collider2D> playerColliders = new HashSet<Collider2D>();
     private PlayerInteract nearbyPlayer;
     private bool collected;

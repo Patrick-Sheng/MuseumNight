@@ -8,6 +8,7 @@ public class PlatformerPlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    SpriteRenderer spriteRenderer;
     int groundContacts;
 
     static readonly int HorizontalHash = Animator.StringToHash("horizontal");
@@ -16,6 +17,7 @@ public class PlatformerPlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void OnDisable()
@@ -35,6 +37,9 @@ public class PlatformerPlayerController : MonoBehaviour
             animator.SetBool("isMoving", x != 0);
             animator.SetFloat(HorizontalHash, x);
         }
+
+        if (spriteRenderer != null && x != 0)
+            spriteRenderer.flipX = x < 0;
 
         if (groundContacts > 0 && Input.GetButtonDown("Jump"))
             Bounce(jumpForce);
