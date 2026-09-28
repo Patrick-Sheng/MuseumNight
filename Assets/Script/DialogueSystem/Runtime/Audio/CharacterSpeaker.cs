@@ -43,6 +43,7 @@ namespace DialogueSystem.Runtime.Audio
         {
             if (speakingAudioSource == null || speakingAudioSource.clip == null)
             {
+                GameAudio.Play(GameAudio.Cue.DialogueBlip);
                 return;
             }
 

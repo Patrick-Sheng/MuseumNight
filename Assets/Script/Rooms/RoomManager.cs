@@ -142,6 +142,7 @@ public class RoomManager : MonoBehaviour
         previousSceneName = currentSceneName;
         currentSceneName = loadedScene.name;
         SceneManager.SetActiveScene(loadedScene);
+        GameAudio.PlayRoomMusic(currentSceneName);
 
         if (loadedSave != null)
         {

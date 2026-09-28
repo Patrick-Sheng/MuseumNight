@@ -47,6 +47,7 @@ public class PushableObject : MonoBehaviour
             return;
 
         StartCoroutine(MoveTo(destination));
+        GameAudio.Play(GameAudio.Cue.StatueMove);
     }
 
     bool IsBlocked(Vector2 destination)

@@ -10,6 +10,9 @@ public class PlatformerPlayerController : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
     int groundContacts;
+    [SerializeField, Min(0.1f)] float footstepInterval = 0.38f;
+    float nextFootstepTime;
+    bool nextFootIsLeft;
 
     static readonly int HorizontalHash = Animator.StringToHash("horizontal");
 
@@ -31,6 +34,16 @@ public class PlatformerPlayerController : MonoBehaviour
 
         float x = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
+        if (x != 0f && groundContacts > 0 && Time.time >= nextFootstepTime)
+        {
+            GameAudio.Play(nextFootIsLeft ? GameAudio.Cue.FootLeft : GameAudio.Cue.FootRight);
+            nextFootIsLeft = !nextFootIsLeft;
+            nextFootstepTime = Time.time + footstepInterval;
+        }
+        else if (x == 0f)
+        {
+            nextFootstepTime = Time.time;
+        }
 
         if (animator != null)
         {
@@ -49,6 +62,7 @@ public class PlatformerPlayerController : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
         groundContacts = 0;
+        GameAudio.Play(GameAudio.Cue.Jump);
     }
 
     void OnCollisionEnter2D(Collision2D collision) => CheckGrounded(collision);

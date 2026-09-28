@@ -32,6 +32,7 @@ public class MirrorShardPickup : MonoBehaviour
         if (progress == null) return;
 
         progress.Collect(shardId);
+        GameAudio.Play(GameAudio.Cue.ItemPickup);
         gameObject.SetActive(false);
     }
 }

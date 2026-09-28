@@ -44,7 +44,8 @@ public class TransitionTrigger : MonoBehaviour
             if (!IsTransitionAvailable())
                 return;
 
-            manager.TryGoToRoom(targetSceneName, targetEntryId, restorePlayerControl, OnArrived);
+            if (manager.TryGoToRoom(targetSceneName, targetEntryId, restorePlayerControl, OnArrived))
+                GameAudio.Play(GameAudio.Cue.DoorOpen);
         }
     }
 

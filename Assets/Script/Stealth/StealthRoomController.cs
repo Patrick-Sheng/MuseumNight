@@ -129,6 +129,7 @@ public class StealthRoomController : MonoBehaviour
             return false;
         }
         if (!manager.TryGoToRoom(sceneName, entryId, true, HandleTransitionFinished)) return false;
+        GameAudio.Play(GameAudio.Cue.DoorOpen);
         IsCompleted = true;
         restarting = true;
         StopRoom();

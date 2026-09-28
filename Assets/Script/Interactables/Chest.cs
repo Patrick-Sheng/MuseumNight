@@ -18,6 +18,7 @@ public class Chest : MonoBehaviour, IInteractable
         if (closeUpSprite != null)
         {
             CloseUpViewUI.Instance.Show(closeUpSprite);
+            GameAudio.Play(GameAudio.Cue.ChestOpen);
         }
     }
 
