@@ -2144,6 +2144,10 @@ MonoBehaviour:
   room3BallLaunch: {fileID: 8300000, guid: 91264a4cfa964245ab8acf629fe46811, type: 3}
   room3PressurePlate: {fileID: 8300000, guid: a4cefd3864e546f19504741d6932c7c4, type: 3}
   room3Unlock: {fileID: 8300000, guid: ec1282dc412e4f3ba75368eae9f76d20, type: 3}
+  shardCollect: {fileID: 8300000, guid: 9f754bc41a6d44e9b9b83437109e24f2, type: 3}
+  mirrorAssemble: {fileID: 8300000, guid: 22b4c0a88a3c4ba0981ce67221db56f2, type: 3}
+  medusaHit: {fileID: 8300000, guid: 694feb17f95b461fae776c646ec09b21, type: 3}
+  playerHit: {fileID: 8300000, guid: 6f027e217f2e4a80a41a426020886840, type: 3}
   effectsVolume: 0.7
 --- !u!1 &1807399635
 GameObject:
@@ -2668,7 +2672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 141049292}
   fadeDuration: 0.4
-  startingSceneName: Room3
+  startingSceneName: Room1
   startingEntryId: 1
   playStoryIntroOnFreshStart: 1
   storyNarrativeController: {fileID: 1520340975}

@@ -8,7 +8,8 @@ public class GameAudio : MonoBehaviour
         ChestOpen, DialogueBlip, DialogueNext, DoorOpen, FlashlightOn,
         FlashlightOff, ItemDropped, ItemPickup, Jump, LevelCompleted,
         PaintingView, StatueMove, FootLeft, FootRight, ChaserAppear,
-        Room3BallLaunch, Room3PressurePlate, Room3Unlock
+        Room3BallLaunch, Room3PressurePlate, Room3Unlock,
+        ShardCollect, MirrorAssemble, MedusaHit, PlayerHit
     }
 
     public static GameAudio Instance { get; private set; }
@@ -40,6 +41,10 @@ public class GameAudio : MonoBehaviour
     [SerializeField] private AudioClip room3BallLaunch;
     [SerializeField] private AudioClip room3PressurePlate;
     [SerializeField] private AudioClip room3Unlock;
+    [SerializeField] private AudioClip shardCollect;
+    [SerializeField] private AudioClip mirrorAssemble;
+    [SerializeField] private AudioClip medusaHit;
+    [SerializeField] private AudioClip playerHit;
     [SerializeField, Range(0f, 1f)] private float effectsVolume = 0.7f;
 
     private AudioSource musicSource;
@@ -157,6 +162,10 @@ public class GameAudio : MonoBehaviour
             case Cue.Room3BallLaunch: return room3BallLaunch;
             case Cue.Room3PressurePlate: return room3PressurePlate;
             case Cue.Room3Unlock: return room3Unlock;
+            case Cue.ShardCollect: return shardCollect;
+            case Cue.MirrorAssemble: return mirrorAssemble;
+            case Cue.MedusaHit: return medusaHit;
+            case Cue.PlayerHit: return playerHit;
             default: return null;
         }
     }

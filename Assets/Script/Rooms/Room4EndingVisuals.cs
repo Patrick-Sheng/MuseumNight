@@ -81,16 +81,19 @@ public class Room4EndingVisuals : MonoBehaviour
         {
             yield return new WaitForSeconds(mirrorStageTime);
             mirrorRenderer.sprite = mirrorOne;
+            GameAudio.Play(GameAudio.Cue.MirrorAssemble);
         }
         if (shardCount >= 2)
         {
             yield return new WaitForSeconds(mirrorStageTime);
             mirrorRenderer.sprite = mirrorTwo;
+            GameAudio.Play(GameAudio.Cue.MirrorAssemble);
         }
         if (shardCount == 3)
         {
             yield return new WaitForSeconds(mirrorStageTime);
             mirrorRenderer.sprite = mirrorThree;
+            GameAudio.Play(GameAudio.Cue.MirrorAssemble);
 
             reflectedBeam = CreateVisual("ReflectedBeam", beamSprite, 8);
             yield return GrowBeam(reflectedBeam, mirrorPosition, mirrorPosition, medusaOrigin, beamTravelTime);
@@ -146,12 +149,14 @@ public class Room4EndingVisuals : MonoBehaviour
 
     private void TurnMedusaToStone()
     {
+        GameAudio.Play(GameAudio.Cue.MedusaHit);
         SetStoneSpriteAtSameHeight(medusa, medusaStone);
         medusa.transform.position += (Vector3)medusaStoneOffset;
     }
 
     private void TurnPlayerToStone()
     {
+        GameAudio.Play(GameAudio.Cue.PlayerHit);
         if (playerAnimator != null) playerAnimator.enabled = false;
         originalPlayerPosition = playerRenderer.transform.position;
         SetStoneSpriteAtSameHeight(playerRenderer, playerStone);
