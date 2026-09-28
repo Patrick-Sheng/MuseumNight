@@ -92,6 +92,7 @@ public class ChaseSpawner : MonoBehaviour
             enemies.Add(enemy);
             if (room != null) room.RegisterChaseEnemy(enemy);
         }
+        GameAudio.Play(GameAudio.Cue.ChaserAppear);
         return true;
     }
 

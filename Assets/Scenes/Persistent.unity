@@ -2115,6 +2115,7 @@ MonoBehaviour:
   statueMove2: {fileID: 8300000, guid: cc5125a352818de45b5c4c08dd7b2516, type: 3}
   footLeft: {fileID: 8300000, guid: 6f6e2e5eb32ad70479b59e60648ed080, type: 3}
   footRight: {fileID: 8300000, guid: c54a53c0310184e448709430176ec5d0, type: 3}
+  chaserAppear: {fileID: 8300000, guid: 1fc1f3ad429e4d58b5abb5d7b805168a, type: 3}
   effectsVolume: 0.7
 --- !u!4 &1764843126
 Transform:

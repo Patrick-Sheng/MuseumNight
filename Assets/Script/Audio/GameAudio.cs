@@ -7,7 +7,7 @@ public class GameAudio : MonoBehaviour
     {
         ChestOpen, DialogueBlip, DialogueNext, DoorOpen, FlashlightOn,
         FlashlightOff, ItemDropped, ItemPickup, Jump, LevelCompleted,
-        PaintingView, StatueMove, FootLeft, FootRight
+        PaintingView, StatueMove, FootLeft, FootRight, ChaserAppear
     }
 
     public static GameAudio Instance { get; private set; }
@@ -35,6 +35,7 @@ public class GameAudio : MonoBehaviour
     [SerializeField] private AudioClip statueMove2;
     [SerializeField] private AudioClip footLeft;
     [SerializeField] private AudioClip footRight;
+    [SerializeField] private AudioClip chaserAppear;
     [SerializeField, Range(0f, 1f)] private float effectsVolume = 0.7f;
 
     private AudioSource musicSource;
@@ -148,6 +149,7 @@ public class GameAudio : MonoBehaviour
                 return nextStatueSound ? statueMove1 : statueMove2;
             case Cue.FootLeft: return footLeft;
             case Cue.FootRight: return footRight;
+            case Cue.ChaserAppear: return chaserAppear;
             default: return null;
         }
     }
