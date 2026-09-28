@@ -14,7 +14,10 @@ public class StatueInteractable : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (closeUpSprite != null)
+        {
             CloseUpViewUI.Instance.Show(closeUpSprite);
+            GameAudio.Play(GameAudio.Cue.PaintingView);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
