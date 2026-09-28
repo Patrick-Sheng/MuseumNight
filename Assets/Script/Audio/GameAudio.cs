@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// The persistent scene owns the clips and both 2D audio channels.
+// The persistent scene owns the clips and the 2D audio channels.
 public class GameAudio : MonoBehaviour
 {
     public enum Cue
@@ -38,6 +38,7 @@ public class GameAudio : MonoBehaviour
 
     private AudioSource musicSource;
     private AudioSource effectsSource;
+    private AudioSource dialogueSource;
     private bool nextStatueSound;
 
     private void Awake()
@@ -54,6 +55,11 @@ public class GameAudio : MonoBehaviour
         effectsSource.playOnAwake = false;
         effectsSource.spatialBlend = 0f;
         effectsSource.volume = effectsVolume;
+
+        dialogueSource = gameObject.AddComponent<AudioSource>();
+        dialogueSource.playOnAwake = false;
+        dialogueSource.spatialBlend = 0f;
+        dialogueSource.volume = effectsVolume;
     }
 
     private void OnDestroy()
@@ -65,7 +71,20 @@ public class GameAudio : MonoBehaviour
     {
         if (Instance == null) return;
         AudioClip clip = Instance.GetClip(cue);
-        if (clip != null) Instance.effectsSource.PlayOneShot(clip);
+        if (clip == null) return;
+
+        if (cue == Cue.DialogueNext || cue == Cue.DialogueBlip)
+        {
+            // A new dialogue click replaces the previous sound. The fallback blip
+            // must not immediately replace the click when the next line starts typing.
+            if (cue == Cue.DialogueBlip && Instance.dialogueSource.isPlaying) return;
+            Instance.dialogueSource.Stop();
+            Instance.dialogueSource.clip = clip;
+            Instance.dialogueSource.Play();
+            return;
+        }
+
+        Instance.effectsSource.PlayOneShot(clip);
     }
 
     public static void PlayRoomMusic(string roomName)
