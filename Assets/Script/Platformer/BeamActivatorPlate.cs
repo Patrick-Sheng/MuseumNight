@@ -30,6 +30,7 @@ public class BeamActivatorPlate : MonoBehaviour
 
         activeProjectile = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
         activeProjectile.GetComponent<LightProjectile>().Init(initialDirection);
+        GameAudio.Play(GameAudio.Cue.Room3BallLaunch);
         Debug.Log($"Sun activated by {name}: spawned projectile at {spawnPoint.position} heading {initialDirection}", this);
     }
 }
