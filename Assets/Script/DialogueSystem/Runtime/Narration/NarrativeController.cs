@@ -115,12 +115,18 @@ namespace DialogueSystem.Runtime.Narration
             }
             _currentNarrative = narrative;
             _narrativeQueue = new Queue<DialogueMessage>(narrative.Dialogue);
-            NextNarrative();
+            AdvanceNarrative(false);
         }
 
         public void NextNarrative()
         {
+            AdvanceNarrative(true);
+        }
+
+        private void AdvanceNarrative(bool playSound)
+        {
             IsChoosing = false;
+            if (playSound && IsNarrating) GameAudio.Play(GameAudio.Cue.DialogueNext);
             if (narrativeUI.IsMessageDisplaying())
             {
                 SkipCurrentMessage();

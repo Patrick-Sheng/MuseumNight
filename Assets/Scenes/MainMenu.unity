@@ -1531,6 +1531,8 @@ MonoBehaviour:
   crackedBackground: {fileID: 1910128136670386994, guid: 3e6f4294cabf9b947bc3b0dffc200d05, type: 3}
   audioSource: {fileID: 5000000004}
   crackSound: {fileID: 8300000, guid: f4d1714eb77563b4c9ddd4901443e7d1, type: 3}
+  menuMusic: {fileID: 8300000, guid: b44f27d015aa7b1409e2fc8e0937494b, type: 3}
+  menuMusicVolume: 0.35
   fadeDuration: 0.5
   holdDuration: 1
 --- !u!82 &5000000004

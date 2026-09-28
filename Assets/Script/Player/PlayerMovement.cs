@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     public bool isMoving;
     public bool isSprinting;
+    [SerializeField, Min(0.1f)] float footstepInterval = 0.38f;
+    float nextFootstepTime;
+    bool nextFootIsLeft;
     public Vector2 InputDirection => inputDirection;
 
     static readonly int HorizontalHash = Animator.StringToHash("horizontal");
@@ -41,6 +44,17 @@ public class PlayerMovement : MonoBehaviour
         inputDirection = new Vector2(x, y).normalized;
         isMoving = inputDirection != Vector2.zero;
         isSprinting = isMoving && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
+
+        if (isMoving && !PauseMenu.IsPaused && Time.time >= nextFootstepTime)
+        {
+            GameAudio.Play(nextFootIsLeft ? GameAudio.Cue.FootLeft : GameAudio.Cue.FootRight);
+            nextFootIsLeft = !nextFootIsLeft;
+            nextFootstepTime = Time.time + footstepInterval / (isSprinting ? sprintMultiplier : 1f);
+        }
+        else if (!isMoving)
+        {
+            nextFootstepTime = Time.time;
+        }
 
         animator.SetBool("isMoving", isMoving);
 

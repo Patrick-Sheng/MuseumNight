@@ -86,11 +86,13 @@ public class Room4EndingScreen : MonoBehaviour
             yield return null;
         }
         group.alpha = 1f;
+        GameAudio.StopMusic();
 
         if (blackScreenDuration > 0f)
             yield return new WaitForSecondsRealtime(blackScreenDuration);
 
         content.SetActive(true);
+        GameAudio.Play(GameAudio.Cue.LevelCompleted);
         group.interactable = true;
     }
 

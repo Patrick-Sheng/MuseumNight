@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Sprite crackedBackground;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip crackSound;
+    [SerializeField] private AudioClip menuMusic;
+    [SerializeField, Range(0f, 1f)] private float menuMusicVolume = 0.35f;
 
     [SerializeField] private float fadeDuration = 0.5f;
     [SerializeField] private float holdDuration = 1f;
@@ -22,6 +24,16 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        if (menuMusic != null)
+        {
+            AudioSource musicSource = gameObject.AddComponent<AudioSource>();
+            musicSource.clip = menuMusic;
+            musicSource.loop = true;
+            musicSource.playOnAwake = false;
+            musicSource.volume = menuMusicVolume;
+            musicSource.Play();
+        }
+
         if (settingsPanel != null)
             settingsPanel.SetActive(false);
 

@@ -31,7 +31,14 @@ public class MirrorShardPickup : MonoBehaviour
         MirrorShardProgress progress = MirrorShardProgress.GetOrCreate();
         if (progress == null) return;
 
+        if (progress.IsCollected(shardId))
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         progress.Collect(shardId);
+        GameAudio.Play(GameAudio.Cue.ShardCollect);
         gameObject.SetActive(false);
     }
 }

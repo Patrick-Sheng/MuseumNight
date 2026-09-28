@@ -56,6 +56,7 @@ public class ObjectiveItem : MonoBehaviour, IInteractable
         if (!room.TryCollectObjective()) return;
 
         collected = true;
+        GameAudio.Play(GameAudio.Cue.ItemPickup);
         ClearInteraction();
         gameObject.SetActive(false);
         onCollected.Invoke();

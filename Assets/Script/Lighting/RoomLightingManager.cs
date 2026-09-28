@@ -53,6 +53,10 @@ public class RoomLightingManager : MonoBehaviour
             globalLight.intensity = isDarkRoom ? darkIntensity : litIntensity;
 
         if (flashlight != null)
+        {
+            if (flashlight.enabled != isDarkRoom)
+                GameAudio.Play(isDarkRoom ? GameAudio.Cue.FlashlightOn : GameAudio.Cue.FlashlightOff);
             flashlight.enabled = isDarkRoom;
+        }
     }
 }

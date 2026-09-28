@@ -128,10 +128,9 @@ public class StealthRoomController : MonoBehaviour
             Debug.LogError("Room transitions require Persistent/RoomManager. Leave the exit destination empty for standalone completion.", this);
             return false;
         }
-        if (!manager.TryGoToRoom(sceneName, entryId, true, HandleTransitionFinished)) return false;
+        if (!manager.TryGoToRoom(sceneName, entryId, true, HandleTransitionFinished, true)) return false;
         IsCompleted = true;
         restarting = true;
-        StopRoom();
         return true;
     }
 

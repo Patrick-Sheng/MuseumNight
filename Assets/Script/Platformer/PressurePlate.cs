@@ -7,6 +7,9 @@ public class PressurePlate : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && mirror != null)
+        {
             mirror.RotateStep();
+            GameAudio.Play(GameAudio.Cue.Room3PressurePlate);
+        }
     }
 }

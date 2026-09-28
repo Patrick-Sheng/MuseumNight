@@ -7,6 +7,7 @@ public class CollectibleItem : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         Debug.Log("Collected " + gameObject.name);
+        GameAudio.Play(GameAudio.Cue.ItemPickup);
         gameObject.SetActive(false);
     }
 }

@@ -208,6 +208,7 @@ MonoBehaviour:
   lastDirection: {x: 0, y: -1}
   isMoving: 0
   isSprinting: 0
+  footstepInterval: 0.38
 --- !u!61 &58091894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2063,6 +2064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764843126}
   - component: {fileID: 1764843125}
+  - component: {fileID: 1764843127}
   m_Layer: 0
   m_Name: Persistent
   m_TagString: Untagged
@@ -2106,6 +2108,48 @@ Transform:
   - {fileID: 1520340971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764843127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764843124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5742963fc4e42e5b7ef9c13ca4be885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralMusic: {fileID: 8300000, guid: b44f27d015aa7b1409e2fc8e0937494b, type: 3}
+  horrorMusic1: {fileID: 8300000, guid: cdaa4790729062c46a7846f272d4c933, type: 3}
+  horrorMusic2: {fileID: 8300000, guid: d981c819d57174f42ad2701fa277b05b, type: 3}
+  finalBattleMusic: {fileID: 8300000, guid: 9c1bebba0efa413595888d2aabb2d05f, type: 3}
+  musicVolume: 0.35
+  chestOpen: {fileID: 8300000, guid: c3e1320a93a406c40832d0c0c0a1b951, type: 3}
+  dialogueBlip: {fileID: 8300000, guid: 38e04e383d4c379459f44fffc602b45c, type: 3}
+  dialogueNext: {fileID: 8300000, guid: 5fdf86a744a74964680a952e2f0562bb, type: 3}
+  doorOpen: {fileID: 8300000, guid: d592791c7a9c05c4b9822278d24a351b, type: 3}
+  doorOpenStartOffset: 0.8
+  flashlightOn: {fileID: 8300000, guid: 5707a3c278b407a4fbab2fcdb15a8179, type: 3}
+  flashlightOff: {fileID: 8300000, guid: 17a23060ac0ab2d4ca1bd75bd1a4c1b0, type: 3}
+  itemDropped: {fileID: 8300000, guid: 4e14c58909b731742bc5fb840dc1a2df, type: 3}
+  itemPickup: {fileID: 8300000, guid: ca197e48b35ef4a4ebfdab83cdce84c7, type: 3}
+  jump: {fileID: 8300000, guid: 58358b0845b399c47ad405963cb76d36, type: 3}
+  levelCompleted: {fileID: 8300000, guid: 1b364d2b92b959845991d2b24bbae1ff, type: 3}
+  paintingView: {fileID: 8300000, guid: 51aed32b852660141a2bd661189a86f7, type: 3}
+  statueMove1: {fileID: 8300000, guid: e0ab6bd88711fdc488c2de13bb7cda30, type: 3}
+  statueMove2: {fileID: 8300000, guid: cc5125a352818de45b5c4c08dd7b2516, type: 3}
+  footLeft: {fileID: 8300000, guid: 6f6e2e5eb32ad70479b59e60648ed080, type: 3}
+  footRight: {fileID: 8300000, guid: c54a53c0310184e448709430176ec5d0, type: 3}
+  chaserAppear: {fileID: 8300000, guid: 1fc1f3ad429e4d58b5abb5d7b805168a, type: 3}
+  room3BallLaunch: {fileID: 8300000, guid: 91264a4cfa964245ab8acf629fe46811, type: 3}
+  room3PressurePlate: {fileID: 8300000, guid: a4cefd3864e546f19504741d6932c7c4, type: 3}
+  room3Unlock: {fileID: 8300000, guid: ec1282dc412e4f3ba75368eae9f76d20, type: 3}
+  shardCollect: {fileID: 8300000, guid: 9f754bc41a6d44e9b9b83437109e24f2, type: 3}
+  mirrorAssemble: {fileID: 8300000, guid: 22b4c0a88a3c4ba0981ce67221db56f2, type: 3}
+  medusaHit: {fileID: 8300000, guid: 694feb17f95b461fae776c646ec09b21, type: 3}
+  playerHit: {fileID: 8300000, guid: 6f027e217f2e4a80a41a426020886840, type: 3}
+  effectsVolume: 0.7
 --- !u!1 &1807399635
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class LightReceiver : MonoBehaviour
         litFrame = Time.frameCount;
         if (completesRoom3Platformer)
         {
+            if (!GameProgress.CompletedRoom3Platformer)
+                GameAudio.Play(GameAudio.Cue.Room3Unlock);
             solved = true;
             GameProgress.CompletedRoom3Platformer = true;
         }
