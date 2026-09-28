@@ -2103,6 +2103,7 @@ MonoBehaviour:
   dialogueBlip: {fileID: 8300000, guid: 38e04e383d4c379459f44fffc602b45c, type: 3}
   dialogueNext: {fileID: 8300000, guid: 5fdf86a744a74964680a952e2f0562bb, type: 3}
   doorOpen: {fileID: 8300000, guid: d592791c7a9c05c4b9822278d24a351b, type: 3}
+  doorOpenStartOffset: 0.8
   flashlightOn: {fileID: 8300000, guid: 5707a3c278b407a4fbab2fcdb15a8179, type: 3}
   flashlightOff: {fileID: 8300000, guid: 17a23060ac0ab2d4ca1bd75bd1a4c1b0, type: 3}
   itemDropped: {fileID: 8300000, guid: 4e14c58909b731742bc5fb840dc1a2df, type: 3}

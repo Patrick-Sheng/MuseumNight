@@ -32,6 +32,17 @@ public class TransitionTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        TryTransition(other);
+    }
+
+    // Also handles a door that opens while the player is already in its trigger.
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        TryTransition(other);
+    }
+
+    private void TryTransition(Collider2D other)
+    {
         // Unity sends 2D trigger callbacks even to disabled MonoBehaviours.
         if (!isActiveAndEnabled) return;
 
@@ -44,8 +55,7 @@ public class TransitionTrigger : MonoBehaviour
             if (!IsTransitionAvailable())
                 return;
 
-            if (manager.TryGoToRoom(targetSceneName, targetEntryId, restorePlayerControl, OnArrived))
-                GameAudio.Play(GameAudio.Cue.DoorOpen);
+            manager.TryGoToRoom(targetSceneName, targetEntryId, restorePlayerControl, OnArrived, true);
         }
     }
 

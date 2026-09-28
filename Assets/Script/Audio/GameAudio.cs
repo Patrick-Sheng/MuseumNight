@@ -23,6 +23,7 @@ public class GameAudio : MonoBehaviour
     [SerializeField] private AudioClip dialogueBlip;
     [SerializeField] private AudioClip dialogueNext;
     [SerializeField] private AudioClip doorOpen;
+    [SerializeField, Min(0f)] private float doorOpenStartOffset = 0.8f;
     [SerializeField] private AudioClip flashlightOn;
     [SerializeField] private AudioClip flashlightOff;
     [SerializeField] private AudioClip itemDropped;
@@ -39,6 +40,7 @@ public class GameAudio : MonoBehaviour
     private AudioSource musicSource;
     private AudioSource effectsSource;
     private AudioSource dialogueSource;
+    private AudioSource doorSource;
     private bool nextStatueSound;
 
     private void Awake()
@@ -60,6 +62,11 @@ public class GameAudio : MonoBehaviour
         dialogueSource.playOnAwake = false;
         dialogueSource.spatialBlend = 0f;
         dialogueSource.volume = effectsVolume;
+
+        doorSource = gameObject.AddComponent<AudioSource>();
+        doorSource.playOnAwake = false;
+        doorSource.spatialBlend = 0f;
+        doorSource.volume = effectsVolume;
     }
 
     private void OnDestroy()
@@ -81,6 +88,17 @@ public class GameAudio : MonoBehaviour
             Instance.dialogueSource.Stop();
             Instance.dialogueSource.clip = clip;
             Instance.dialogueSource.Play();
+            return;
+        }
+
+        if (cue == Cue.DoorOpen)
+        {
+            Instance.doorSource.Stop();
+            Instance.doorSource.clip = clip;
+            // Skip the silence at the beginning of door_open.mp3.
+            Instance.doorSource.time = Mathf.Min(Instance.doorOpenStartOffset,
+                Mathf.Max(0f, clip.length - 0.01f));
+            Instance.doorSource.Play();
             return;
         }
 

@@ -64,7 +64,8 @@ public class RoomManager : MonoBehaviour
     }
 
     public bool TryGoToRoom(string sceneName, string entryPointId,
-        bool restorePlayerControl = false, System.Action<bool> onFinished = null)
+        bool restorePlayerControl = false, System.Action<bool> onFinished = null,
+        bool playDoorSound = false)
     {
         if (isTransitioning || PauseMenu.IsPaused) return false;
         if (string.IsNullOrWhiteSpace(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
@@ -72,12 +73,16 @@ public class RoomManager : MonoBehaviour
             Debug.LogError("RoomManager: destination must be an enabled scene in Build Profiles: " + sceneName, this);
             return false;
         }
-        StartCoroutine(TransitionRoutine(sceneName, entryPointId, null, restorePlayerControl, onFinished));
+        if (playDoorSound)
+            GameAudio.Play(GameAudio.Cue.DoorOpen);
+
+        StartCoroutine(TransitionRoutine(sceneName, entryPointId, null, restorePlayerControl, onFinished, playDoorSound));
         return true;
     }
 
     private IEnumerator TransitionRoutine(string sceneName, string entryPointId, SaveData loadedSave,
-        bool restorePlayerControl = false, System.Action<bool> onFinished = null)
+        bool restorePlayerControl = false, System.Action<bool> onFinished = null,
+        bool playDoorSound = false)
     {
         if (string.IsNullOrWhiteSpace(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
         {
@@ -95,6 +100,10 @@ public class RoomManager : MonoBehaviour
             onFinished?.Invoke(false);
             yield break;
         }
+
+        // The cue starts on entrance contact; keep movement active until the fade begins.
+        if (playDoorSound)
+            yield return new WaitForSecondsRealtime(0.5f);
 
         PlayerMovement movement = player.GetComponent<PlayerMovement>();
         PlayerInteract interaction = player.GetComponent<PlayerInteract>();
