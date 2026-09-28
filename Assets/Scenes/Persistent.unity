@@ -2123,6 +2123,7 @@ MonoBehaviour:
   neutralMusic: {fileID: 8300000, guid: b44f27d015aa7b1409e2fc8e0937494b, type: 3}
   horrorMusic1: {fileID: 8300000, guid: cdaa4790729062c46a7846f272d4c933, type: 3}
   horrorMusic2: {fileID: 8300000, guid: d981c819d57174f42ad2701fa277b05b, type: 3}
+  finalBattleMusic: {fileID: 8300000, guid: 9c1bebba0efa413595888d2aabb2d05f, type: 3}
   musicVolume: 0.35
   chestOpen: {fileID: 8300000, guid: c3e1320a93a406c40832d0c0c0a1b951, type: 3}
   dialogueBlip: {fileID: 8300000, guid: 38e04e383d4c379459f44fffc602b45c, type: 3}
@@ -2672,7 +2673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 141049292}
   fadeDuration: 0.4
-  startingSceneName: Room1
+  startingSceneName: Room4
   startingEntryId: 1
   playStoryIntroOnFreshStart: 1
   storyNarrativeController: {fileID: 1520340975}

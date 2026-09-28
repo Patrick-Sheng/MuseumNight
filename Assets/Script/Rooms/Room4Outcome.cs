@@ -37,7 +37,6 @@ public class Room4Outcome : MonoBehaviour
         PlayableDirector selected = hasAllThree ? winDirector : lossDirector;
 
         played = true;
-        GameAudio.StopMusic();
         selected.time = 0;
         selected.Play();
         Sprite resultImage = hasAllThree ? winImage : lossImage;

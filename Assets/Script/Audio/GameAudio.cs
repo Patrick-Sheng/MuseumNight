@@ -18,6 +18,7 @@ public class GameAudio : MonoBehaviour
     [SerializeField] private AudioClip neutralMusic;
     [SerializeField] private AudioClip horrorMusic1;
     [SerializeField] private AudioClip horrorMusic2;
+    [SerializeField] private AudioClip finalBattleMusic;
     [SerializeField, Range(0f, 1f)] private float musicVolume = 0.35f;
 
     [Header("Effects")]
@@ -136,6 +137,14 @@ public class GameAudio : MonoBehaviour
     public static void StopMusic()
     {
         if (Instance != null) Instance.musicSource.Stop();
+    }
+
+    public static void PlayFinalBattleMusic()
+    {
+        if (Instance == null || Instance.finalBattleMusic == null) return;
+        Instance.musicSource.Stop();
+        Instance.musicSource.clip = Instance.finalBattleMusic;
+        Instance.musicSource.Play();
     }
 
     private AudioClip GetClip(Cue cue)

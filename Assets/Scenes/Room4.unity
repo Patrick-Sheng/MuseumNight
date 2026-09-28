@@ -3465,8 +3465,8 @@ MonoBehaviour:
   endingHoldDuration: 1
   endingFadeDuration: 2
   blackScreenDuration: 0.5
-  usePreviewResult: 0
-  previewShardCount: 0
+  usePreviewResult: 1
+  previewShardCount: 3
 --- !u!114 &1833937369
 MonoBehaviour:
   m_ObjectHideFlags: 0

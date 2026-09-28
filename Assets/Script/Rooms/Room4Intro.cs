@@ -105,6 +105,7 @@ public class Room4Intro : MonoBehaviour
             yield return null;
         FaceRight();
         roomCamera.RevealRoom();
+        GameAudio.PlayFinalBattleMusic();
         yield return FadeBorders();
 
         // Play the reveal dialogue immediately after Medusa is visible.
