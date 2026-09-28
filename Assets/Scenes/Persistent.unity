@@ -2629,7 +2629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 141049292}
   fadeDuration: 0.4
-  startingSceneName: Room3
+  startingSceneName: Room1
   startingEntryId: 1
   playStoryIntroOnFreshStart: 1
   storyNarrativeController: {fileID: 1520340975}
