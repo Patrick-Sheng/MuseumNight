@@ -10,14 +10,31 @@ public class PlatformerPlayerController : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
     int groundContacts;
+    float lastFacing = 1f;
 
     static readonly int HorizontalHash = Animator.StringToHash("horizontal");
+    static readonly int VerticalHash = Animator.StringToHash("vertical");
+    static readonly int LastHorizontalHash = Animator.StringToHash("lastHorizontal");
+    static readonly int LastVerticalHash = Animator.StringToHash("lastVertical");
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    void OnEnable()
+    {
+        // The Animator is shared with the top-down PlayerMovement, which can leave
+        // "vertical"/"lastVertical" non-zero. Reset them so the platformer never
+        // starts (or gets stuck) on an up/down animation.
+        if (animator != null)
+        {
+            animator.SetFloat(VerticalHash, 0f);
+            animator.SetFloat(LastHorizontalHash, lastFacing);
+            animator.SetFloat(LastVerticalHash, 0f);
+        }
     }
 
     void OnDisable()
@@ -32,10 +49,15 @@ public class PlatformerPlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
 
+        if (x != 0) lastFacing = Mathf.Sign(x);
+
         if (animator != null)
         {
             animator.SetBool("isMoving", x != 0);
             animator.SetFloat(HorizontalHash, x);
+            animator.SetFloat(VerticalHash, 0f);
+            animator.SetFloat(LastHorizontalHash, lastFacing);
+            animator.SetFloat(LastVerticalHash, 0f);
         }
 
         if (spriteRenderer != null && x != 0)
